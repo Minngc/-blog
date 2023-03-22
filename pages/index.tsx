@@ -1,4 +1,4 @@
-import author from "json/author.json";
+import author from "@json/author.json";
 import TopNav from "@/Layout/TopNav";
 
 const Home: React.FC<{ author: { name: string } }> = ({ author }) => {

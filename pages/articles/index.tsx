@@ -1,5 +1,5 @@
 import TopNav from "@/Layout/TopNav";
-import articles from "json/articles.json";
+import articles from "@json/articles.json";
 import Link from "next/link";
 
 interface ArticleType {
@@ -15,7 +15,7 @@ const Article: React.FC<{ articles: ArticleType[] }> = ({ articles }) => {
       <ol>
         {articles.map((value) => {
           return (
-            <li>
+            <li key={value.title}>
               <Link href={"articles/" + value.title}>{value.title}</Link>
             </li>
           );

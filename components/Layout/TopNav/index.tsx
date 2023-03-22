@@ -7,7 +7,7 @@ const TopNav = () => {
         <nav>
           <ul>
             <li>
-              <Link href="/">Ming's Blog</Link>
+              <Link href="/">Ming&apos;s Blog</Link>
             </li>
             <li>
               <Link href="/about">about</Link>

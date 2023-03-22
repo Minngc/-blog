@@ -1,0 +1,6 @@
+{
+  "mdx-preview.build.useSucraseTranspiler": true,
+  "mdx.experimentalLanguageServer": true,
+  "mdx-preview.preview.previewOnChange": true,
+  "mdx-preview.preview.useVscodeMarkdownStyles": true
+}

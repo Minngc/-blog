@@ -18,8 +18,8 @@
       "@/*": ["components/*"],
       "@type/*": ["config/type/*"],
       "@json/*": ["config/json/*"],
-      "@fonts": ["public/assets/fonts"],
-      "@image": ["public/assets/image"]
+      "@fonts/*": ["public/assets/fonts/*"],
+      "@image/*": ["public/assets/image/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js"],

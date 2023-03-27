@@ -4,7 +4,6 @@ import TopNav from "@/Layout/TopNav";
 const Home: React.FC<{ author: { name: string } }> = ({ author }) => {
   return (
     <>
-      <TopNav />
       <div>Hello This is {author.name}</div>
     </>
   );

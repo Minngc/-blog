@@ -1,0 +1,22 @@
+.iconSpan {
+  display: inline-flex;
+  align-items: center;
+  // 方案二
+  // position: relative;
+  // display: inline-block;
+  // line-height: 1; // 使文本高度为图标高度
+  // width: 1em; //图标大小，用来占位
+  // img {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 1em;
+  //   height: 1em;
+  // }
+  &::before {
+    content: "\00a0";
+  }
+  &::after {
+    content: "\00a0";
+  }
+}

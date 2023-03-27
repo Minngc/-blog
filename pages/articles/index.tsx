@@ -10,7 +10,6 @@ interface ArticleType {
 const Article: React.FC<{ articles: ArticleType[] }> = ({ articles }) => {
   return (
     <>
-      <TopNav />
       This is an Article page
       <ol>
         {articles.map((value) => {

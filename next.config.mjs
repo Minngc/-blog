@@ -1,11 +1,13 @@
 import nextMdx from "@next/mdx";
+import remarkFrontmatter from "remark-frontmatter";
+import withSass from "@zeit/next-sass"
 
 const withMdx = nextMdx({
   extension: /\.mdx?$/,
   options: {
     providerImportSource: "@mdx-js/react",
     //...
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [],
   },
 });
@@ -16,18 +18,6 @@ const withMdx = nextMdx({
 const nextConfig = {
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
   reactStrictMode: true,
-};
-
-webpack: (config) => {
-  config.resolve.fallback = {
-    fs: false,
-    net: false,
-    dns: false,
-    child_process: false,
-    tls: false,
-  };
-
-  return config;
 };
 
 export default withMdx(nextConfig);

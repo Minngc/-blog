@@ -2,15 +2,15 @@ import Link from "next/link";
 import {
   type ReactNode,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
 import classNames from "classnames";
-import style from "./index.module.scss";
 import { useRouter } from "next/router";
-
+import { WindowWidthContext } from "context";
 import { HomeIcon, PersonIcon, LinkIcon, RepoIcon } from "@/Icon";
+import style from "./index.module.scss";
 
 const menu = [
   {
@@ -44,10 +44,16 @@ const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
   let headerRef = useRef(null);
   let Xoffset = useRef<number | undefined>(undefined);
   let Yoffset = useRef<number | undefined>(undefined);
+  const [windowWidth, setWindowWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState<string>(
     "/" + router.pathname.split("/")[1],
   );
-
+  // 操作屏幕大小发生变化时的事件
+  const handleResize = useCallback(() => {
+    console.log(window.innerWidth);
+    setWindowWidth(window.innerWidth);
+  }, []);
+  // 操作
   const handleScroll = useCallback(() => {
     // 未初始化时
     if (Xoffset.current === undefined || Yoffset.current === undefined) {
@@ -75,18 +81,32 @@ const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
   // 操作浏览器返回按钮点击时的时事件
   const handlePop = useCallback((e: PopStateEvent) => {
     // console.log(`/${e.state.url.split("/")[1]}`)
-    setCurrentPage(`/${e.state.url.split("/")[1]}`);
+    if (e.state) setCurrentPage(`/${e.state.url.split("/")[1]}`);
   }, []);
 
-  useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
+  useLayoutEffect(() => {
+    handleResize()
+    console.log("resize fn reload");
+    window.addEventListener("resize", handleResize);
+    return window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
+
+  useLayoutEffect(() => {
+    console.log("popstate fn reload");
     window.addEventListener("popstate", handlePop);
     return () => {
-      console.log("remove");
-      document.removeEventListener("scroll", handleScroll);
       window.removeEventListener("popstate", handlePop);
     };
-  }, [handleScroll, handlePop]);
+  },[handlePop]);
+
+  useLayoutEffect(() => {
+    console.log("scroll fn reload");
+    document.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
   return (
     <>
       <header
@@ -130,7 +150,9 @@ const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
           </nav>
         </div>
       </header>
-      <div className={style.container}>{children}</div>
+      <WindowWidthContext.Provider value={windowWidth}>
+        <div className={style.container}>{children}</div>
+      </WindowWidthContext.Provider>
     </>
   );
 };

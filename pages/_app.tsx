@@ -4,6 +4,7 @@ import "styles/globals.scss";
 import Header from "@/Layout/Test/header";
 import Code from "@/Layout/Test/code";
 import TopNav from "@/Layout/TopNav";
+import "styles/globals.scss"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

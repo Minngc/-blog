@@ -7,6 +7,8 @@ import { MDXRemote } from "next-mdx-remote";
 import { serializeWithPlugin } from "lib/serialize";
 import Header from "@/Layout/Test/header";
 import Code from "@/Layout/Test/code";
+import styles from "styles/post.module.scss"
+
 
 const components = {
   h1: Header,

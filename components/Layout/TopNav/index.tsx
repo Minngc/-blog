@@ -2,15 +2,16 @@ import Link from "next/link";
 import {
   type ReactNode,
   useCallback,
-  useLayoutEffect,
+  useEffect,
   useRef,
   useState,
 } from "react";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import { WindowWidthContext } from "context";
-import { HomeIcon, PersonIcon, LinkIcon, RepoIcon } from "@/Icon";
+import { ThreeBarIcon, HomeIcon, PersonIcon, LinkIcon, RepoIcon } from "@/Icon";
 import style from "./index.module.scss";
+import Menu from "@/menu";
 
 const menu = [
   {
@@ -41,10 +42,14 @@ const menu = [
 
 const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
   const router = useRouter();
+  const [visible, setVisible] = useState<boolean | undefined>(undefined);
   let headerRef = useRef(null);
   let Xoffset = useRef<number | undefined>(undefined);
   let Yoffset = useRef<number | undefined>(undefined);
   const [windowWidth, setWindowWidth] = useState(0);
+  const handleMenu = useCallback(() => {
+    setVisible(false);
+  }, []);
   const [currentPage, setCurrentPage] = useState<string>(
     "/" + router.pathname.split("/")[1],
   );
@@ -84,23 +89,20 @@ const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
     if (e.state) setCurrentPage(`/${e.state.url.split("/")[1]}`);
   }, []);
 
-  useLayoutEffect(() => {
-    handleResize()
-    console.log("resize fn reload");
+  useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
     return window.removeEventListener("resize", handleResize);
   }, [handleResize]);
 
-  useLayoutEffect(() => {
-    console.log("popstate fn reload");
+  useEffect(() => {
     window.addEventListener("popstate", handlePop);
     return () => {
       window.removeEventListener("popstate", handlePop);
     };
-  },[handlePop]);
+  }, [handlePop]);
 
-  useLayoutEffect(() => {
-    console.log("scroll fn reload");
+  useEffect(() => {
     document.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -145,10 +147,19 @@ const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
                     </Link>
                   </li>
                 );
-              })}
+              })}{" "}
+              <li
+                onClick={() => {
+                  setVisible(!(visible ?? false));
+                  console.log(visible);
+                }}
+              >
+                <ThreeBarIcon />
+              </li>
             </ul>
           </nav>
         </div>
+        <Menu visible={visible} handleMenu={handleMenu} />
       </header>
       <WindowWidthContext.Provider value={windowWidth}>
         <div className={style.container}>{children}</div>

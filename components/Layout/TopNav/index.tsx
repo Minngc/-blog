@@ -1,171 +1,74 @@
-import Link from "next/link";
-import {
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
+import styles from "./index.module.scss";
+import { SearchIcon } from "@/Icon";
+import { AsideMenu } from "@/menu/asideMenu";
+import { TopMenu } from "@/menu/topMenu";
+import {
+  useHeaderNavHiddenEffect,
+  useWidthSizeEffect,
+  useRouterEffect,
+} from "lib/hooks/effects";
 import { useRouter } from "next/router";
-import { WindowWidthContext } from "context";
-import { ThreeBarIcon, HomeIcon, PersonIcon, LinkIcon, RepoIcon } from "@/Icon";
-import style from "./index.module.scss";
-import Menu from "@/menu";
 
-const menu = [
-  {
-    title: "Home",
-    url: "/",
-    icon: <HomeIcon />,
-  },
-  {
-    title: "About",
-    url: "/about",
-    icon: <PersonIcon />,
-  },
-  {
-    title: "Links",
-    url: "/links",
-    icon: <LinkIcon />,
-  },
-  {
-    title: "Articles",
-    url: "/articles",
-    icon: <RepoIcon />,
-  },
-  {
-    title: "Others",
-    url: "/others",
-  },
-];
+type WidthSizeType = "mobile" | "small" | "middle" | "small" | "large";
 
-const TopNav: React.FC<{ children?: ReactNode }> = ({ children }) => {
+const TopNav = () => {
   const router = useRouter();
-  const [visible, setVisible] = useState<boolean | undefined>(undefined);
-  let headerRef = useRef(null);
-  let Xoffset = useRef<number | undefined>(undefined);
-  let Yoffset = useRef<number | undefined>(undefined);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const handleMenu = useCallback(() => {
-    setVisible(false);
-  }, []);
-  const [currentPage, setCurrentPage] = useState<string>(
-    "/" + router.pathname.split("/")[1],
+  const [navHidden, setNavHidden] = useState<boolean>();
+  const [pathname, setPathname] = useState<string>(
+    `/${router.pathname.split("/")[1]}`,
   );
-  // 操作屏幕大小发生变化时的事件
-  const handleResize = useCallback(() => {
-    console.log(window.innerWidth);
-    setWindowWidth(window.innerWidth);
-  }, []);
-  // 操作
-  const handleScroll = useCallback(() => {
-    // 未初始化时
-    if (Xoffset.current === undefined || Yoffset.current === undefined) {
-    }
-    // 屏幕距离顶端超过 60 px
-    else if (window.pageYOffset > 60) {
-      let diffX = Xoffset.current - window.pageXOffset;
-      let diffY = Yoffset.current - window.pageYOffset;
-      // console.log(diffX, diffY);
-      if (headerRef.current !== null) {
-        if (diffY < 0) {
-          (headerRef.current! as HTMLHeadElement).style.top = "-60px";
-        } else if (diffY > 0) {
-          (headerRef.current! as HTMLHeadElement).style.top = "0px";
-        }
-      }
-    }
-    // 否则
-    else (headerRef.current! as HTMLHeadElement).style.top = "0px";
-    // 重置 X, Y
-    Xoffset.current = window.pageXOffset;
-    Yoffset.current = window.pageYOffset;
-    return void 0;
-  }, []);
-  // 操作浏览器返回按钮点击时的时事件
-  const handlePop = useCallback((e: PopStateEvent) => {
-    // console.log(`/${e.state.url.split("/")[1]}`)
-    if (e.state) setCurrentPage(`/${e.state.url.split("/")[1]}`);
-  }, []);
+  // ["mobile", "small", "middle", "large",]
+  const [innerWidthSize, setInnerWidthSize] = useState<WidthSizeType>();
+  const [topMenuHidden, setTopMenuHidden] = useState<boolean>();
+  const [asideMenuHidden, setAsideMenuHidden] = useState<boolean>(true);
+  const smallScreen = innerWidthSize === "small" || innerWidthSize === "mobile";
+  useRouterEffect(setPathname);
+  useWidthSizeEffect(setInnerWidthSize);
+  useHeaderNavHiddenEffect(setNavHidden);
+  useEffect(() => setTopMenuHidden(false), []);
 
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return window.removeEventListener("resize", handleResize);
-  }, [handleResize]);
-
-  useEffect(() => {
-    window.addEventListener("popstate", handlePop);
-    return () => {
-      window.removeEventListener("popstate", handlePop);
-    };
-  }, [handlePop]);
-
-  useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
-
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
   return (
     <>
       <header
-        ref={headerRef!}
-        className={classNames({ "123": true }, `${style.topNav}`)}
-        style={{ top: "0" }}
+        className={classNames([styles.headerNav], {
+          [styles.hiddenHeaderNav]: navHidden,
+        })}
       >
-        <div className={style.container}>
-          <div className={style.navTitle}>
-            <Link
-              href="/"
-              onClick={() => {
-                setCurrentPage("/");
-              }}
-            >
-              Ming&apos;s Blog
-            </Link>
-          </div>
-          <nav className={style.navol}>
-            <ul>
-              {menu.map((value) => {
-                // console.log("rerender");
-                return (
-                  <li
-                    key={value.url}
-                    onClick={() => {
-                      setCurrentPage(value.url);
-                    }}
-                    className={classNames(
-                      value.url === currentPage ? style.actived : "",
-                    )}
-                  >
-                    <Link href={value.url}>
-                      {value.icon}
-                      {value.title}
-                    </Link>
-                  </li>
-                );
-              })}{" "}
-              <li
-                onClick={() => {
-                  setVisible(!(visible ?? false));
-                  console.log(visible);
-                }}
-              >
-                <ThreeBarIcon />
-              </li>
-            </ul>
-          </nav>
+        <div
+          className={classNames([styles.logo])}
+          onClick={() => {
+            !smallScreen && setTopMenuHidden(!topMenuHidden);
+            smallScreen && setAsideMenuHidden(!asideMenuHidden);
+          }}
+        >
+          {"Ming's Blog"}
         </div>
-        <Menu visible={visible} handleMenu={handleMenu} />
+        {!smallScreen && <TopMenu menuHidden={topMenuHidden} />}
+
+        <div className={classNames([styles.searchLogo])}>
+          <SearchIcon />
+          search
+        </div>
       </header>
-      <WindowWidthContext.Provider value={windowWidth}>
-        <div className={style.container}>{children}</div>
-      </WindowWidthContext.Provider>
+      {smallScreen && (
+        <AsideMenu
+          pathname={pathname}
+          hidden={asideMenuHidden}
+          handleMenu={() => {
+            setAsideMenuHidden(true);
+          }}
+        />
+      )}
+      <div style={{ background: "white", height: "300px", width: "300px" }} />
+      <div style={{ background: "red", height: "300px", width: "300px" }} />
+      <div style={{ background: "black", height: "300px", width: "300px" }} />
+      <div style={{ background: "black", height: "300px", width: "300px" }} />
+      <div style={{ background: "white", height: "300px", width: "300px" }} />
+      <div style={{ background: "black", height: "300px", width: "300px" }} />
     </>
   );
 };
 
-export default TopNav;
+export { TopNav };

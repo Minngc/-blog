@@ -3,50 +3,48 @@ import classNames from "classnames";
 import Image from "next/image";
 import avator from "@image/jpg/avator.jpg";
 import DotedSplitLine from "@/decoration/dotedSplitLine";
-
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { SnsList } from "./snsList";
 import { MenuList } from "./menuList";
 
-const Menu = (props: {
-  visible: boolean | undefined;
+const AsideMenu = (props: {
+  hidden: boolean;
+  pathname: string;
   handleMenu: () => void;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { visible, handleMenu } = props;
+  const { pathname, hidden, handleMenu } = props;
 
   return (
     <>
       <div
         onClick={handleMenu}
-        style={{ display: `${visible === undefined ? "none" : "block"}` }}
-        className={`${styles.musk} ${classNames({
-          [styles.muskOut]: !(visible ?? true),
-          [styles.muskIn]: visible ?? false,
+        className={`${styles.muskHidden} ${classNames({
+          [styles.muskDisplay]: !hidden,
         })}`}
       />
       <aside
         ref={ref}
-        className={`${styles.menuContainer} ${classNames({
-          [styles.menuHidden]: !(visible ?? true),
-          [styles.menuDisplay]: visible ?? false,
+        className={`${styles.menuContainerHidden} ${classNames({
+          [styles.menuContainerDisplay]: !hidden,
         })}`}
       >
         <div className={`${styles.menuHeader}`}>
+          {/* 没想好 */}
+          <div className={classNames(styles.menuTop)} onClick={handleMenu} />
           <div className={`${styles.avator}`}>
             <Image src={avator} alt={"avator"} width={80} height={80} />
           </div>
-
           <DotedSplitLine />
           <SnsList />
           <DotedSplitLine />
         </div>
         <div className={`${styles.menuContent}`}>
-          <MenuList />
+          <MenuList pathname={pathname} />
         </div>
       </aside>
     </>
   );
 };
 
-export default Menu;
+export { AsideMenu };

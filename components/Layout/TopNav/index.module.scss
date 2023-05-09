@@ -2,6 +2,8 @@
   position: fixed;
   display: flex;
   z-index: 10;
+  top: 0;
+  left: 0;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -11,6 +13,7 @@
   width: calc(100vw - 60px);
   height: 60px;
   box-shadow: 0px 4px 20px 5px rgba(190, 198, 209, 0.15);
+  font-family: var(--LXGW);
   transition: width 0s ease, opacity 0.5s ease, background-color 0.5s ease;
   animation: fade-in 0.5s 0s 1 ease;
 
@@ -29,19 +32,20 @@
 }
 
 .hiddenHeaderNav {
-  background: transparent;
+  background: rgba(243, 238, 242, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: none;
   opacity: 0.6;
-  & > nav.hiddenMenuNav {
+  & > nav {
     opacity: 0;
   }
   &:hover {
     background: rgba(243, 238, 242, 0.8);
     box-shadow: 0px 4px 20px 5px rgba(190, 198, 209, 0.15);
     opacity: 1;
-    & > nav.hiddenMenuNav {
+    & > nav {
       opacity: 1;
     }
   }
 }
-

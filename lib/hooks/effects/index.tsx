@@ -48,11 +48,12 @@ function useHeaderNavHiddenEffect(
   }, [setState]);
 }
 
-function useRouterEffect(setState: Dispatch<SetStateAction<string>>) {
+function useRouterEffect(setState: Dispatch<SetStateAction<string[]>>) {
   useEffect(() => {
     function handlePopState(e: PopStateEvent) {
-      console.log(e.state);
-      if (e.state) setState(`/${e.state.url.split("/")[1]}`);
+      if (e.state)
+        console.log(123);
+        setState(e.state.as.split("/").map((value: string) => `/${value}`));
     }
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);

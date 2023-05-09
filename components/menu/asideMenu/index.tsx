@@ -2,18 +2,15 @@ import styles from "./index.module.scss";
 import classNames from "classnames";
 import Image from "next/image";
 import avator from "@image/jpg/avator.jpg";
+import { LXGW } from "@fonts/index";
 import DotedSplitLine from "@/decoration/dotedSplitLine";
-import { useRef } from "react";
+import {  useRef } from "react";
 import { SnsList } from "./snsList";
 import { MenuList } from "./menuList";
 
-const AsideMenu = (props: {
-  hidden: boolean;
-  pathname: string;
-  handleMenu: () => void;
-}) => {
+const AsideMenu = (props: { hidden: boolean; handleMenu: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { pathname, hidden, handleMenu } = props;
+  const { hidden, handleMenu } = props;
 
   return (
     <>
@@ -25,9 +22,12 @@ const AsideMenu = (props: {
       />
       <aside
         ref={ref}
-        className={`${styles.menuContainerHidden} ${classNames({
-          [styles.menuContainerDisplay]: !hidden,
-        })}`}
+        className={`${styles.menuContainerHidden} ${classNames(
+          [LXGW.variable],
+          {
+            [styles.menuContainerDisplay]: !hidden,
+          },
+        )}`}
       >
         <div className={`${styles.menuHeader}`}>
           {/* 没想好 */}
@@ -40,7 +40,7 @@ const AsideMenu = (props: {
           <DotedSplitLine />
         </div>
         <div className={`${styles.menuContent}`}>
-          <MenuList pathname={pathname} />
+          <MenuList />
         </div>
       </aside>
     </>

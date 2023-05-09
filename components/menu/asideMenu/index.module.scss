@@ -5,9 +5,12 @@
   left: calc(var(--menu-width) * -1);
   display: flex;
   flex-direction: column;
-  width: var(--menu-width);
 
+  width: var(--menu-width);
   height: 100vh;
+
+  font-family: var(--LXGW);
+
   background: rgb(243, 238, 242);
   opacity: 0;
   transition: all 0.3s ease, left 0.3s ease;
@@ -93,6 +96,9 @@
     padding: 0;
     color: #27486e;
     font-weight: 700;
+    .selected {
+      background: rgba(227, 223, 227, 0.8);
+    }
     .menuItem {
       display: flex;
       align-items: center;

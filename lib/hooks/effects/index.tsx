@@ -51,8 +51,8 @@ function useHeaderNavHiddenEffect(
 function useRouterEffect(setState: Dispatch<SetStateAction<string[]>>) {
   useEffect(() => {
     function handlePopState(e: PopStateEvent) {
-      if (e.state)
-        console.log(123);
+      if (e.state !== null)
+      if (e.state.as !== null)
         setState(e.state.as.split("/").map((value: string) => `/${value}`));
     }
     window.addEventListener("popstate", handlePopState);

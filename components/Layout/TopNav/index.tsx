@@ -72,12 +72,6 @@ const TopNav = () => {
             }}
           />
         )}
-        {/* <div style={{ background: "white", height: "300px", width: "300px" }} />
-      <div style={{ background: "red", height: "300px", width: "300px" }} />
-      <div style={{ background: "black", height: "300px", width: "300px" }} />
-      <div style={{ background: "black", height: "300px", width: "300px" }} />
-      <div style={{ background: "white", height: "300px", width: "300px" }} />
-      <div style={{ background: "black", height: "300px", width: "300px" }} /> */}
       </PathContext.Provider>
     </>
   );

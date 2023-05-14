@@ -1,6 +1,5 @@
 import nextMdx from "@next/mdx";
 import remarkFrontmatter from "remark-frontmatter";
-import withSass from "@zeit/next-sass"
 
 const withMdx = nextMdx({
   extension: /\.mdx?$/,

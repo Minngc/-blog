@@ -1,11 +1,5 @@
-import TopNav from "@/Layout/TopNav";
-
 const About = () => {
-  return (
-    <>
-      This is an About page
-    </>
-  );
+  return <>这是一个用来展示个人信息的界面</>;
 };
 
 export default About;

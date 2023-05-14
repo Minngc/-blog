@@ -1,4 +1,3 @@
-import TopNav from "@/Layout/TopNav";
 import articles from "@json/articles.json";
 import Link from "next/link";
 import fs from "node:fs";
@@ -6,61 +5,19 @@ import fs from "node:fs";
 
 import { getMdFiles } from "lib/getPostFiles";
 
-import type { MatterDateType3 } from "@type/index";
-
-const Article: React.FC<{ articleList: MatterDateType3[] }> = ({
-  articleList,
-}) => {
-  return (
-    <>
-      This is an Article page
-      <ol>
-        {articleList.map((value) => {
-          return (
-            <li key={value.Title}>
-              <Link
-                href={
-                  "articles/" +
-                  value.Date[0] +
-                  "/" +
-                  value.Date[1] +
-                  "/" +
-                  value.Link
-                }
-              >
-                {value.Title}
-              </Link>
-            </li>
-          );
-        })}
-      </ol>
-    </>
-  );
+const Article: React.FC = ({}) => {
+  return <>这个页面不知道要放什么</>;
 };
 
 export async function getStaticProps() {
   // const sortedList = await getMatter();
   const b = getMdFiles("./post");
-  console.log(b);
   return {
     props: {
       articleList: [],
     },
   };
 }
-
-const defult = [
-  [],
-  [
-    [
-      "./post/2023/03/build-develop-environment.mdx/",
-      "./post/2023/03/test.mdx/",
-      "./post/2023/03/test2.md/",
-    ],
-    [],
-  ],
-  "./post/test1.tsx/",
-];
 
 export default Article;
 

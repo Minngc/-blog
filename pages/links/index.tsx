@@ -1,10 +1,5 @@
-
 const Link = () => {
-  return (
-    <>
-      This is a Links Page
-    </>
-  );
+  return <>这个页面会用来展示友链</>;
 };
 
 export default Link;

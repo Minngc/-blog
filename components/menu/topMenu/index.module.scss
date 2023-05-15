@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     .menuNavLi {
-      transition: all 0.5s;
+      transition: all 0.3s, background-color 0.1s;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -23,7 +23,13 @@
       height: 100%;
       color: #27486e;
       gap: 15px;
-
+      &.selected {
+        // background: rgb(247,240,221);
+        background: rgb(251,244,224);
+      }
+      &:hover {
+        background-color: rgba(247,223,183);
+      }
       a {
         display: flex;
         width: 100%;
@@ -33,9 +39,6 @@
         color: #27486e;
         text-decoration: none;
         gap: 15px;
-        &.selected {
-          background: rgba(227, 223, 227, 0.8);
-        }
       }
     }
   }
@@ -53,7 +56,7 @@
   flex-direction: column;
   align-items: center;
   top: 60px;
-  height: 160px;
+  height: calc(25px + 45px * var(--item-num));
   width: 130px;
   transition: all 0.15s ease;
   opacity: 1;
@@ -79,7 +82,9 @@
     padding: 10px 0;
     margin: 0;
     border-radius: 10px;
-    background: rgba(243, 238, 242, 1);
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 20px 5px rgba(190, 198, 209, 0.15);
     li {
       display: flex;
       width: 100%;
@@ -87,6 +92,10 @@
       gap: 15px;
       justify-content: center;
       align-items: center;
+      transition: all 0.1s ;
+      &:hover {
+        background-color: rgba(247,223,183);
+      }
       a {
         display: flex;
         width: 100%;
@@ -97,7 +106,7 @@
         text-decoration: none;
         gap: 15px;
         &.selected {
-          background: rgba(227, 223, 227, 0.8);
+          background: rgb(247,240,221);
         }
       }
     }

@@ -12,7 +12,7 @@ const TitleListPanel = (props: {
   )[];
 }) => {
   return (
-    <div>
+    <div style={{ position: "sticky", top: "60px"}}>
       <nav>
         <ul style={{ position: "sticky", top: "60px", float: "right" }}>
           {props.tocHead.map((value) => {

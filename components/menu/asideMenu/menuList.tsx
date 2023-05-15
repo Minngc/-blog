@@ -113,6 +113,7 @@ const MenuCollapseItem = memo(
         </li>
         <ul
           tabIndex={0}
+          style={{ "--item-num": items.length }}
           className={`${styles.collapseContainer} ${classNames({
             [styles.collapseClose]: fold,
           })} `}

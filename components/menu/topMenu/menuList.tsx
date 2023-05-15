@@ -44,7 +44,7 @@ const MenuList = () => {
                 icon={item.icon}
                 href={item.href}
                 content={item.content}
-                selected={item.selected}
+                selected={selectedList[index]}
               />
             );
         })}
@@ -67,12 +67,10 @@ const MenuItem = memo(
       <li
         className={classNames([className], {
           [styles.menuNavLi]: !clearDefault,
+          [styles.selected]: selected,
         })}
       >
-        <Link
-          href={href}
-          className={classNames({ [styles.selected]: selected })}
-        >
+        <Link href={href}>
           {icon}
           {content}
         </Link>
@@ -89,7 +87,7 @@ const MenuCollapseItem = memo(
     const interTimer = useRef<NodeJS.Timer>();
     const [fold, setFold] = useState<boolean>(true);
     const pathArray = useContext(PathContext);
-    const { href, className, icon, content, items } = props;
+    const { href, className, icon, content, items, selected } = props;
     const [selectedList, setSelectedList] = useState<boolean[]>(
       items.map((item) => item.href === `${href}${pathArray[2]}`),
     );
@@ -98,9 +96,13 @@ const MenuCollapseItem = memo(
         items.map((item) => item.href === `${href}${pathArray[2]}`),
       );
     }, [pathArray, href, items]);
+    // useEffect(()=> {
+    //   console.log(selected)
+    // })
     return (
       <li
         className={classNames([styles.menuNavLi], [className], {
+          [styles.selected]: selected,
           [styles.foldTest]: !fold,
         })}
         onMouseEnter={() => {
@@ -120,6 +122,7 @@ const MenuCollapseItem = memo(
         {icon}
         {content}
         <div
+          style={{ "--item-num": items.length }}
           className={classNames([styles.Panel], {
             [styles.PanelOut]: fold ?? true,
           })}

@@ -34,7 +34,7 @@ export interface MenuCollapseItemType extends MenuCollapseItemProps {
 
 export const menuItems: (MenuItemType | MenuCollapseItemType)[] = [
   { type: "Regular", href: "/", icon: <HomeIcon />, content: "首页" },
-  { type: "Regular", href: "/articles", icon: <BookIcon />, content: "文章" },
+  { type: "Regular", href: "/post", icon: <BookIcon />, content: "文章" },
   {
     type: "Collapse",
     href: "/tag",

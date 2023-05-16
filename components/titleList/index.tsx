@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { useState } from "react";
+import styles from "./index.module.scss";
+import { AngleIcon } from "@/Icon";
+import classNames from "classnames";
 
 const TitleListPanel = (props: {
   tocHead: (
@@ -11,41 +15,104 @@ const TitleListPanel = (props: {
       }
   )[];
 }) => {
+  const { tocHead } = props;
+  const [hiddenList, setHiddenList] = useState<boolean>(false);
   return (
-    <div style={{ position: "sticky", top: "60px"}}>
-      <nav>
-        <ul style={{ position: "sticky", top: "60px", float: "right" }}>
-          {props.tocHead.map((value) => {
-            if (value.type === "nolist") {
-              return (
-                <TitleLi
-                  key={`headLink_${value.href}`}
-                  href={value.href}
-                  content={value.value}
-                />
-              );
-            } else {
-              return (
-                <li key={`headLink_${value.href}`}>
-                  <a href={value.href}>{value.value}</a>
-                  <ul>
-                    {value.children.map((h3Title) => {
-                      return (
-                        <TitleLi
-                          key={`headLink_${h3Title.href}`}
-                          href={h3Title.href}
-                          content={h3Title.value}
-                        />
-                      );
-                    })}
-                  </ul>
-                </li>
-              );
-            }
-          })}
-        </ul>
-      </nav>
-    </div>
+    <>
+      <div
+        className={classNames([styles.titleListSmallPanel], {
+          [styles.titleListSmallPanelExpand]: !hiddenList,
+        })}
+      >
+        <span
+          onClick={() => {
+            setHiddenList((pre) => !pre);
+          }}
+        >
+          目录
+        </span>
+        <TitleNav
+          className={classNames([styles.smallTitleListMenu])}
+          hidden={hiddenList}
+          tocHead={tocHead}
+        />
+      </div>
+      <div className={styles.titleListMiddlePanel}>
+        <span
+          onClick={() => {
+            setHiddenList((pre) => !pre);
+          }}
+        >
+          <AngleIcon
+            className={classNames([styles.triangle], {
+              [styles.triangleRotate]: !hiddenList,
+            })}
+            width={14}
+            height={14}
+          />
+          目录
+        </span>
+        <TitleNav
+          className={classNames([styles.middleTitleListMenu])}
+          hidden={hiddenList}
+          tocHead={tocHead}
+        />
+      </div>
+    </>
+  );
+};
+
+const TitleNav = (props: {
+  className?: string;
+  hidden?: boolean;
+  tocHead: (
+    | { type: "nolist"; href: string; value: string }
+    | {
+        type: "haslist";
+        href: string;
+        value: string;
+        children: { href: string; value: string }[];
+      }
+  )[];
+}) => {
+  const { className, hidden = false, tocHead } = props;
+  return (
+    <nav
+      className={classNames([className], {
+        [styles.titleListMenuHidden]: hidden,
+      })}
+    >
+      <ul>
+        {tocHead.map((value) => {
+          if (value.type === "nolist") {
+            return (
+              <TitleLi
+                key={`headLink_${value.href}`}
+                href={value.href}
+                content={value.value}
+              />
+            );
+          } else {
+            return (
+              <li key={`headLink_${value.href}`}>
+                <a href={value.href}>{value.value}</a>
+                <ul>
+                  {value.children.map((h3Title) => {
+                    return (
+                      <TitleLi
+                        key={`headLink_${h3Title.href}`}
+                        href={h3Title.href}
+                        content={h3Title.value}
+                      />
+                    );
+                  })}
+                </ul>
+              </li>
+            );
+          }
+        })}
+      </ul>
+    </nav>
   );
 };
 

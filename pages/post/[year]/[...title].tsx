@@ -24,9 +24,7 @@ const components = {
   wrapper: (props: any) => {
     return (
       <>
-        <div className="wrapperContainer">
-          <div className="articleContainer" {...props} />
-        </div>
+        <div className="articleContainer" {...props} />
       </>
     );
   },
@@ -70,6 +68,18 @@ const components = {
     return <p className="article-p">{props.children}</p>;
   },
   a: (props: { href: string; children?: ReactNode }) => {
+    if (props.href.startsWith("#"))
+      return (
+        <a
+          onClick={(e) => {
+            e.preventDefault();
+            location.replace(props.href);
+          }}
+          href={props.href}
+        >
+          {props.children}
+        </a>
+      );
     return <a href={props.href}>{props.children}</a>;
   },
   img: (props: { src: string; alt: string }) => {
@@ -86,9 +96,10 @@ interface PostType extends ParsedUrlQuery {
 const Article = (props: any) => {
   return (
     <>
-      <TitleListPanel tocHead={props.tocHead} />
-
-      <MDXRemote {...props.content} components={components} />
+      <div className="wrapperContainer">
+        <MDXRemote {...props.content} components={components} />
+        <TitleListPanel tocHead={props.tocHead} />
+      </div>
     </>
   );
 };

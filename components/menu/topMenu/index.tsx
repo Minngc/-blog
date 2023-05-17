@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import styles from "./index.module.scss";
-import { LXGW } from "@fonts/index";
 import classNames from "classnames";
 import { MenuList } from "./menuList";
 
@@ -24,7 +23,6 @@ const TopMenu = (props: TopMenuProps) => {
           className={classNames(
             [styles.menuNav],
             [styles.hiddenMenuNav],
-            [LXGW.variable],
             {
               [styles.foldMenuNav]: menuHidden,
             },

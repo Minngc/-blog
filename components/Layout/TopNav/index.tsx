@@ -4,7 +4,6 @@ import styles from "./index.module.scss";
 import { SearchIcon } from "@/Icon";
 import { AsideMenu } from "@/menu/asideMenu";
 import { TopMenu } from "@/menu/topMenu";
-import { LXGW } from "@fonts/index";
 import { PathContext } from "context";
 import {
   useHeaderNavHiddenEffect,
@@ -12,6 +11,7 @@ import {
   useRouterEffect,
 } from "lib/hooks/effects";
 import { useRouter } from "next/router";
+import { allison, XWSC } from "@fonts/index";
 
 type WidthSizeType = "mobile" | "small" | "middle" | "small" | "large";
 
@@ -21,7 +21,6 @@ const TopNav = () => {
   const [pathnameArray, setPathnameArray] = useState<string[]>(
     asPath.split("/").map((path) => `/${path}`),
   );
-  // ["mobile", "small", "middle", "large",]
   const [innerWidthSize, setInnerWidthSize] = useState<WidthSizeType>();
   const [topMenuHidden, setTopMenuHidden] = useState<boolean>();
   const [asideMenuHidden, setAsideMenuHidden] = useState<boolean>(true);
@@ -44,12 +43,13 @@ const TopNav = () => {
     <>
       <PathContext.Provider value={pathnameArray}>
         <header
-          className={classNames([styles.headerNav], [LXGW.variable], {
+          className={classNames([styles.headerNav],[XWSC.variable], {
             [styles.hiddenHeaderNav]: navHidden,
           })}
         >
           <div
-            className={classNames([styles.logo])}
+            style={{ fontFamily: `${allison.style.fontFamily}` }}
+            className={`${classNames([styles.logo])} ${allison.variable}`}
             onClick={() => {
               !smallScreen && setTopMenuHidden(!topMenuHidden);
               smallScreen && setAsideMenuHidden(!asideMenuHidden);

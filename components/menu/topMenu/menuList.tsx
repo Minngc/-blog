@@ -31,6 +31,7 @@ const MenuList = () => {
           if (item.type === "Regular")
             return (
               <MenuItem
+                key={`menuItem_top_${item.href}`}
                 icon={item.icon}
                 href={item.href}
                 content={item.content}
@@ -40,6 +41,7 @@ const MenuList = () => {
           else
             return (
               <MenuCollapseItem
+                key={`menuItem_top_${item.href}`}
                 items={item.items}
                 icon={item.icon}
                 href={item.href}

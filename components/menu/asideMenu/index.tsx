@@ -2,12 +2,11 @@ import styles from "./index.module.scss";
 import classNames from "classnames";
 import Image from "next/image";
 import avator from "@image/jpg/avator.jpg";
-import { LXGW } from "@fonts/index";
 import DotedSplitLine from "@/decoration/dotedSplitLine";
-import {  useRef } from "react";
+import { useRef } from "react";
 import { SnsList } from "./snsList";
 import { MenuList } from "./menuList";
-
+import { XWSC } from "@fonts/index";
 const AsideMenu = (props: { hidden: boolean; handleMenu: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { hidden, handleMenu } = props;
@@ -23,7 +22,7 @@ const AsideMenu = (props: { hidden: boolean; handleMenu: () => void }) => {
       <aside
         ref={ref}
         className={`${styles.menuContainerHidden} ${classNames(
-          [LXGW.variable],
+          [XWSC.variable],
           {
             [styles.menuContainerDisplay]: !hidden,
           },

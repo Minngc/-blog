@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState } from "react";
 import styles from "./index.module.scss";
 import { AngleIcon } from "@/Icon";
@@ -82,7 +81,7 @@ const TitleNav = (props: {
         [styles.titleListMenuHidden]: hidden,
       })}
     >
-      <ul>
+      <ol className={classNames([styles.level1Ol])}>
         {tocHead.map((value) => {
           if (value.type === "nolist") {
             return (
@@ -96,7 +95,7 @@ const TitleNav = (props: {
             return (
               <li key={`headLink_${value.href}`}>
                 <a href={value.href}>{value.value}</a>
-                <ul>
+                <ol>
                   {value.children.map((h3Title) => {
                     return (
                       <TitleLi
@@ -106,12 +105,12 @@ const TitleNav = (props: {
                       />
                     );
                   })}
-                </ul>
+                </ol>
               </li>
             );
           }
         })}
-      </ul>
+      </ol>
     </nav>
   );
 };

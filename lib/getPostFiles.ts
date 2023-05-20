@@ -1,60 +1,92 @@
-import { GetStaticProps } from "next";
-import fs, { readFileSync } from "node:fs";
-import path from "node:path";
+import fs from "node:fs";
 import matter from "gray-matter";
-import type { MatterDateType, MatterDateType3 } from "@type/index";
 
-// function getMdFiles(last: string, now: string): any {
-//   if (!/^([^\\:*<>|"?\r\n/\\.]+)$/i.test(now))
-//     if (/[\w]*\.md[x]?/i.test(now)) return last + now;
-//     else throw new Error("非法的文件");
-//   last = last + now + "/";
-//   const b = fs.readdirSync(last);
-//   // console.log(b)
-//   return b.map((value) => {
-//     return getMdFiles(last, value);
-//   });
-// }
-
+/** 调用 getDir 后得到的数据类型
+ * @param cfd 当前目录以 “/ ” 为标志切分得到的数组
+ * @param dir 目录下的所有文件夹
+ * @param file 目录下的所有文件
+ */
 interface DirType {
+  /**
+   * 当前目录以 “/ ” 为标志切分得到的数组
+   */
   cfd: string[];
+  /**
+   * 目录下的所有文件夹
+   */
   dir: string[];
+  /**
+   * 目录下的所有文件
+   */
   file: string[];
 }
 
 interface FullFileNameType {
+  /**
+   * 当前目录以 “/” 为标志切分得到的数组
+   */
   cfd: string[];
+  /**
+   * 文件名
+   */
   fileName: string;
+  /**
+   * 文件扩展名
+   */
   extends: string;
 }
 
 interface YearFileNameType {
+  /**
+   * 文件发布的月份
+   */
   month: string;
+  /**
+   * 文件名
+   */
   file: string;
+  /**
+   * 文件扩展名
+   */
   extends: string;
 }
 
+/**
+ * @param Id 編號
+ * @param Author 作者名
+ * @param Date 發佈日期
+ * @param Tag 標簽
+ * @param Title 標題
+ * @param Link 路由
+ */
 export interface MatterType {
   Id: number;
   Author: string;
   Date: string;
-  Tag: string;
+  Tag: string[];
   Title: string;
   Link: string;
+  Description: string;
 }
 
 /**
  * 获取发布文章的顶级目录下的文件夹 => 年份文件夹
  * @param dirName 顶级目录名
- * @returns cfd: 从项目文件开始的全路径名分割成的数组，dir:cfd 目录下的所有文件, file: cfd 目录下的所有文件
+ * @returns cfd: 从项目文件开始的全路径名分割成的数组，dir: cfd 目录下的所有文件, file: cfd 目录下的所有文件
  */
 function getDirs(dirName: string): DirType {
   const dirs: string[] = [],
     files: string[] = [];
   fs.readdirSync(dirName).forEach((value) => {
     // 判断是否为目录
-    if (/^[^\\:*<>|"?\r\n/\\.]+$/i.test(value)) dirs.push(value);
-    else if (/[\w]*\.md[x]?/i.test(value)) files.push(value);
+    if (/^[^\\:*<>|"?\r\n/\\.]+$/i.test(value)) {
+      dirs.push(value);
+    } else {
+      // 判断是否为 md / mdx 文档
+      if (/[\w]*\.md[x]?/i.test(value)) {
+        files.push(value);
+      }
+    }
   });
   return {
     cfd: dirName.split("/"),
@@ -64,48 +96,20 @@ function getDirs(dirName: string): DirType {
 }
 
 /**
- * 获取二级目录数组 => 月份文件夹
- * @param dirName 从项目文件的顶级目录开始数的目录
- * @returns 返回一个数组，cfd 从 dirName 开始往下一层的文件目录的分割，dir 为 cfd 下的文件夹, file 为文件
+ * 获取目录下深度为 2 的文件与文件夹 => 月份文件夹
+ * @param dirName 从项目文件的顶级目录的顶级目录
+ * @returns [ { cfd:string, dir:string[ ], file: string[ ] } ]
  */
 function getSecondDir(dirName: string): DirType[] {
+  // 获取深度为 1 的所有文件夹
+  // 应为年份文件夹
   const firstDir: string[] = getDirs(dirName).dir;
+  // 返回每个年份文件夹下的 文件与文件夹，合为一个数组
+  // 应为月份文件夹
   return firstDir.map((value) => {
     const fullDir = `${dirName}/${value}`;
     return getDirs(fullDir);
   });
-}
-
-/**
- * 获取该年所有的文章 => 年分文件夹下的所有 mdx 文件
- * @param year 年份
- * @returns 一个数组, file 为一文件名, month 为该文件发布月份, extends 为文件扩展名
- */
-function getMdByYear(year: string) {
-  if (!fs.readdirSync("./post").includes(year))
-    throw new Error("Error Year!");
-  // return false;
-
-  // 获取月份文件夹
-  const dir: string[] = [];
-  fs.readdirSync(`./post/${year}`).forEach((value) => {
-    if (/^[^\\:*<>|"?\r\n/\\.]+$/i.test(value)) {
-      dir.push(value);
-    }
-  });
-  const files: YearFileNameType[] = [];
-
-  //
-  dir.map((month) => {
-    fs.readdirSync(`./post/${year}/${month}`).forEach((fileName) => {
-      files.push({
-        month: month,
-        file: `${fileName}`.replace(/\.md[x]?$/i, ""),
-        extends: `${fileName}`.replace(/^[^\\:*<>|"?\r\n/\\.]+/i, ""),
-      });
-    });
-  });
-  return files;
 }
 
 /**
@@ -134,6 +138,36 @@ function getMdFiles(dirName: string): FullFileNameType[] {
   return fileList;
 }
 
+/**
+ * 获取该年所有的文章 => 年份文件夹下的所有 mdx 文件，适用于 [...title] 目录
+ * @param year 年份
+ * @returns 一个数组, file 为一文件名, month 为该文件发布月份, extends 为文件扩展名
+ */
+function getMdByYear(year: string) {
+  if (!fs.readdirSync("./post").includes(year)) throw new Error("Error Year!");
+  // return false;
+
+  // 获取该年下所有的月份文件夹
+  const monthDir: string[] = [];
+  fs.readdirSync(`./post/${year}`).forEach((value) => {
+    if (/^[^\\:*<>|"?\r\n/\\.]+$/i.test(value)) {
+      monthDir.push(value);
+    }
+  });
+  const files: YearFileNameType[] = [];
+
+  monthDir.map((month) => {
+    fs.readdirSync(`./post/${year}/${month}`).forEach((fileName) => {
+      files.push({
+        month: month,
+        file: `${fileName}`.replace(/\.md[x]?$/i, ""),
+        extends: `${fileName}`.replace(/^[^\\:*<>|"?\r\n/\\.]+/i, ""),
+      });
+    });
+  });
+  return files;
+}
+
 function getFullFileName(dirName: string) {
   return getMdFiles(dirName).map((value) => {
     return `${value.cfd.join("/")}/${value.fileName}${value.extends}`;
@@ -145,84 +179,20 @@ function getFullFileName(dirName: string) {
  * @returns links 相对于调用目录的路由
  */
 function getAllMatter(currentPath?: string) {
-  return getMdFiles("./post")
+  return getMdFiles(currentPath ?? "./post")
     .map((value) => {
       return [
         `${value.cfd.join("/")}/${value.fileName}${value.extends}`,
         `${value.cfd.filter((value) => value !== "pages").join("/")}/${
           value.fileName
         }`,
-      ] as [string, string];
+      ] as [fullName: string, link: string];
     })
-    .map((fileName) => {
-      const FileContent = fs.readFileSync(fileName[0], "utf8");
+    .map((fileArr) => {
+      const FileContent = fs.readFileSync(fileArr[0], "utf8");
       const { data } = matter(FileContent);
-      return { links: fileName[1], data: data as MatterType };
+      return { links: fileArr[1], data: data as MatterType };
     });
 }
-
-// // 获取发布文章的名字和标题
-// const getPostFileNames = async () => {
-//   // 获取发布的文章文件
-//   // console.log(fs.readdirSync("./"));
-//   const postFiles = fs
-//     .readdirSync("./post/")
-//     .filter((value) => {
-//       return (
-//         // 是否应该允许不规范的文件
-//         /[\w]*\.md[x]?/i.test(value) || /^[^\\:*<>|"?\r\n/\\.]+$/i.test(value)
-//       );
-//     })
-//     .map((value) => {
-//       return;
-//     });
-
-//   // const postFiles = fs.readdirSync("./article/").filter((value) => {
-//   //   return /[\w]*\.md[x]?/i.test(value);
-//   // });
-//   // 获取文件全路径 与 文件的名字(不含扩展名)
-//   // const postNames: [string, string][] = postFiles.map((value) => {
-//   //   return [path.join("./article/", value), value.replace(/.md[x]?/i, "")];
-//   // });
-
-//   //
-//   return postNames;
-// };
-
-// const getMatter = async () => {
-//   const fileNames = (await getMdFiles("./", "post")) as (
-//     | (string[] | [])[]
-//     | []
-//   )[];
-//   fileNames.map((value) => {
-//     if (JSON.stringify(value) !== "[]") value.map();
-//   });
-// };
-
-// // 获取标题信息
-// const getMatter = async () => {
-//   const postNames = await getPostFileNames();
-//   //
-//   const content = postNames.map((value) => {
-//     // console.log(value[0]);
-//     const filecontent = fs.readFileSync(value[0], "utf-8");
-//     const { data } = matter(filecontent);
-//     const transData: MatterDateType3 = {
-//       ...(data as MatterDateType),
-//       Date: (data as MatterDateType).Date.split("/") as [
-//         string,
-//         string,
-//         string,
-//       ],
-//     };
-//     return { linkName: value[1], ...transData };
-//   });
-//   // 排序
-//   const sortedList = content.sort((a, b) => a.Id - b.Id);
-//   // console.log(sortedList);
-//   return sortedList;
-// };
-
-// export { getPostFileNames, getMatter };
 
 export { getDirs, getSecondDir, getMdByYear, getMdFiles, getAllMatter };

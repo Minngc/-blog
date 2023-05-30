@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { MatterType } from "lib/getPostFiles";
 import Link from "next/link";
 import { AngleIcon } from "@/Icon";
+import TagCard from "../tagCard.tsx";
 
 const ArticleCard = (props: { data: MatterType; links: string }) => {
   const {
@@ -21,20 +22,20 @@ const ArticleCard = (props: { data: MatterType; links: string }) => {
       <div className={classNames([styles.card2])}>
         <div className={classNames([styles.mainContent])}>
           <div className={classNames([styles.title])}>
-            <Link href={link} title={title}>{title}</Link>
+            <Link href={link} title={title}>
+              {title}
+            </Link>
           </div>
           <div className={classNames([styles.author])}>{author}</div>
           <div className={classNames([styles.containerOfTagADate])}>
             <div className={classNames([styles.tag])}>
               {tag.map((value) => {
                 return (
-                  <Link
+                  <TagCard
                     key={`tag_link_${value}`}
+                    tagName={value}
                     href={"./"}
-                    className={styles.tagContainer}
-                  >
-                    {value}
-                  </Link>
+                  />
                 );
               })}
             </div>
@@ -52,6 +53,7 @@ const ArticleCard = (props: { data: MatterType; links: string }) => {
           </div>
         </div>
       </div>
+      <div className={classNames([styles.behind])}></div>
     </div>
   );
 };

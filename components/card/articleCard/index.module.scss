@@ -3,9 +3,59 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  transition: all 0.15s;
+  &:nth-child(2n + 1) {
+    .behind {
+      order: 3;
+      transition: width 0.15s, height 0.15s;
+      width: 0px;
+      height: 100%;
+    }
+    @media screen and (min-width: 1000px) {
+      .behind {
+        border-radius: 0 15px 15px 0;
+        max-width: 400px;
+        width: calc(100% - 600px);
+        background: url(../../../public/image/testPhoto.png);
+        background-position: center;
+        background-size: cover;
+      }
+      .cardFooter {
+        border-radius: 0 0 0 15px;
+      }
+      .mainContent {
+        border-radius: 15px 0 0 0;
+      }
+    }
+  }
+  &:nth-child(2n) {
+    .behind {
+      order: 1;
+      transition: all 0.15s;
+      width: 0px;
+    }
+    @media screen and (min-width: 1000px) {
+      .behind {
+        border-radius: 15px 0 0 15px;
+        max-width: 400px;
+        width: calc(100% - 600px);
+        height: 100%;
+        background: url(../../../public/image/testPhoto.png);
+        background-position: center;
+        background-size: cover;
+      }
+      .mainContent {
+        border-radius: 0 15px 0 0;
+      }
+      .cardFooter {
+        border-radius: 0 0 15px 0;
+      }
+    }
+  }
 }
 
 .card2 {
+  order: 3;
   transition: all 0.15s;
   display: flex;
   padding: 0px 0px;
@@ -33,9 +83,9 @@
     word-break: break-all;
     overflow: hidden;
     background: rgba(255, 255, 255);
-    @media screen and (min-width: 850px) {
-      height: 70px;
-    }
+    // @media screen and (min-width: 850px) {
+    //   height: 70px;
+    // }
   }
 }
 
@@ -54,8 +104,9 @@
   .title {
     display: flex;
     align-items: flex-end;
-    font-size: 28px;
+    font-size: 24px;
     height: 74px;
+    max-width: 400px;
     a {
       display: -webkit-box;
       height: fit-content;
@@ -65,7 +116,7 @@
       -webkit-box-orient: vertical;
       text-decoration: none;
       font-weight: 700;
-      color:#000000;
+      color: #000000;
       text-overflow: ellipsis;
       overflow: hidden;
     }
@@ -91,24 +142,6 @@
     flex-direction: row;
     gap: 5px;
     user-select: none;
-
-    .tagContainer {
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1px 8px;
-      width: fit-content;
-      min-width: 30px;
-      background: #f0f0f0;
-      border-radius: 10px;
-      text-decoration: none;
-      cursor: pointer;
-      color: black;
-      &:hover {
-        color: -webkit-link;
-      }
-    }
   }
 
   .date {

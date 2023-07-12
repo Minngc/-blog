@@ -30,7 +30,6 @@ yarn-error.log*
 .env.production.local
 
 # user
-*lock.yaml
 /public/assets/fonts/*/*.ttf
 /public/assets/image/*
 /post

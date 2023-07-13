@@ -1,9 +1,15 @@
 import { ReactNode } from "react";
+import { TopBar } from "@/components/topBar";
 
 const Layout = (props: { children: ReactNode }) => {
   const { children } = props;
 
-  return <>This is other Global Layout2. {children}</>;
+  return (
+    <>
+      <TopBar />
+      {children}
+    </>
+  );
 };
 
 export default Layout;

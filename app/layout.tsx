@@ -1,11 +1,18 @@
+import "./global.scss"
+
 import { ReactNode } from "react";
+
+export const metadata = {
+  title: "Ming's Blog",
+  description: "Hello!",
+};
 
 const Layout = (props: { children: ReactNode }) => {
   const { children } = props;
   return (
-    <>
-      <div>This is Global Layout1.{children}</div>
-    </>
+    <html>
+      <body>{children}</body>
+    </html>
   );
 };
 

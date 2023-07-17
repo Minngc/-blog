@@ -1,6 +1,6 @@
 .des {
-  height: 65px;
-  margin: 0 0 10px 0;
+  height: 60px;
+  margin: 0 0 5px 0;
 
   @media screen and (max-width: 600px) {
     height: 48px;
@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
+  width: 100vw;
   height: 65px;
 
   box-shadow: 2px 4px 8px 0px rgba(81, 81, 81, 0.2);

@@ -1,13 +1,15 @@
-import { Tag } from "../Anchor";
+import Link from "next/link";
+import bg from "@public/bg.jpg"
+import { Tag } from "../anchor";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import Link from "next/link";
 import { Line } from "../line";
+import Image from "next/image";
 
 const ArticleCard = (props: any) => {
-  const { href, tagList, author, date, title, description } = props;
+  const { className, href, tagList, author, date, title, description } = props;
   return (
-    <div className={classNames(styles.container)}>
+    <div className={classNames(styles.container,className)}>
       <div className={classNames(styles.header)}>
         <div className={classNames(styles.articleTitle)}>这里是标题</div>
         <div className={classNames(styles.date)}>2023/06/04</div>
@@ -19,8 +21,10 @@ const ArticleCard = (props: any) => {
           这里是文章的
           Description，他可能会很长，但是这里最多只能显示三行但是这里最多只
           能显示三行但是这里最多只能显示三行但是这里最多只能显示三行但是这
-          里最多只能显示三行 能显示三行但是这里最多只能显示三行但是这里最多只能显示三行但是这
-          里最多只能显示三行 能显示三行但是这里最多只能显示三行但是这里最多只能显示三行但是这
+          里最多只能显示三行
+          能显示三行但是这里最多只能显示三行但是这里最多只能显示三行但是这
+          里最多只能显示三行
+          能显示三行但是这里最多只能显示三行但是这里最多只能显示三行但是这
           里最多只能显示三行
         </div>
       </div>
@@ -40,4 +44,15 @@ const ArticleCard = (props: any) => {
   );
 };
 
-export { ArticleCard };
+const ArticleCardWithImage = () => {
+  return (
+    <div className={classNames(styles.container_withImage)}>
+      <div className={classNames(styles.image)}>
+        <Image objectFit='cover' src={bg} alt={"bg"} width={300} height={200} />
+      </div>
+      <ArticleCard className={classNames(styles.articleContainer)}/>
+    </div>
+  );
+};
+
+export { ArticleCard, ArticleCardWithImage };

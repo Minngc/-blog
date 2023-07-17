@@ -46,4 +46,19 @@
     transform: translateY(var(--offset));
     bottom: 0;
   }
+  .activePanel {
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .leftPanel,
+    .rightPanel {
+      transition: all 0.15s;
+      &:hover {
+        background-color: #bababa;
+        cursor: pointer;
+      }
+    }
+  }
 }

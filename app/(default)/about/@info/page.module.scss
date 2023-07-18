@@ -1,0 +1,26 @@
+.container {
+  max-width: 1100px;
+  width: calc(100% - 10vw);
+
+  @media screen and (max-width: 600px) {
+    width: calc(100% - 8vw);
+  }
+  .infoContainer {
+    padding: 15px 10px;
+    @media screen and (max-width: 600px) {
+      padding: 8px 5px;
+      font-size: 16px;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      @media screen and (max-width: 600px) {
+        font-size: 20px;
+      }
+    }
+    .info {
+      height: 200px;
+      border-bottom: 1px black solid;
+    }
+  }
+}

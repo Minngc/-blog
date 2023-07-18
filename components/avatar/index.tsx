@@ -7,6 +7,8 @@ interface Props {
   size: 50 | 70 | 140 | 210;
   height: number;
   offset: number;
+  unable?: boolean;
+  className?: string;
   onLeftClick?: () => void;
   onRightClick?: () => void;
 }
@@ -16,6 +18,7 @@ const AvatarWithBackground = (props: Props) => {
     size,
     height,
     offset,
+    unable,
     onLeftClick = () => void 0,
     onRightClick = () => void 0,
   } = props;
@@ -30,13 +33,15 @@ const AvatarWithBackground = (props: Props) => {
       >
         <Avatar className={classNames(styles.avatar)} size={size} />
       </div>
-      <div
-        style={{ height: `${offset - height + size}px` }}
-        className={styles.activePanel}
-      >
-        <div onClick={onLeftClick} className={styles.leftPanel} />
-        <div onClick={onRightClick} className={styles.rightPanel} />
-      </div>
+      {!unable && (
+        <div
+          style={{ height: `${offset - height + size}px` }}
+          className={styles.activePanel}
+        >
+          <div onClick={onLeftClick} className={styles.leftPanel} />
+          <div onClick={onRightClick} className={styles.rightPanel} />
+        </div>
+      )}
     </div>
   );
 };

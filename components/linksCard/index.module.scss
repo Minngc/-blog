@@ -1,0 +1,73 @@
+.container {
+  max-width: 1050px;
+  width: calc(100% - 20px - 10vw);
+  padding: 25px 10px 10px;
+  @media screen and (max-width: 600) {
+    width: calc(100% - 8vw - 10px);
+    padding: 15px 5px 5px;
+  }
+  .linkContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0 15px;
+    @media screen and (max-width: 600) {
+      padding: 0 0 10px;
+    }
+  }
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  @media screen and (max-width: 600px) {
+    width: 70px;
+    height: 70px;
+  }
+  img {
+    border-radius: 50%;
+  }
+}
+
+.middleContent {
+  padding-top: 10px;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+
+  width: calc(100% - 10px - 70px - 80px);
+  .nickName {
+    font-size: 22px;
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+  .description {
+    font-size: 16px;
+    color: #747373;
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+}
+
+.link {
+  padding-top: 20px;
+  font-size: 16px;
+  @media screen and (max-width: 600px) {
+    font-size: 15px;
+  }
+  a {
+    color: #435278;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

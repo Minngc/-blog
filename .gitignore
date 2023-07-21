@@ -32,6 +32,7 @@ yarn-error.log*
 # user
 /public/assets/fonts/*/*.ttf
 /public/assets/image/*
+/*.old
 /post
 .vscode
 /config

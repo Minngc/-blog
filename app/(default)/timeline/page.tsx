@@ -1,9 +1,9 @@
 const Timeline = () => {
   return (
     <>
-      <div>This is Timeline page.</div>
+      <div>还在想怎么画。</div>
     </>
   );
 };
 
-export default Timeline
+export default Timeline;

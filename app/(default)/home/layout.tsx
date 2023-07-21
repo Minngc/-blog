@@ -10,10 +10,10 @@ const HomeLayout = (props: { children: ReactNode; sidebar: ReactNode }) => {
   const [panelPosition, setPanelPosition] = useState<"left" | "right">("left");
 
   const handleLeftPanel = useCallback(() => {
-    setPanelPosition("right");
+    setPanelPosition("left");
   }, []);
   const handleRightPanel = useCallback(() => {
-    setPanelPosition("left");
+    setPanelPosition("right");
   }, []);
   const { children, sidebar } = props;
   return (
@@ -29,13 +29,13 @@ const HomeLayout = (props: { children: ReactNode; sidebar: ReactNode }) => {
       <div className={classNames(styles.viewPanel)}>
         <div
           className={classNames(styles.homeContainer, {
-            [styles.showAnotherPanel]: panelPosition === "left",
+            [styles.showAnotherPanel]: panelPosition === "right",
           })}
         >
           <div className={styles.articleList}>{children}</div>
           <div
             className={classNames(styles.sideBar, {
-              [styles.sideBarShow]: panelPosition === "left",
+              [styles.sideBarShow]: panelPosition === "right",
             })}
           >
             {sidebar}

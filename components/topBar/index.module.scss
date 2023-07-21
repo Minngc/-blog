@@ -1,7 +1,9 @@
 .des {
+  position: relative;
   height: 60px;
   margin: 0 0 5px 0;
-
+  z-index: -2;
+  background-color: #ffffff;
   @media screen and (max-width: 600px) {
     height: 48px;
     margin: 0;

@@ -1,0 +1,106 @@
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  z-index: -1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(40vh - 60px);
+  width: 96vw;
+  padding: 60px 2vw 0;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  .backImage {
+    position: fixed;
+    top: 0;
+    height: 50vh;
+    width: 100vw;
+    z-index: -2;
+    .imageContainer {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      .img_small {
+        display: none;
+        position: absolute;
+        @media screen and (max-width: 600px) {
+          display: block;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .img_middle {
+        display: none;
+        position: absolute;
+        @media screen and (max-width: 1200px) and (min-width: 600px) {
+          display: block;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .img_large {
+        display: none;
+        position: absolute;
+        @media screen and (min-width: 1200px) {
+          display: block;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.title {
+  font-size: calc(32px + (100vw - 900px) / 100);
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #ffffff;
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+}
+.author {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.date {
+  color: #ffffff;
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+}
+
+.container {
+  background-color: #ffffff;
+  margin-top: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .article {
+    max-width: 1100px;
+    width: calc(100% - 50px);
+    padding: 20px 20px 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), -2px 0px 2px rgba(0, 0, 0, 0.1);
+    .description {
+      position: relative;
+      display: flex;
+      padding: 5px 5px 5px 10px;
+      background-color: #f0f0f0;
+      .descLine {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 6px;
+        background-color: #575757;
+        height: 100%
+      }
+    }
+  }
+}

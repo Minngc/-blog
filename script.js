@@ -62,6 +62,9 @@ function genarateArticle() {
         cover: data.Cover,
       },
     });
+    fs.writeFileSync("./config/articles.json", JSON.stringify(list), {
+      flag: "w",
+    });
   });
 }
 

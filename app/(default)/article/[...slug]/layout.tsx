@@ -1,25 +1,41 @@
 import classNames from "classnames";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import styles from "./page.module.scss";
-import { Tag } from "@/components/anchor";
-import { Line } from "@/components/line";
 import Image from "next/image";
 import bg from "@public/bg.jpg";
+import { unstable_serialize } from "swr";
+import { SWRProvider } from "@/components/swrconfig";
 
 type ArticlePath = [year: string, month: string, title: string];
 
-const ArticleLayout = (props: {
+async function getMd(path: string) {
+  const data = await fetch(`http://localhost:3000/api/article/${path}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
+  return data;
+}
+
+const ArticleLayout = async (props: {
   children: ReactNode;
   menu: ReactNode;
   params: { slug: ArticlePath };
 }) => {
   const { children, params, menu } = props;
+  const data = await getMd(params.slug[2]);
+  const fallback = {
+    [params.slug[2]]: data,
+  };
+  console.log(data.tocHead)
+  const { title, author, date, description, link, tag, cover } =
+    data.frontMatter;
   return (
     <>
       <div className={classNames(styles.header)}>
-        <div className={classNames(styles.title)}>這是一個文章的標題</div>
-        <div className={classNames(styles.author)}>Ming</div>
-        <div className={classNames(styles.date)}>2023/06/04</div>
+        <div className={classNames(styles.title)}>{title}</div>
+        <div className={classNames(styles.author)}>{author}</div>
+        <div className={classNames(styles.date)}>{date}</div>
         <div className={classNames(styles.backImage)}>
           <div className={classNames(styles.imageContainer)}>
             <Image
@@ -51,9 +67,9 @@ const ArticleLayout = (props: {
         <div className={classNames(styles.article)}>
           <div className={classNames(styles.description)}>
             <div className={classNames(styles.descLine)} />
-            这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述
+            {description}
           </div>
-          {children}
+          <SWRProvider value={fallback}>{children}</SWRProvider>
         </div>
         <div className={classNames(styles.menu)}>{menu}</div>
       </div>

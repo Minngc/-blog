@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import styles from "./page.module.scss";
 import Image from "next/image";
 import bg from "@public/bg.jpg";
-import { unstable_serialize } from "swr";
 import { SWRProvider } from "@/components/swrconfig";
 
 type ArticlePath = [year: string, month: string, title: string];
@@ -19,15 +18,14 @@ async function getMd(path: string) {
 
 const ArticleLayout = async (props: {
   children: ReactNode;
-  menu: ReactNode;
+  index: ReactNode;
   params: { slug: ArticlePath };
 }) => {
-  const { children, params, menu } = props;
+  const { children, params, index } = props;
   const data = await getMd(params.slug[2]);
   const fallback = {
     [params.slug[2]]: data,
   };
-  console.log(data.tocHead)
   const { title, author, date, description, link, tag, cover } =
     data.frontMatter;
   return (
@@ -71,7 +69,9 @@ const ArticleLayout = async (props: {
           </div>
           <SWRProvider value={fallback}>{children}</SWRProvider>
         </div>
-        <div className={classNames(styles.menu)}>{menu}</div>
+        <div className={classNames(styles.index)}>
+          <SWRProvider value={fallback}>{index}</SWRProvider>
+        </div>
       </div>
     </>
   );

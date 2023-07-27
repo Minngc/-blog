@@ -1,0 +1,14 @@
+.item {
+  padding: 1px 4px;
+}
+
+.anchor {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: #bababa;
+  }
+  &.selected {
+    color: -webkit-link;
+  }
+}

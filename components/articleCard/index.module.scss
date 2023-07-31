@@ -1,11 +1,12 @@
 .container {
-  width: calc(100% - 30px);
+  width: calc(100% - 40px);
 
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
   max-width: 770px;
   max-height: 185px;
-  padding: 15px 15px 0;
+  padding: 15px 15px 3px;
   @media screen and (max-width: 600px) {
-    height: 125px;
+    max-height: 124px;
   }
 
   .header {
@@ -123,6 +124,7 @@
   }
   .image {
     transition: width 0.2s 0.05s;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     display: flex;
     max-width: 300px;
     width: min(calc(200px + 0.15 * (100vw - 800px)), 300px);

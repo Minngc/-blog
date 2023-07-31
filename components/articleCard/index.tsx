@@ -52,8 +52,6 @@ const ArticleCard = (props: ArticleProps & { className?: string }) => {
           </Link>
         </div>
       </div>
-
-      <Line marginTop="2px" />
     </div>
   );
 };

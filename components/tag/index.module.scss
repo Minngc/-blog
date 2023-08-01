@@ -1,0 +1,21 @@
+.tag {
+  .tagTitle {
+    font-size: 17px;
+  }
+  .tagList {
+    text-indent: 0.5rem;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    .tagItem {
+      display: inline-block;
+      color: #2dc2e3;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

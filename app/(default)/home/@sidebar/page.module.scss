@@ -1,73 +1,8 @@
-.notice {
-  width: calc(100% - min(max(30px, (100% - 360px) * 1.2), 90px));
-  max-width: 460px;
-  padding: 10px 15px 15px;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
-  .noticeHeader {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .noticeTitle {
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .noticeDate {
-      color: #868686;
-      font-size: 14px;
-    }
-  }
+.noticeDate {
+  color: #868686;
+  font-size: 14px;
 }
 
 .noticeContainer {
-  font-size: 15px;
-  padding: 6px 0 0;
   text-indent: 1rem;
-}
-
-.animeContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 6px 0 0;
-}
-
-.animeCard {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  gap: 10px;
-  .animeMessage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    .animeTitle {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .animeType {
-      font-size: 14px;
-      color: rgba(43, 43, 43, 0.8);
-    }
-    .animeState {
-      font-size: 14px;
-      color: rgba(43, 43, 43, 0.8);
-    }
-  }
-}
-
-.logContainer {
-  padding: 6px 0 0;
-  .log {
-    .logDate {
-      font-size: 17px;
-    }
-    .logMsg {
-      text-indent: 1rem;
-      font-size: 16px;
-    }
-  }
 }

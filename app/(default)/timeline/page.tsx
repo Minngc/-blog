@@ -1,7 +1,7 @@
 const Timeline = () => {
   return (
     <>
-      <div>还在想怎么画。</div>
+      <div>草图画好了，下次就写。</div>
     </>
   );
 };

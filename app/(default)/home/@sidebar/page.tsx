@@ -3,24 +3,10 @@ import { SideBarTag } from "@/components/tag";
 import { AnimeCard } from "@/components/animeCard";
 import { LogCard } from "@/components/logCard";
 import { SideBarCard } from "@/components/sideBar";
+import tagList from "@/config/tagList.json";
 
 const notice =
   "博客建设工作仍在进行中，已经发布一些测试博文，之后会发布更多博文。";
-
-const tags = [
-  {
-    title: "学习",
-    list: [
-      { tagName: "javascript" },
-      { tagName: "cs" },
-      { tagName: "se" },
-      { tagName: "go" },
-    ],
-  },
-  { title: "记录", list: [{ tagName: "widows" }] },
-  { title: "攻略", list: [{ tagName: "shadowverse" }, { tagName: "元神" }] },
-  { title: "日常", list: [{ tagName: "note" }] },
-];
 
 const anime = [
   {
@@ -63,10 +49,11 @@ const HomeSidebar = () => {
       </SideBarCard>
 
       <SideBarCard title="标签">
-        {tags.map(({ title, list }) => {
+        {tagList.tagsWidthClass.map(({ link, title, list }) => {
           return (
             <SideBarTag
               key={`sidebarTags_${title}`}
+              link={link}
               title={title}
               tagList={list}
             />

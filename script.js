@@ -32,6 +32,13 @@ function genarateArticle() {
 
   const list = [];
   const articleNames = {};
+  const tagList = {
+    study: [],
+    record: [],
+    guide: [],
+    day: [],
+    others: [],
+  };
 
   fileDir.forEach(({ year, month, fileName }) => {
     const { data } = matter(
@@ -39,7 +46,6 @@ function genarateArticle() {
     );
 
     articleNames[`${data.Link}`] = `./post/${year}/${month}/${fileName}`;
-
     fs.writeFileSync(
       "./config/articleNames.json",
       JSON.stringify(articleNames),
@@ -47,6 +53,13 @@ function genarateArticle() {
         flag: "w",
       }
     );
+
+    if (tagList[`${data.Tag[0]}`]) {
+      tagList[`${data.Tag[0]}`].push(data.Tag[1]);
+    } else {
+      tagList[`${data.Tag[0]}`] = [];
+      tagList[`${data.Tag[0]}`].push(data.Tag[1]);
+    }
 
     list.push({
       year,
@@ -65,6 +78,40 @@ function genarateArticle() {
     fs.writeFileSync("./config/articles.json", JSON.stringify(list), {
       flag: "w",
     });
+  });
+  const trans = JSON.parse(fs.readFileSync("./config/tagTrans.json"));
+
+  Object.keys(tagList).forEach((key) => {
+    tagList[key] = [...new Set(tagList[key])];
+  });
+  const years = yearDir.map((year) => {
+    return {
+      link: year,
+      title: year,
+    };
+  });
+  const classes = [];
+  const tagsWidthClass = Object.keys(tagList).map((key) => {
+    const list = tagList[key].map((tag) => {
+      return {
+        link: tag,
+        title: trans.tags[tag] ? trans.tags[tag] : tag,
+      };
+    });
+    classes.push({
+      link: key,
+      title: trans.classes[key] ? trans.classes[key] : key,
+    });
+    return {
+      link: key,
+      title: trans.classes[key] ? trans.classes[key] : key,
+      list,
+    };
+  });
+
+  const tags = { years, classes, tagsWidthClass };
+  fs.writeFileSync("./config/tagList.json", JSON.stringify(tags), {
+    flag: "w",
   });
 }
 

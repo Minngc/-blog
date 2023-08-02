@@ -22,9 +22,12 @@ interface ArticleProps {
   data: ArticleMatterType;
 }
 
-const ArticleCard = (props: ArticleProps & { className?: string }) => {
+const ArticleCard = (
+  props: ArticleProps & { className?: string; replace?: boolean }
+) => {
   const {
     className = "",
+    replace = false,
     year,
     month,
     data: { link, tag, author, date, title, description },
@@ -42,9 +45,7 @@ const ArticleCard = (props: ArticleProps & { className?: string }) => {
       </div>
       <div className={classNames(styles.footer)}>
         <div className={styles.tagList}>
-          <Tag query="tag1" />
-          <Tag query="tag1" />
-          <Tag query="tag1" />
+          <Tag replace={replace} tag={tag} />
         </div>
         <div className={styles.link}>
           <Link href={`/article/${year}/${month}/${link}`}>
@@ -56,13 +57,17 @@ const ArticleCard = (props: ArticleProps & { className?: string }) => {
   );
 };
 
-const ArticleCardWithImage = (props: ArticleProps) => {
+const ArticleCardWithImage = (props: ArticleProps & { replace?: boolean }) => {
   return (
     <div className={classNames(styles.container_withImage)}>
       <div className={classNames(styles.image)}>
         <Image objectFit="cover" src={bg} alt={"bg"} width={300} height={200} />
       </div>
-      <ArticleCard {...props} className={classNames(styles.articleContainer)} />
+      <ArticleCard
+        {...props}
+        replace={props.replace}
+        className={classNames(styles.articleContainer)}
+      />
     </div>
   );
 };

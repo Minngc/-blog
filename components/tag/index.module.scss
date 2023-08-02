@@ -1,6 +1,13 @@
 .tag {
   .tagTitle {
-    font-size: 17px;
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 17px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   .tagList {
     text-indent: 0.5rem;

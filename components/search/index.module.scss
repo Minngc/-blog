@@ -14,7 +14,7 @@
 
   .input {
     width: 300px;
-    height:32px;
+    height: 32px;
     padding: 0 15px;
     border: none;
     border-radius: 15px;
@@ -43,4 +43,56 @@
       font-size: 15px;
     }
   }
+  .expend {
+    position: absolute;
+    font-size: 15px;
+    float: right;
+    right: 20px;
+  }
+}
+
+.filterPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0 5px;
+  box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  @media screen and (min-width: 600px) {
+    margin: 0 0 10px;
+  }
+  .filterLine {
+    display: flex;
+    justify-content: flex-start;
+    width: 88%;
+    max-width: 1100px;
+    gap: 20px;
+    .filterTitle {
+      font-size: 18px;
+      width: fit-content;
+      font-weight: bold;
+      flex: none;
+      @media screen and (min-width: 600px) {
+        font-size: 24px;
+      }
+    }
+    .selectors {
+      align-items: center;
+      font-size: 16px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+      @media screen and (min-width: 600px) {
+        font-size: 18px;
+        gap: 15px;
+      }
+    }
+    @media screen and (min-width: 600px) {
+    }
+  }
+}
+
+.selected {
+  color: aquamarine;
 }

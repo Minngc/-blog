@@ -4,22 +4,25 @@ import Link from "next/link";
 
 const SideBarTag = (props: {
   title: string;
-  tagList: { link?: string; tagName: string }[];
+  link: string;
+  tagList: { link: string; title: string }[];
 }) => {
-  const { title, tagList } = props;
+  const { link, title, tagList } = props;
   if (tagList.length > 0)
     return (
       <div className={classNames(styles.tag)}>
-        <div className={classNames(styles.tagTitle)}>{title}:</div>
+        <div className={classNames(styles.tagTitle)}>
+          <Link href={`./post?class=${link}`}>{title}</Link>
+        </div>
         <div className={classNames(styles.tagList)}>
-          {tagList.map(({ link, tagName }) => {
+          {tagList.map(({ link, title }) => {
             return (
               <Link
                 className={classNames(styles.tagItem)}
-                href={"./"}
-                key={`${title}_${tagName}`}
+                href={`./post?tag=${link}`}
+                key={`${link}_${title}`}
               >
-                #{tagName}
+                #{title}
               </Link>
             );
           })}

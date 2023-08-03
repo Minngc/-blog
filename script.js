@@ -39,7 +39,11 @@ function genarateArticle() {
     day: [],
     others: [],
   };
+  const listOrderByYear = {};
 
+  yearDir.forEach((year) => {
+    listOrderByYear[year] = [];
+  });
   fileDir.forEach(({ year, month, fileName }) => {
     const { data } = matter(
       fs.readFileSync(`./post/${year}/${month}/${fileName}`, "utf-8")
@@ -60,6 +64,14 @@ function genarateArticle() {
       tagList[`${data.Tag[0]}`] = [];
       tagList[`${data.Tag[0]}`].push(data.Tag[1]);
     }
+
+    listOrderByYear[year].push({
+      year,
+      month,
+      title: data.Title,
+      date: data.Date,
+      link: data.Link,
+    });
 
     list.push({
       year,
@@ -113,6 +125,20 @@ function genarateArticle() {
   fs.writeFileSync("./config/tagList.json", JSON.stringify(tags), {
     flag: "w",
   });
+  Object.keys(listOrderByYear).forEach((year) => {
+    listOrderByYear[year].sort((a, b) => {
+      if (b.month === a.month)
+        return Number(b.date.slice("/")[1]) - Number(a.date.slice("/")[1]);
+      return Number(b.month) - Number(a.month);
+    });
+  });
+  fs.writeFileSync(
+    "./config/listOrderByYear.json",
+    JSON.stringify(listOrderByYear),
+    {
+      flag: "w",
+    }
+  );
 }
 
 genarateArticle();

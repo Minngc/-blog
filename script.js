@@ -7,21 +7,21 @@ console.log("--- on running ---");
 function genarateArticle() {
   // 年份目录
   let yearDir = [];
-  fs.readdirSync("./post").forEach((year) => {
+  fs.readdirSync("./external/post").forEach((year) => {
     yearDir.push(year);
   });
 
   // 月份目录
   let monthDir = [];
   yearDir.forEach((year) => {
-    fs.readdirSync(`./post/${year}`).forEach((month) => {
+    fs.readdirSync(`./external/post/${year}`).forEach((month) => {
       monthDir.push({ year, month });
     });
   });
 
   let fileDir = [];
   monthDir.forEach((path) => {
-    fs.readdirSync(`./post/${path.year}/${path.month}`).forEach((fileName) => {
+    fs.readdirSync(`./external/post/${path.year}/${path.month}`).forEach((fileName) => {
       fileDir.push({
         year: path.year,
         month: path.month,
@@ -46,10 +46,10 @@ function genarateArticle() {
   });
   fileDir.forEach(({ year, month, fileName }) => {
     const { data } = matter(
-      fs.readFileSync(`./post/${year}/${month}/${fileName}`, "utf-8")
+      fs.readFileSync(`./external/post/${year}/${month}/${fileName}`, "utf-8")
     );
 
-    articleNames[`${data.Link}`] = `./post/${year}/${month}/${fileName}`;
+    articleNames[`${data.Link}`] = `./external/post/${year}/${month}/${fileName}`;
     fs.writeFileSync(
       "./config/articleNames.json",
       JSON.stringify(articleNames),

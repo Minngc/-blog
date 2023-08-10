@@ -7,7 +7,6 @@ const About = () => {
     <>
       <AvatarWithBackground unable size={140} height={120} offset={50} />
       <div className={classNames(styles.nickname)}>Ming</div>
-
     </>
   );
 };

@@ -1,14 +1,12 @@
 import LinksCard from "@/components/linksCard";
+import linkList from "@/config/links.json";
 
 const Links = () => {
   return (
     <>
-      <LinksCard />
-      <LinksCard />
-      <LinksCard />
-      <LinksCard />
-      <LinksCard />
-      <LinksCard />
+      {linkList.map((link) => {
+        return <LinksCard key={`${link.name}_${link.link}`} {...link} />;
+      })}
     </>
   );
 };

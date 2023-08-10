@@ -67,10 +67,10 @@ const ArticleLayout = async (props: {
             <div className={classNames(styles.descLine)} />
             {description}
           </div>
-          <SWRProvider value={fallback}>{children}</SWRProvider>
+          <SWRProvider fallback={fallback}>{children}</SWRProvider>
         </div>
         <div className={classNames(styles.index)}>
-          <SWRProvider value={fallback}>{index}</SWRProvider>
+          <SWRProvider fallback={fallback}>{index}</SWRProvider>
         </div>
       </div>
     </>

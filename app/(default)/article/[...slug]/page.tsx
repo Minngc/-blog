@@ -7,27 +7,64 @@ import useSWR from "swr";
 
 type ArticlePath = [year: string, month: string, title: string];
 
-const Heard2 = (props: any) => {
-  return <h2 id={props.id}>{props.children}</h2>;
-};
-
-const Code = (props: any) => {
+const H2 = (props: any) => {
   return (
-    <code
-      style={{ display: "inline-block", width: "100%", overflowY: "scroll" }}
-    >
+    <h2 className="article-ele-h2" id={props.id}>
       {props.children}
-    </code>
+    </h2>
   );
 };
+
+const H3 = (props: any) => {
+  return (
+    <h3 className="article-ele-h3" id={props.id}>
+      {props.children}
+    </h3>
+  );
+};
+
+const H4 = (props: any) => {
+  return (
+    <h4 className="article-ele-h4" id={props.id}>
+      {props.children}
+    </h4>
+  );
+};
+
 const Anchor = (props: any) => {
   if ((props.href as string).startsWith("#"))
     return (
-      <Link href={props.href} replace>
+      <Link className="article-ele-anchor" href={props.href} replace>
         {props.children}
       </Link>
     );
-  return <Link href={props.href}>{props.children}</Link>;
+  return (
+    <a className="article-ele-anchor" href={props.href}>
+      {props.children}
+    </a>
+  );
+};
+
+const Blockquote = (props: any) => {
+  return (
+    <blockquote className="article-ele-blockquote">{props.children}</blockquote>
+  );
+};
+
+const P = (props: any) => {
+  return <p className="article-ele-p">{props.children}</p>;
+};
+
+const Ol = (props: any) => {
+  return <ol className="article-ele-ol">{props.children}</ol>;
+};
+
+const Ul = (props: any) => {
+  return <ul className="article-ele-ul">{props.children}</ul>;
+};
+
+const Li = (props: any) => {
+  return <li className="article-ele-li">{props.children}</li>;
 };
 
 function getMd(path: string) {
@@ -39,6 +76,18 @@ function getMd(path: string) {
   return data;
 }
 
+const components = {
+  h2: H2,
+  a: Anchor,
+  h3: H3,
+  h4: H4,
+  blockquote: Blockquote,
+  p: P,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+};
+
 const Article = (props: { params: { slug: ArticlePath } }) => {
   const { params } = props;
   const { data } = useSWR(params.slug[2], getMd, {
@@ -46,10 +95,7 @@ const Article = (props: { params: { slug: ArticlePath } }) => {
   });
   return (
     <>
-      <MDXRemote
-        {...data.content}
-        components={{ h2: Heard2, a: Anchor, code: Code }}
-      />
+      <MDXRemote {...data.content} components={components} />
     </>
   );
 };

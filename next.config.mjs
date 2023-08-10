@@ -17,6 +17,14 @@ const withMdx = nextMdx({
 const nextConfig = {
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+
+      },
+    ],
+  },
 };
 
 export default withMdx(nextConfig);

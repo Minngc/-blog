@@ -5,6 +5,7 @@ import rehypeSlug from "rehype-slug";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import rehypePrism from "rehype-prism-plus";
 
 const serializeWithPlugin = async (content: string) => {
   let tocHead: (
@@ -20,6 +21,7 @@ const serializeWithPlugin = async (content: string) => {
     mdxOptions: {
       remarkPlugins: [remarkFrontmatter, remarkGfm, remarkMath],
       rehypePlugins: [
+        [rehypePrism, {ignoreMissing:true, showLineNumbers: true }],
         rehypeSlug,
         [
           rehypeAutolinkHeadings,

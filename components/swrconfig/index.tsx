@@ -4,10 +4,10 @@ import { SWRConfig } from "swr";
 
 export const SWRProvider = ({
   children,
-  value,
+  fallback,
 }: {
   children: ReactNode;
-  value: any;
+  fallback: any;
 }) => {
-  return <SWRConfig value={{ fallback: value }}>{children}</SWRConfig>;
+  return <SWRConfig value={{ fallback }}>{children}</SWRConfig>;
 };

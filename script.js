@@ -51,7 +51,7 @@ function genarateArticle() {
 
     articleNames[`${data.Link}`] = `./external/post/${year}/${month}/${fileName}`;
     fs.writeFileSync(
-      "./config/articleNames.json",
+      "./external/config/articleNames.json",
       JSON.stringify(articleNames),
       {
         flag: "w",
@@ -87,11 +87,11 @@ function genarateArticle() {
         cover: data.Cover,
       },
     });
-    fs.writeFileSync("./config/articles.json", JSON.stringify(list), {
+    fs.writeFileSync("./external/config/articles.json", JSON.stringify(list), {
       flag: "w",
     });
   });
-  const trans = JSON.parse(fs.readFileSync("./config/tagTrans.json"));
+  const trans = JSON.parse(fs.readFileSync("./external/config/tagTrans.json"));
 
   Object.keys(tagList).forEach((key) => {
     tagList[key] = [...new Set(tagList[key])];
@@ -122,7 +122,7 @@ function genarateArticle() {
   });
 
   const tags = { years, classes, tagsWidthClass };
-  fs.writeFileSync("./config/tagList.json", JSON.stringify(tags), {
+  fs.writeFileSync("./external/config/tagList.json", JSON.stringify(tags), {
     flag: "w",
   });
   Object.keys(listOrderByYear).forEach((year) => {
@@ -133,7 +133,7 @@ function genarateArticle() {
     });
   });
   fs.writeFileSync(
-    "./config/listOrderByYear.json",
+    "./external/config/listOrderByYear.json",
     JSON.stringify(listOrderByYear),
     {
       flag: "w",

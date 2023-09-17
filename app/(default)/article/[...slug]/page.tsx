@@ -1,8 +1,7 @@
 "use client";
 
-import article from "@/config/articles.json";
+import article from "@/external/config/articles.json";
 import { MDXRemote } from "next-mdx-remote";
-import Link from "next/link";
 import useSWR from "swr";
 
 type ArticlePath = [year: string, month: string, title: string];
@@ -38,9 +37,9 @@ const H4 = (props: any) => {
 const Anchor = (props: any) => {
   if ((props.href as string).startsWith("#"))
     return (
-      <Link className="article-ele-anchor" href={props.href} replace>
+      <a className="article-ele-anchor" href={props.href}>
         {props.children}
-      </Link>
+      </a>
     );
   return (
     <a className="article-ele-anchor" href={props.href}>

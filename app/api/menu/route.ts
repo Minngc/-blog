@@ -30,21 +30,21 @@ interface List {
 export async function GET() {
   // 年份目录
   let yearDir: string[] = [];
-  fs.readdirSync("/post").forEach((year) => {
+  fs.readdirSync("/external/post").forEach((year) => {
     yearDir.push(year);
   });
 
   // 月份目录
   let monthDir: { year: string; month: string }[] = [];
   yearDir.forEach((year) => {
-    fs.readdirSync(`/post/${year}`).forEach((month) => {
+    fs.readdirSync(`/external/post/${year}`).forEach((month) => {
       monthDir.push({ year, month });
     });
   });
 
   let fileDir: { year: string; month: string; fileName: string }[] = [];
   monthDir.forEach((path) => {
-    fs.readdirSync(`/post/${path.year}/${path.month}`).forEach((fileName) => {
+    fs.readdirSync(`/external/post/${path.year}/${path.month}`).forEach((fileName) => {
       fileDir.push({
         year: path.year,
         month: path.month,

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import article from "@/config/articleNames.json";
+import article from "@/external//config/articleNames.json";
 import fs from "node:fs";
 import matter from "gray-matter";
 import { serializeWithPlugin } from "@/lib/func/serialize";
@@ -28,7 +28,6 @@ export async function GET(
       title: originMatter.Title,
     };
     const [content, tocHead] = await serializeWithPlugin(matterContent.content);
-
     return NextResponse.json({ frontMatter, content, tocHead } as {
       frontMatter: {
         author: string;

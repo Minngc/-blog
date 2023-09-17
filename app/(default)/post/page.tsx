@@ -4,12 +4,12 @@ import { Search } from "@/components/search";
 import { ArticleCardWithImage } from "@/components/articleCard";
 import styles from "./page.module.scss";
 import classNames from "classnames";
-import articles from "@/config/articles.json";
-import { useSearchParams } from "next/navigation";
-import tagList from "@/config/tagList.json";
+import articles from "@/external/config/articles.json";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import tagList from "@/external//config/tagList.json";
 
 const Post = () => {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams() ?? new ReadonlyURLSearchParams(new URLSearchParams);
 
   const searchClass = searchParams.get("class");
   const searchTag = searchParams.get("tag");
@@ -26,16 +26,16 @@ const Post = () => {
     searchTitle: null | string;
   }) {
     const reg =
-      searchTitle !== null
-        ? new RegExp(searchTitle.split("").join(".*"), "g")
+      searchData.searchTitle !== null
+        ? new RegExp(searchData.searchTitle.split("").join(".*"), "g")
         : /.*/g;
     return articles.filter(({ year, data: { title, tag } }) => {
       return (
-        (!searchClass || searchClass === tag[0]) &&
-        (!searchTag || searchTag === tag[1]) &&
-        (!pub || pub === tag[2]) &&
-        (!searchYear || searchYear === year) &&
-        (!searchTitle || reg.test(title))
+        (!searchData.searchClass || searchData.searchClass === tag[0]) &&
+        (!searchData.searchTag || searchData.searchTag === tag[1]) &&
+        (!searchData.pub || searchData.pub === tag[2]) &&
+        (!searchData.searchYear || searchData.searchYear === year) &&
+        (!searchData.searchTitle || reg.test(title))
       );
     });
   }

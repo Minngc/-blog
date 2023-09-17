@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./page.module.scss";
-import listOrderByYear from "@/config/listOrderByYear.json";
+import listOrderByYear from "@/external/config/listOrderByYear.json";
 import { useSearchParams } from "next/navigation";
 import { Line } from "@/components/line";
 import Link from "next/link";

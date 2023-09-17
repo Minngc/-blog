@@ -3,6 +3,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.img {
+  object-fit: fill;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -21,16 +25,22 @@ body {
     position: relative;
     color: black;
     text-decoration: none;
-    &::before {
-      content: "# ";
-      position: absolute;
-      left: -20px;
-    }
   }
 }
 
 .article-ele-h2 {
+  margin: 20px 0 15px;
   border-bottom: 1px solid #b7b2b2;
+  line-height: 36px;
+  border: none;
+  &::after {
+    display: block;
+    content: "";
+    height: 0.0625rem;
+    width: 100%;
+    background-color: #eff2f3;
+    margin: 0.5rem 0 0;
+  }
 }
 
 .article-ele-h3 {
@@ -65,10 +75,12 @@ body {
     background-color: #575757;
     height: 100%;
   }
+
   .article-ele-p {
-    padding: 0 5px 0;
-    margin: 0;
+    padding: 0;
+    margin: 0 .5rem 0;
   }
+
   .article-ele-anchor {
     color: #656d76;
     &:hover {
@@ -78,7 +90,9 @@ body {
 }
 
 .article-ele-p {
-  padding: 0 1.2em;
+  padding: 0 26px 0 ;
+  margin: 0 0 1rem 0;
+  line-height: 1.75rem
 }
 
 .article-ele-ol,
@@ -92,7 +106,7 @@ body {
 .article-ele-li {
   .article-ele-p {
     padding: 0px;
-    margin: 5px 0;
+    margin: 0 0 .75rem 0;
   }
 }
 
@@ -110,9 +124,11 @@ body {
   border-left: 1px solid #dfe2e5;
   border-spacing: 0;
 }
+
 .article-ele-thead .article-ele-tr {
   background-color: #f8f8f8;
 }
+
 .article-ele-tr {
   cursor: pointer;
   &:hover {
@@ -130,12 +146,15 @@ body {
 .article-ele-th {
   max-width: 400px;
   min-width: 100px;
-  padding: 0.2em 0.5em;
+  padding: 0.6em 0.6em;
   border-right: 1px solid #dfe2e5;
   border-bottom: 1px solid #dfe2e5;
+  line-height: 2rem;
 }
+
 .article-ele-th {
   text-align: center;
+  font-size: .875rem;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -9,12 +9,14 @@ import { IndexList } from "@/components/list";
 interface IndexWithChildren {
   type: "haslist";
   href: string;
+  h2_index: string;
   value: string;
-  children: { href: string; value: string }[];
+  children: { href: string; h3_index: string; value: string }[];
 }
 
 interface IndexWithoutChildren {
   type: "nolist";
+  h2_index: string;
   href: string;
   value: string;
 }
@@ -55,7 +57,6 @@ const Menu = (props: { params: { slug: [string, string, string] } }) => {
   };
 
   useEffect(() => {
-    console.log("on running");
     const observe = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -84,7 +85,6 @@ const Menu = (props: { params: { slug: [string, string, string] } }) => {
               !clicked.current && setCurrent(ref.current.current);
             }
           }
-          console.log(entry.target.id, " ", ref.current);
         });
         clicked.current = false;
       },
@@ -102,13 +102,12 @@ const Menu = (props: { params: { slug: [string, string, string] } }) => {
 
   return (
     <>
-      <ul>
+      <ul className={styles.h2_ulist}>
         {data.tocHead.map((value, index) => {
           return (
             <IndexList
               key={value.href + value.value}
               {...{
-                index: index,
                 selected: index === current,
                 onClick: handleClick(index),
                 ...value,

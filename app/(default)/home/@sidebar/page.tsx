@@ -3,7 +3,7 @@ import { SideBarTag } from "@/components/tag";
 import { AnimeCard } from "@/components/animeCard";
 import { LogCard } from "@/components/logCard";
 import { SideBarCard } from "@/components/sideBar";
-import tagList from "@/config/tagList.json";
+import tagList from "@/external/config/tagList.json";
 
 const notice =
   "博客建设工作仍在进行中，已经发布一些测试博文，之后会发布更多博文。";

@@ -1,5 +1,5 @@
 import LinksCard from "@/components/linksCard";
-import linkList from "@/config/links.json";
+import linkList from "@/external/config/friends-link/links.json";
 
 const Links = () => {
   return (

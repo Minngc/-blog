@@ -1,7 +1,7 @@
 import { AvatarWithBackground } from "@/components/avatar";
 import { Line } from "@/components/line";
 import { ArticleCard } from "@/components/articleCard";
-import articles from "@/config/articles.json";
+import articles from "@/external/config/articles.json";
 
 const Home = () => {
   return (

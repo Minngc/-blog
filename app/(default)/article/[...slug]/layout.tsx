@@ -13,6 +13,7 @@ async function getMd(path: string) {
       return res.json();
     }
   );
+  // console.log("getmd", data);
   return data;
 }
 
@@ -22,6 +23,7 @@ const ArticleLayout = async (props: {
   params: { slug: ArticlePath };
 }) => {
   const { children, params, index } = props;
+  console.log(params.slug[2]);
   const data = await getMd(params.slug[2]);
   const fallback = {
     [params.slug[2]]: data,
@@ -63,10 +65,12 @@ const ArticleLayout = async (props: {
       </div>
       <div className={classNames(styles.container)}>
         <div className={classNames(styles.article)}>
-          <div className={classNames(styles.description)}>
-            <div className={classNames(styles.descLine)} />
-            {description}
-          </div>
+          {description  && (
+            <div className={classNames(styles.description)}>
+              <div className={classNames(styles.descLine)} />
+              {description}
+            </div>
+          )}
           <SWRProvider fallback={fallback}>{children}</SWRProvider>
         </div>
         <div className={classNames(styles.index)}>

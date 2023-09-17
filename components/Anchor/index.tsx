@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./index.module.scss";
 import classNames from "classnames";
-import trans from "@/config/tagTrans.json";
+import trans from "@/external/config/tagTrans.json";
 
 const Tag = (props: { replace?: boolean; tag: string[] }) => {
   const { tag, replace = false } = props;

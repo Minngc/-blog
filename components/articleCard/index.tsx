@@ -1,9 +1,8 @@
 import Link from "next/link";
 import bg from "@public/bg.jpg";
-import { Tag } from "../anchor";
+import { Tag } from "../Anchor";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import { Line } from "../line";
 import Image from "next/image";
 
 interface ArticleMatterType {
@@ -41,7 +40,9 @@ const ArticleCard = (
 
       <div className={classNames(styles.mainContent)}>
         <div className={classNames(styles.author)}>{author}</div>
-        <div className={classNames(styles.description)}>{description}</div>
+        <div className={classNames(styles.description)}>
+          {description === "" ? <span className={styles.defaultDescription}>{"No Description"}</span> : description}
+        </div>
       </div>
       <div className={classNames(styles.footer)}>
         <div className={styles.tagList}>
@@ -61,7 +62,7 @@ const ArticleCardWithImage = (props: ArticleProps & { replace?: boolean }) => {
   return (
     <div className={classNames(styles.container_withImage)}>
       <div className={classNames(styles.image)}>
-        <Image objectFit="cover" src={bg} alt={"bg"} width={300} height={200} />
+        <Image src={bg} alt={"bg"} width={300} height={200} />
       </div>
       <ArticleCard
         {...props}

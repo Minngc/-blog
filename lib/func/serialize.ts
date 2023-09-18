@@ -6,6 +6,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypeRaw from "rehype-raw";
 
 const serializeWithPlugin = async (content: string) => {
   let tocHead: (
@@ -22,6 +24,8 @@ const serializeWithPlugin = async (content: string) => {
     mdxOptions: {
       remarkPlugins: [remarkFrontmatter, remarkGfm, remarkMath],
       rehypePlugins: [
+        rehypeRaw as any,
+        rehypeCodeTitles,
         [rehypePrism, { ignoreMissing: true, showLineNumbers: true }],
         rehypeSlug,
         [
@@ -49,7 +53,7 @@ const serializeWithPlugin = async (content: string) => {
                           href: value.children[0].properties.href,
                           value: value.children[0].children[0].value,
                         };
-                      }
+                      },
                     );
                     return {
                       h2_index: `${h2_index + 1}.`,

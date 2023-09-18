@@ -21,7 +21,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-
+        hostname: "q1.qlogo.cn",
       },
     ],
   },

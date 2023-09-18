@@ -39,20 +39,21 @@ const TimeLineItem = (props: {
   return (
     <div className={classNames(styles.yearContainer)}>
       <div className={classNames(styles.title)}>{year}</div>
-      <Line />
 
-      <ul className={styles.postList}>
+      <div className={styles.postList}>
         {list.map(({ year, month, title, link, date }) => {
           return (
-            <li key={`${year}_${month}_`} className={styles.postItem}>
-              <Link href={`./article/${year}/${month}/${link}`}>
+            <div key={`${year}_${month}_${link}`} className={styles.postItem}>
+              <Link  href={`./article/${year}/${month}/${link}`}>
+                <span className={styles.postDate}>
+                  {date.split("/").slice(0, 2).join("-")}
+                </span>
                 <span className={styles.postTitle}>{title}</span>
-                <span className={styles.postDate}>({date})</span>
               </Link>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };

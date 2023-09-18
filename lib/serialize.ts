@@ -9,12 +9,13 @@ import remarkMath from "remark-math";
 
 const serializeWithPlugin = async (content: string) => {
   let tocHead: (
-    | { type: "nolist"; href: string; value: string }
+    | { type: "nolist"; href: string; value: string; index: string }
     | {
         type: "haslist";
         href: string;
         value: string;
-        children: { href: string; value: string }[];
+        index: string;
+        children: { index: string; href: string; value: string }[];
       }
   )[] = [];
   const serializeContent = await serialize(content, {
@@ -37,18 +38,21 @@ const serializeWithPlugin = async (content: string) => {
             customizeTOC: (toc: any) => {
               if (toc.children) {
                 const H2List = toc.children;
-                tocHead = H2List.map((value: any) => {
-                  console.log(value.children[0]);
+                tocHead = (H2List as []).map((value: any, h2_index) => {
                   if (value.children.length && value.children.length === 2) {
                     const H3List = value.children[1].children;
-                    const H3Title = H3List.map((value: any) => {
-                      return {
-                        href: value.children[0].properties.href,
-                        value: value.children[0].children[0].value,
-                      };
-                    });
+                    const H3Title = (H3List as []).map(
+                      (value: any, h3_index) => {
+                        return {
+                          index: `${h2_index + 1}.${h3_index + 1}.`,
+                          href: value.children[0].properties.href,
+                          value: value.children[0].children[0].value,
+                        };
+                      }
+                    );
                     return {
                       type: "haslist",
+                      index: `${h2_index + 1}.`,
                       href: value.children[0].properties.href,
                       value: value.children[0].children[0].value,
                       children: H3Title,
@@ -56,6 +60,7 @@ const serializeWithPlugin = async (content: string) => {
                   } else
                     return {
                       type: "nolist",
+                      index: `${h2_index}.`,
                       href: value.children[0].properties.href,
                       value: value.children[0].children[0].value,
                     };

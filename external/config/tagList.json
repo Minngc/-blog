@@ -1,1 +1,24 @@
-{}
+{
+  "years": [
+    { "link": "2022", "title": "2022" },
+    { "link": "2023", "title": "2023" }
+  ],
+  "classes": [
+    { "link": "study", "title": "study" },
+    { "link": "record", "title": "record" },
+    { "link": "guide", "title": "guide" },
+    { "link": "day", "title": "day" },
+    { "link": "others", "title": "others" }
+  ],
+  "tagsWidthClass": [
+    {
+      "link": "study",
+      "title": "study",
+      "list": [{ "link": "front_end", "title": "front_end" }]
+    },
+    { "link": "record", "title": "record", "list": [] },
+    { "link": "guide", "title": "guide", "list": [] },
+    { "link": "day", "title": "day", "list": [] },
+    { "link": "others", "title": "others", "list": [] }
+  ]
+}

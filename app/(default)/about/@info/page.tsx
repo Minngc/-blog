@@ -24,7 +24,6 @@ const Info = () => {
             <MDXRemote {...data[0]} />
           </div>
         </div>
-        <Line />
       </div>
 
       <div className={classNames(styles.container)}>
@@ -34,7 +33,6 @@ const Info = () => {
             <MDXRemote {...data[1]} />
           </div>
         </div>
-        <Line />
       </div>
 
       <div className={classNames(styles.container)}>
@@ -44,7 +42,6 @@ const Info = () => {
             <MDXRemote {...data[2]} />
           </div>
         </div>
-        <Line />
       </div>
     </>
   );

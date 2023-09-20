@@ -1,5 +1,6 @@
 .info {
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
 }
@@ -13,6 +14,7 @@
 }
 
 .links {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

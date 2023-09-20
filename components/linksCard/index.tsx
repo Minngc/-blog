@@ -34,7 +34,6 @@ const LinksCard = (props: {
             <a href={link}>去看看 ＞</a>
           </div>
         </div>
-        <Line />
       </div>
     </>
   );

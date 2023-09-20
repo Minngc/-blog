@@ -29,7 +29,9 @@ const AboutLayout = async (props: {
       <div className={classNames(styles.info)}>
         <SWRProvider fallback={fallback}>{info}</SWRProvider>
       </div>
-      <div className={classNames(styles.links)}>{links}</div>
+      <div className={classNames(styles.links)}>
+        {links}
+        </div>
     </>
   );
 };

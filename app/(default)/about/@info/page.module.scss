@@ -6,16 +6,24 @@
     width: calc(100% - 8vw);
   }
   .infoContainer {
-    padding: 15px 10px;
+    padding: 1rem 0.635rem;
     @media screen and (max-width: 600px) {
       padding: 8px 5px;
       font-size: 16px;
     }
     .title {
-      font-size: 28px;
+      font-size: 1.625rem;
       font-weight: bold;
       @media screen and (max-width: 600px) {
-        font-size: 20px;
+        font-size: 1.25rem;
+      }
+      &::after {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 0.0625rem;
+        margin: 0.5rem 0 0 0;
+        background-color: #eff2f3;
       }
     }
     .info {

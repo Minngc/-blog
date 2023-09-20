@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const filePath = [
-    "./external/about/自我介绍.md",
-    "./external/about/关于本站.md",
-    "./external/about/社群链接.md",
+    "./external/about/self_condition.md",
+    "./external/about/about_site.md",
+    "./external/about/sns_link.md",
   ];
   const data: any = [];
   for (let path of filePath) {

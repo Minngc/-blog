@@ -1,7 +1,7 @@
 .container {
   width: calc(100% - 40px);
 
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 4px 0 var(--color-shadow_default);
   max-width: 770px;
   padding: 12px 15px 3px;
   min-height: 114px;
@@ -38,7 +38,7 @@
     }
     .date {
       font-size: 0.875rem;
-      color: #868686;
+      color: var(--color-font_default__date);
       @media screen and (max-width: 700px) {
         font-size: 0.8125rem;
       }
@@ -58,7 +58,7 @@
     }
     .author {
       font-size: 0.75rem;
-      color: #868686;
+      color: var(--color-font_default__date);
     }
     .description {
       padding: 5px 15px;
@@ -101,9 +101,9 @@
     .link a {
       font-size: 0.875rem;
       text-decoration: none;
-      color: black;
+      color: var(--color-font_link__default);
       &:hover {
-        color: -webkit-link;
+        color: var(--color-font_link__default__hover);
       }
       @media screen and (max-width: 700px) {
         font-size: 0.875rem;
@@ -161,7 +161,7 @@
     position: relative;
     object-fit: contain;
     transition: width 0.2s 0.05s;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px 2px var(--color-shadow_default);
     display: flex;
     max-width: 300px;
     width: min(calc(200px + 0.15 * (100vw - 800px)), 300px);

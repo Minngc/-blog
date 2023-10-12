@@ -12,7 +12,7 @@
     width: 100%;
     height: 0.0625rem;
     margin: 0 0 0;
-    background-color: #eff2f3;
+    background-color: var(--color-border_title);
   }
   .linkContainer {
     display: flex;
@@ -56,9 +56,11 @@
       font-size: 18px;
     }
   }
+  /* TODO ???
+  */
   .description {
     font-size: 16px;
-    color: #747373;
+    color: var(--color-font__description__links);
     @media screen and (max-width: 600px) {
       font-size: 15px;
     }
@@ -72,7 +74,7 @@
     font-size: 15px;
   }
   a {
-    color: #435278;
+    color: var(--color-font_link__links);
     text-decoration: none;
     &:hover {
       text-decoration: underline;

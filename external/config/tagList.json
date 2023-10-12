@@ -4,21 +4,21 @@
     { "link": "2023", "title": "2023" }
   ],
   "classes": [
-    { "link": "study", "title": "study" },
-    { "link": "record", "title": "record" },
-    { "link": "guide", "title": "guide" },
-    { "link": "day", "title": "day" },
-    { "link": "others", "title": "others" }
+    { "link": "study", "title": "博学" },
+    { "link": "record", "title": "明辨" },
+    { "link": "guide", "title": "笃行" },
+    { "link": "day", "title": "慎思" },
+    { "link": "others", "title": "论外" }
   ],
   "tagsWidthClass": [
     {
       "link": "study",
-      "title": "study",
-      "list": [{ "link": "front_end", "title": "front_end" }]
+      "title": "博学",
+      "list": [{ "link": "front_end", "title": "前端" }]
     },
-    { "link": "record", "title": "record", "list": [] },
-    { "link": "guide", "title": "guide", "list": [] },
-    { "link": "day", "title": "day", "list": [] },
-    { "link": "others", "title": "others", "list": [] }
+    { "link": "record", "title": "明辨", "list": [] },
+    { "link": "guide", "title": "笃行", "list": [] },
+    { "link": "day", "title": "慎思", "list": [] },
+    { "link": "others", "title": "论外", "list": [] }
   ]
 }

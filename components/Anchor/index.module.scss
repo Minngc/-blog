@@ -1,9 +1,6 @@
 .tag {
   text-decoration: none;
-  color: #2dc2e3;
-  font-size: 16px;
-
-  @media screen and (max-width: 600px) {
-    font-size: 14px;
-  }
+  color: var(--color-font_link__tag);
+  line-height: 1.25rem;
+  font-size: 14px;
 }

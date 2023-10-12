@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import styles from "./page.module.scss";
 import Image from "next/image";
 import bg from "@public/bg.jpg";
+import bgDark from "@public/bg-dark.jpg";
 import { SWRProvider } from "@/components/swrconfig";
 
 type ArticlePath = [year: string, month: string, title: string];
@@ -39,7 +40,7 @@ const ArticleLayout = async (props: {
         <div className={classNames(styles.backImage)}>
           <div className={classNames(styles.imageContainer)}>
             <Image
-              className={classNames(styles.img_small)}
+              className={classNames(styles.img_small, styles.articleImage)}
               src={bg}
               alt={"backgroundImage"}
               objectFit="cover"
@@ -47,7 +48,17 @@ const ArticleLayout = async (props: {
               height={500}
             />
             <Image
-              className={classNames(styles.img_middle)}
+              src={bgDark}
+              alt={"backgroundImage"}
+              className={classNames(
+                styles.img_small_dark,
+                styles.articleImage_dark
+              )}
+              width={450}
+              height={500}
+            />
+            <Image
+              className={classNames(styles.img_middle, styles.articleImage)}
               src={bg}
               alt={"backgroundImage"}
               objectFit="cover"
@@ -55,8 +66,27 @@ const ArticleLayout = async (props: {
               height={700}
             />
             <Image
-              className={classNames(styles.img_large)}
+              src={bgDark}
+              alt={"backgroundImage"}
+              className={classNames(
+                styles.img_middle_dark,
+                styles.articleImage_dark
+              )}
+              width={900}
+              height={700}
+            />
+            <Image
+              className={classNames(styles.img_large, styles.articleImage)}
               src={bg}
+              alt={"backgroundImage"}
+              objectFit="cover"
+            />
+            <Image
+              className={classNames(
+                styles.img_large_dark,
+                styles.articleImage_dark
+              )}
+              src={bgDark}
               alt={"backgroundImage"}
               objectFit="cover"
             />
@@ -65,7 +95,7 @@ const ArticleLayout = async (props: {
       </div>
       <div className={classNames(styles.container)}>
         <div className={classNames(styles.article)}>
-          {description  && (
+          {description && (
             <div className={classNames(styles.description)}>
               <div className={classNames(styles.descLine)} />
               {description}

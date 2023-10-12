@@ -6,7 +6,9 @@ const LogCard = (props: { date: string; logMsg: string }) => {
 
   return (
     <div className={classNames(styles.logCard)}>
-      <div className={classNames(styles.logDate)}>{date}:</div>
+      <div className={classNames(styles.logDate)}>
+        {date.replaceAll("/", "-")}:
+      </div>
       <div className={classNames(styles.logMsg)}>{logMsg}</div>
     </div>
   );

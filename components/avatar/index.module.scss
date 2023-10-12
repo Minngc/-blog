@@ -40,23 +40,20 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: #c69898;
+    transition: all 0.3s;
+    background: var(--color-background_avatar);
   }
   .avatar {
     transform: translateY(var(--offset));
     bottom: 0;
   }
   .activePanel {
-    @media screen and (max-width: 1200px) {
+    transition: all 0.3s;
+    @media screen and (max-width: 970px) {
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .leftPanel,
-    .rightPanel {
-      transition: all 0.15s;
+      background: var(--color-background_default);
       &:hover {
-        background-color: #bababa;
+        background: var(--color-background_avatar_switch__hover);
         cursor: pointer;
       }
     }

@@ -25,13 +25,10 @@ const AboutLayout = async (props: {
   return (
     <>
       {children}
-      <Line color="#000000" marginTop="10px" />
       <div className={classNames(styles.info)}>
         <SWRProvider fallback={fallback}>{info}</SWRProvider>
       </div>
-      <div className={classNames(styles.links)}>
-        {links}
-        </div>
+      <div className={classNames(styles.links)}>{links}</div>
     </>
   );
 };

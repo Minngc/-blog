@@ -6,8 +6,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypePrism from "rehype-prism-plus";
-import rehypeCodeTitles from "rehype-code-titles";
-import rehypeRaw from "rehype-raw";
+import { visit } from "unist-util-visit";
 
 const serializeWithPlugin = async (content: string) => {
   let tocHead: (
@@ -24,8 +23,6 @@ const serializeWithPlugin = async (content: string) => {
     mdxOptions: {
       remarkPlugins: [remarkFrontmatter, remarkGfm, remarkMath],
       rehypePlugins: [
-        rehypeRaw as any,
-        rehypeCodeTitles,
         [rehypePrism, { ignoreMissing: true, showLineNumbers: true }],
         rehypeSlug,
         [
@@ -53,7 +50,7 @@ const serializeWithPlugin = async (content: string) => {
                           href: value.children[0].properties.href,
                           value: value.children[0].children[0].value,
                         };
-                      },
+                      }
                     );
                     return {
                       h2_index: `${h2_index + 1}.`,
@@ -75,6 +72,31 @@ const serializeWithPlugin = async (content: string) => {
             },
           },
         ],
+        () => (tree) => {
+          try {
+            visit(tree, (node) => {
+              //TODO: 需添加对 pre 元素的判断
+              if (node?.type === "element" && node?.tagName === "pre") {
+                if (node.children?.[0].tagName === "code")
+                  node.properties.className.push("language-type-position");
+                node.children?.unshift({
+                  type: "element",
+                  tagName: "div",
+                  properties: { className: ["language-type"] },
+                  children: [
+                    {
+                      type: "text",
+                      value: node.properties.className[0].split("language-")[1],
+                    },
+                  ],
+                });
+              }
+            });
+          } catch (e) {
+            console.log(e);
+          }
+          return null;
+        },
       ],
     },
   });

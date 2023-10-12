@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import { Line } from "../line";
 import { ReactNode } from "react";
 
 const SideBarCard = (props: {
@@ -21,7 +20,7 @@ const SideBarCard = (props: {
         <div className={styles.title}>{title}</div>
         {sideNode}
       </div>
-      <div className={styles.line}>{""}</div>
+      <div className={styles.line} />
       <div
         className={classNames(styles.cardContainer, className.cardContainer)}
       >

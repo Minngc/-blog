@@ -11,11 +11,13 @@
   padding: 2px 2px;
 }
 
+/* TODO article index
+*/
 .anchor {
   text-decoration: none;
-  color: black;
+  color: var(--color-font_link__default);
   &:hover {
-    color: #bababa;
+    color: var(--color-font_link__default__hover);
   }
   &.selected {
     color: -webkit-link;

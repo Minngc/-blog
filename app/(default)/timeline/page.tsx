@@ -36,6 +36,7 @@ const TimeLineItem = (props: {
   }[];
 }) => {
   const { list, year } = props;
+  if (list.length === 0) return null;
   return (
     <div className={classNames(styles.yearContainer)}>
       <div className={classNames(styles.title)}>{year}</div>
@@ -44,11 +45,14 @@ const TimeLineItem = (props: {
         {list.map(({ year, month, title, link, date }) => {
           return (
             <div key={`${year}_${month}_${link}`} className={styles.postItem}>
-              <Link  href={`./article/${year}/${month}/${link}`}>
-                <span className={styles.postDate}>
-                  {date.split("/").slice(0, 2).join("-")}
-                </span>
-                <span className={styles.postTitle}>{title}</span>
+              <span className={styles.postDate}>
+                {date.split("/").slice(0, 2).join("-")}
+              </span>
+              <Link
+                className={styles.postTitle}
+                href={`./article/${year}/${month}/${link}`}
+              >
+                {title}
               </Link>
             </div>
           );

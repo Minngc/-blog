@@ -3,7 +3,7 @@
   height: 60px;
   margin: 0 0 5px 0;
   z-index: -2;
-  background-color: #fdfdfd;
+  background-color: var(--color-background_global);
   @media screen and (max-width: 700px) {
     height: 55px;
     margin: 0;
@@ -84,17 +84,17 @@
       display: flex;
       a {
         text-decoration: none;
-        color: black;
+        color: var(--color-font_default);
         transition: color 0.15s;
         &:hover {
-          color: #bababa;
+          color: var(--color-font_link__hover);
         }
       }
       span {
         display: inline-block;
         height: 22px;
         width: 2px;
-        background-color: rgba(210, 210, 210);
+        background-color: var(--color-splite-line);
       }
     }
   }

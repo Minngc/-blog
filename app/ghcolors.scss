@@ -12,8 +12,8 @@ pre[class*="language-"] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  font-size: 0.9em;
-  line-height: 1.2em;
+  font-size: 1rem;
+  line-height: 1.5rem;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -26,7 +26,7 @@ pre[class*="language-"] {
 }
 
 pre > code[class*="language-"] {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 pre[class*="language-"]::-moz-selection,
@@ -46,7 +46,7 @@ code[class*="language-"] ::selection {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
-  margin: 0 1.625rem 0.5em 1.625rem;
+  margin: 0.5rem 1.625rem 0.5em 1.625rem;
   overflow: auto;
   /*
   border: 1px solid #dddddd;
@@ -54,6 +54,7 @@ pre[class*="language-"] {
   */
   box-shadow: 1px 3px 2px 2px #efefef;
   background-color: white;
+  border-radius: 0.3rem;
 }
 
 /* Inline code */
@@ -63,6 +64,7 @@ pre[class*="language-"] {
   padding-bottom: 1px;
   background: #f8f8f8;
   border: 1px solid #dddddd;
+  border-radius: 0.3rem;
 }
 
 .token.comment,

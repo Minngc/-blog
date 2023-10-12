@@ -1,9 +1,11 @@
 .tag {
+  width: 100%;
   .tagTitle {
+    line-height: 1.5rem;
     a {
       text-decoration: none;
-      color: black;
-      font-size: 17px;
+      color: var(--color-font_link__default);
+      font-size: 1rem;
       &:hover {
         text-decoration: underline;
       }
@@ -11,14 +13,15 @@
   }
   .tagList {
     text-indent: 0.5rem;
-    font-size: 16px;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     align-items: center;
     .tagItem {
       display: inline-block;
-      color: #2dc2e3;
+      color: var(--color-font_link__tag);
       text-decoration: none;
       &:hover {
         text-decoration: underline;

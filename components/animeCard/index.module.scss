@@ -14,11 +14,11 @@
     }
     .animeType {
       font-size: 14px;
-      color: rgba(43, 43, 43, 0.8);
+      color: var(--color-font__anime__describ);
     }
     .animeState {
       font-size: 14px;
-      color: rgba(43, 43, 43, 0.8);
+      color: var(--color-font__anime__describ);
     }
   }
 }

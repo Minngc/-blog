@@ -1,0 +1,63 @@
+html:root {
+  --color-background_global: rgba(253, 253, 253);
+  --color-background_reverse: rgba(2, 2, 2);
+  --color-background_blockquote: rgba(240, 240, 240);
+  --color-background_tr__default: rgba(248, 248, 248);
+  --color-background_tr__hover: rgba(240, 240, 240);
+  --color-background_languagetype: #faf7f7;
+
+  --color-background_avatar: linear-gradient(
+    90deg,
+    rgb(186, 204, 217) 50%,
+    rgb(129, 199, 212) 100%
+  );
+  --color-background_code: rgb(186, 204, 217);
+  --color-background_avatar_switch__hover: rgba(186, 186, 186);
+
+  --color-border_title: rgba(239, 242, 243);
+  --color-border_table: rgba(223, 226, 229);
+
+  --color-font_default: black;
+  --color-font_code: rgb(11, 52, 110);
+  --color-font_deafult__date: rgba(134, 134, 134);
+  --color-font_default__above__image: rgba(255, 255, 255);
+  --color-font_default__description: rgba(167, 166, 166);
+  --color-font__description__links: rgba(116, 115, 115);
+  --color-font_link__links: rgb(46, 169, 223);
+  --color-font_blockquote: rgba(101, 109, 118);
+  --color-font_link__default: rgba(2, 2, 2);
+  --color-font_link__href: rgb(46, 169, 223);
+  --color-font_link__default__hover: rgba(130, 130, 130);
+  --color-font_link__default__selected: rgb(46, 169, 223);
+  --color-font_link__selected: rgb(46, 169, 223);
+  --color-font_link__article: rgba(101, 109, 118);
+  --color-font_link__tag: rgb(46, 169, 223);
+
+  --color-font_pre__linenumber: rgb(156, 163, 175);
+  --color-font__anime__describ: rgba(43, 43, 43, 0.8);
+
+  --color-describ_default__timeline: rgba(202, 211, 214);
+  --color-describ_default__timeline__hover: rgb(46, 169, 223);
+  --color-describ_blockquote: rgba(87, 87, 87);
+
+  --color-webkit_thumb: rgba(0, 0, 0, 0.1);
+  --color-webkit_thumb__hover: rgba(0, 0, 0, 0.3);
+
+  --color-shadow_default: rgb(160, 175, 183, 0.4);
+
+  --color-input_default: rgba(235, 235, 235);
+  --color-input_default__focus: rgba(253, 253, 253);
+
+  --color-splite-line: rgba(210, 210, 210, 0.5);
+
+  --shadow-box__default: 1px 1px 2px 0px rgba(0, 0, 0, 0.08),
+    -0.5px -0.5px 2px 0px rgba(0, 0, 0, 0.08);
+  --shadow-box__article: 2px 2px 2px rgba(0, 0, 0, 0.1),
+    -2px 0px 2px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  * {
+    transition: color 0.1s, background 0.5s;
+  }
+}

@@ -6,14 +6,14 @@
 code[class*="language-"],
 pre[class*="language-"] {
   color: #393a34;
-  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
   font-size: 1rem;
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
   line-height: 1.5rem;
+  direction: ltr;
+  white-space: pre;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
 
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -45,16 +45,17 @@ code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
   margin: 0.5rem 1.625rem 0.5em 1.625rem;
+  padding: 1em;
+  border-radius: 0.3rem;
   overflow: auto;
+
+  background-color: white;
   /*
   border: 1px solid #dddddd;
   border-top: none;
   */
   box-shadow: 1px 3px 2px 2px #efefef;
-  background-color: white;
-  border-radius: 0.3rem;
 }
 
 /* Inline code */
@@ -62,9 +63,10 @@ pre[class*="language-"] {
   padding: 0.2em;
   padding-top: 1px;
   padding-bottom: 1px;
-  background: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 0.3rem;
+
+  background: #f8f8f8;
 }
 
 .token.comment,

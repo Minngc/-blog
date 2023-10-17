@@ -30,6 +30,24 @@
 html[data-theme="dark"] {
   code[class*="language-"],
   pre[class*="language-"] {
+    color: hsl(220, 14%, 71%);
+    font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
+      monospace;
+    line-height: 1.5;
+    direction: ltr;
+    white-space: pre;
+    text-align: left;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    word-break: normal;
+    word-spacing: normal;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+    tab-size: 2;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+
     background: hsl(
       220,
       13%,
@@ -40,53 +58,41 @@ html[data-theme="dark"] {
     @use "./duotone-light.scss";
     @use "./one-dark.scss";
     */
-    color: hsl(220, 14%, 71%);
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    line-height: 1.5;
-    -moz-tab-size: 2;
-    -o-tab-size: 2;
-    tab-size: 2;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
+    box-shadow: none;
   }
 
   /* Selection */
   code[class*="language-"]::-moz-selection,
   code[class*="language-"] *::-moz-selection,
   pre[class*="language-"] *::-moz-selection {
-    background: hsl(220, 13%, 28%);
     color: inherit;
     text-shadow: none;
+
+    background: hsl(220, 13%, 28%);
   }
 
   code[class*="language-"]::selection,
   code[class*="language-"] *::selection,
   pre[class*="language-"] *::selection {
-    background: hsl(220, 13%, 28%);
     color: inherit;
     text-shadow: none;
+
+    background: hsl(220, 13%, 28%);
   }
 
   /* Code blocks */
   pre[class*="language-"] {
-    padding: 1em;
     margin: 0.5em 1.625rem;
-    overflow: auto;
+    padding: 1em;
     border-radius: 0.3rem;
+    overflow: auto;
   }
 
   /* Inline code */
   :not(pre) > code[class*="language-"] {
     padding: 0.2em 0.3em;
-    border-radius:  0.3rem;
+    border-radius: 0.3rem;
+
     white-space: normal;
   }
 
@@ -186,7 +192,10 @@ html[data-theme="dark"] {
     color: hsl(286, 60%, 67%);
   }
 
-  .language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
+  .language-javascript
+    .token.template-string
+    > .token.interpolation
+    > .token.interpolation-punctuation.punctuation {
     color: hsl(5, 48%, 51%);
   }
 
@@ -280,10 +289,12 @@ html[data-theme="dark"] {
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
-    background: hsl(220, 13%, 26%);
-    color: hsl(220, 9%, 55%);
     padding: 0.1em 0.4em;
     border-radius: 0.3rem;
+
+    color: hsl(220, 9%, 55%);
+
+    background: hsl(220, 13%, 26%);
   }
 
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
@@ -292,8 +303,9 @@ html[data-theme="dark"] {
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
   div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
-    background: hsl(220, 13%, 28%);
     color: hsl(220, 14%, 71%);
+
+    background: hsl(220, 13%, 28%);
   }
 
   /* Line Highlight plugin overrides */
@@ -305,16 +317,20 @@ html[data-theme="dark"] {
   /* Default line numbers in Line Highlight plugin */
   .line-highlight.line-highlight:before,
   .line-highlight.line-highlight[data-end]:after {
-    background: hsl(220, 13%, 26%);
-    color: hsl(220, 14%, 71%);
     padding: 0.1em 0.6em;
     border-radius: 0.3rem;
+
+    color: hsl(220, 14%, 71%);
+
+    background: hsl(220, 13%, 26%);
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); /* same as Toolbar plugin default */
   }
 
   /* Hovering over a linkable line number (in the gutter area) */
   /* Requires Line Numbers plugin as well */
-  pre[id].linkable-line-numbers.linkable-line-numbers span.line-numbers-rows > span:hover:before {
+  pre[id].linkable-line-numbers.linkable-line-numbers
+    span.line-numbers-rows
+    > span:hover:before {
     background-color: hsla(220, 100%, 80%, 0.04);
   }
 
@@ -367,7 +383,10 @@ html[data-theme="dark"] {
   pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
   pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
   pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
-  pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
+  pre
+    > code.diff-highlight
+    .token.token.deleted:not(.prefix)
+    *::-moz-selection {
     background-color: hsla(353, 95%, 66%, 0.25);
   }
 
@@ -384,9 +403,15 @@ html[data-theme="dark"] {
   }
 
   pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
-  pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
+  pre.diff-highlight
+    > code
+    .token.token.inserted:not(.prefix)
+    *::-moz-selection,
   pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
-  pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
+  pre
+    > code.diff-highlight
+    .token.token.inserted:not(.prefix)
+    *::-moz-selection {
     background-color: hsla(135, 73%, 55%, 0.25);
   }
 

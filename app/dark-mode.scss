@@ -1,0 +1,60 @@
+html[data-theme="dark"]:root {
+  --color-background_global: rgb(33, 37, 43);
+  --color-background_reverse: rgba(253, 253, 253);
+  --color-background_blockquote: rgb(50, 50, 50);
+  --color-background_tr__default: rgba(26, 26, 26);
+  --color-background_tr__hover: rgb(29, 30, 31, 0.9);
+  --color-background_languagetype: rgba(40, 44, 52);
+  --color-background_avatar: linear-gradient(
+    90deg,
+    rgb(0, 92, 175) 50%,
+    rgb(17, 50, 133) 100%
+  );
+  --color-background_avatar_switch__hover: rgba(69, 79, 79);
+  --color-background_code: rgb(85, 66, 54);
+
+  --color-border_title: rgba(82, 82, 82, 0.4);
+  --color-border_table: rgba(63, 66, 69);
+
+  --color-font_default: rgba(255, 255, 255, 0.7);
+  --color-font_code: rgb(241, 148, 131);
+  --color-font_deafult__date: rgba(101, 101, 101);
+  --color-font_default__above__image: rgba(255, 255, 255, 0.8);
+  --color-font_default__description: rgba(98, 99, 99);
+  --color-font__description__links: rgba(139, 140, 140);
+  --color-font_link__default: rgb(177, 182, 204);
+  --color-font_link__default__hover: rgb(130, 130, 130);
+  --color-font_link__default__selected: rgb(88, 178, 220);
+  --color-font_link__links: rgb(125, 185, 222);
+  --color-font_blockquote: rgba(154, 146, 137);
+  --color-font_link__hover: rgba(121, 121, 121);
+  --color-font_link__article: rgba(154, 146, 137);
+  --color-font_link__tag: rgb(125, 185, 222);
+  --color-font_pre__linenumber: rgb(99, 92, 80);
+  --color-font__anime__describ: rgba(212, 212, 212, 0.8);
+
+  --color-describ_default__timeline: rgba(53, 44, 41);
+  --color-describ_default__timeline__hover: rgb(125, 185, 222);
+  --color-describ_blockquote: rgba(168, 168, 168);
+
+  --color-shadow_default: rgb(11, 16, 19, 0.5);
+
+  --color-webkit_thumb: hsla(0, 14%, 3%, 0.3);
+  --color-webkit_thumb__hover: hsla(0, 0%, 100%, 0.5);
+
+  --color-splite-line: rgba(143, 134, 134, 0.5);
+
+  --color-input_default: rgba(230, 230, 230, 0.7);
+  --color-input_default__focus: rgba(250, 250, 250, 0.8);
+
+  --shadow-box__default: 1px 1px 2px 0px rgba(255, 255, 255, 0.08),
+    -0.5px -0.5px 2px 0px rgba(255, 255, 255, 0.08);
+  --shadow-box__article: 3px 4px 4px 3px rgba(0, 0, 0, 0.9),
+    -7px 0px 4px rgba(0, 0, 0, 0.9);
+}
+
+html[data-theme="dark"] {
+  img {
+    filter: saturate(1.25) brightness(0.8);
+  }
+}

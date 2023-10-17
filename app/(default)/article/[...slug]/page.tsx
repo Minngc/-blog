@@ -93,7 +93,12 @@ const Th = (props: any) => {
 const Td = (props: any) => {
   return <td className="article-ele-td">{props.children}</td>;
 };
-
+const Code = (props: any) => {
+  if (!props.className) {
+    return <code className="article-ele-code">{props.children}</code>;
+  }
+  return <code {...props} />;
+};
 function getMd(path: string) {
   const data = fetch(`http://localhost:3000/api/article/${path}`).then(
     (res) => {
@@ -119,6 +124,7 @@ const components = {
   tr: Tr,
   th: Th,
   td: Td,
+  code: Code,
 };
 
 const Article = (props: { params: { slug: ArticlePath } }) => {

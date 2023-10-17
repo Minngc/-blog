@@ -8,10 +8,13 @@ const Links = () => {
     <>
       <div className={styles.friendLink_container}>
         <div className={styles.friendLink_title}>友人链接</div>
+        <div className={styles.friendLink_linkList}>
+
         {linkList.map((link) => {
           return <LinksCard key={`${link.name}_${link.link}`} {...link} />;
         })}
       </div>
+        </div>
     </>
   );
 };

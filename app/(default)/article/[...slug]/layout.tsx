@@ -96,9 +96,9 @@ const ArticleLayout = async (props: {
       <div className={classNames(styles.container)}>
         <div className={classNames(styles.article)}>
           {description && (
-            <div className={classNames(styles.description)}>
-              <div className={classNames(styles.descLine)} />
-              {description}
+            <div className={"article-ele-blockquote"}>
+              {/* <div className={classNames(styles.descLine)} /> */}
+              <p className="article-ele-p">{description}</p>
             </div>
           )}
           <SWRProvider fallback={fallback}>{children}</SWRProvider>

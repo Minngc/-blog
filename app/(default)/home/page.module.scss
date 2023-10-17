@@ -13,18 +13,20 @@
 
 .homeContainer {
   width: 100%;
+
   transition: transform 0.2s;
   @media screen and (min-width: 970px) {
-    width: 1150px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 30px;
+    justify-content: center;
+    width: 1150px;
   }
   @media screen and (max-width: 600px) {
-    width: 200vw;
     display: grid;
     grid-template-columns: 100vw 100vw;
+    width: 200vw;
+
     transform: none;
     &.showAnotherPanel {
       transform: translateX(-100vw);
@@ -33,31 +35,34 @@
 }
 
 .articleList {
-  padding: 10px 0 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
   width: 100%;
   max-width: 1100px;
+  padding: 10px 0 0;
 }
 .sideBar {
-  padding: 10px 10px 10px;
   display: flex;
-  flex-direction: column;
   flex: none;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
+  align-items: center;
   width: 300px;
+  padding: 10px 10px 10px;
+
   transition: all 0.2s;
   @media screen and (min-width: 600px) and (max-width: 970px) {
     position: fixed;
     top: 280px;
     right: -100%;
+
     height: 400px;
     overflow: auto;
+
     background-color: var(--color-background_global);
-    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 4px 2px var(--color-shadow_default);
     &::-webkit-scrollbar {
       width: 0px;
     }
@@ -66,10 +71,10 @@
     }
   }
   @media screen and (max-width: 600px) {
-    padding: 10px 0;
-    width: 100%;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
   }
 }

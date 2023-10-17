@@ -1,7 +1,6 @@
 "use client";
 
-import classNames from "classnames";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import styles from "./page.module.scss";
 import { IndexList } from "@/components/list";
@@ -60,7 +59,6 @@ const Menu = (props: { params: { slug: [string, string, string] } }) => {
     const observe = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(IdList.current);
           // 若在范围外或者跑出范围, 并且是当前高亮标题的下一个标题，并且 此时还存在于屏幕范围内，则高亮跑出范围的标题
           if (
             !entry.isIntersecting &&

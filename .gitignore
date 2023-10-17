@@ -30,7 +30,6 @@ yarn-error.log*
 .env.production.local
 
 # user
-/external/*
 *.old
 /config
 .vscode

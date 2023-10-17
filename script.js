@@ -21,13 +21,15 @@ function genarateArticle() {
 
   let fileDir = [];
   monthDir.forEach((path) => {
-    fs.readdirSync(`./external/post/${path.year}/${path.month}`).forEach((fileName) => {
-      fileDir.push({
-        year: path.year,
-        month: path.month,
-        fileName: fileName,
-      });
-    });
+    fs.readdirSync(`./external/post/${path.year}/${path.month}`).forEach(
+      (fileName) => {
+        fileDir.push({
+          year: path.year,
+          month: path.month,
+          fileName: fileName,
+        });
+      }
+    );
   });
 
   const list = [];
@@ -49,10 +51,12 @@ function genarateArticle() {
       fs.readFileSync(`./external/post/${year}/${month}/${fileName}`, "utf-8")
     );
 
-    articleNames[`${data.Link}`] = `./external/post/${year}/${month}/${fileName}`;
+    articleNames[
+      `${data.Link}`
+    ] = `./external/post/${year}/${month}/${fileName}`;
     fs.writeFileSync(
       "./external/config/articleNames.json",
-      JSON.stringify(articleNames),
+      JSON.stringify(articleNames, null, 2),
       {
         flag: "w",
       }
@@ -87,9 +91,13 @@ function genarateArticle() {
         cover: data.Cover,
       },
     });
-    fs.writeFileSync("./external/config/articles.json", JSON.stringify(list), {
-      flag: "w",
-    });
+    fs.writeFileSync(
+      "./external/config/articles.json",
+      JSON.stringify(list, null, 2),
+      {
+        flag: "w",
+      }
+    );
   });
   const trans = JSON.parse(fs.readFileSync("./external/config/tagTrans.json"));
 
@@ -122,9 +130,13 @@ function genarateArticle() {
   });
 
   const tags = { years, classes, tagsWidthClass };
-  fs.writeFileSync("./external/config/tagList.json", JSON.stringify(tags), {
-    flag: "w",
-  });
+  fs.writeFileSync(
+    "./external/config/tagList.json",
+    JSON.stringify(tags, null, 2),
+    {
+      flag: "w",
+    }
+  );
   Object.keys(listOrderByYear).forEach((year) => {
     listOrderByYear[year].sort((a, b) => {
       if (b.month === a.month)
@@ -134,7 +146,7 @@ function genarateArticle() {
   });
   fs.writeFileSync(
     "./external/config/listOrderByYear.json",
-    JSON.stringify(listOrderByYear),
+    JSON.stringify(listOrderByYear, null, 2),
     {
       flag: "w",
     }

@@ -1,24 +1,66 @@
 {
   "years": [
-    { "link": "2022", "title": "2022" },
-    { "link": "2023", "title": "2023" }
+    {
+      "link": "2022",
+      "title": "2022"
+    },
+    {
+      "link": "2023",
+      "title": "2023"
+    }
   ],
   "classes": [
-    { "link": "study", "title": "博学" },
-    { "link": "record", "title": "明辨" },
-    { "link": "guide", "title": "笃行" },
-    { "link": "day", "title": "慎思" },
-    { "link": "others", "title": "论外" }
+    {
+      "link": "study",
+      "title": "博学之"
+    },
+    {
+      "link": "record",
+      "title": "明辨之"
+    },
+    {
+      "link": "guide",
+      "title": "笃行之"
+    },
+    {
+      "link": "day",
+      "title": "慎思之"
+    },
+    {
+      "link": "others",
+      "title": "其他"
+    }
   ],
   "tagsWidthClass": [
     {
       "link": "study",
-      "title": "博学",
-      "list": [{ "link": "front_end", "title": "前端" }]
+      "title": "博学之",
+      "list": [
+        {
+          "link": "front_end",
+          "title": "前端"
+        }
+      ]
     },
-    { "link": "record", "title": "明辨", "list": [] },
-    { "link": "guide", "title": "笃行", "list": [] },
-    { "link": "day", "title": "慎思", "list": [] },
-    { "link": "others", "title": "论外", "list": [] }
+    {
+      "link": "record",
+      "title": "明辨之",
+      "list": []
+    },
+    {
+      "link": "guide",
+      "title": "笃行之",
+      "list": []
+    },
+    {
+      "link": "day",
+      "title": "慎思之",
+      "list": []
+    },
+    {
+      "link": "others",
+      "title": "其他",
+      "list": []
+    }
   ]
 }

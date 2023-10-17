@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "stylelint \"*/**/*.scss\" --fix",
     "css-lint": "stylelint \"*/**/*.scss\"",
     "css-fix": "stylelint \"*/**/*.scss\" --fix"
   },

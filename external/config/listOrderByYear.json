@@ -1,1 +1,19 @@
-{"2022":[{"year":"2022","month":"10","title":"VSCode 前端开发环境配置指北","date":"10/08/2022","link":"front_end_development_setting_guide"},{"year":"2022","month":"10","title":"前端组 Q&A","date":"10/09/2022","link":"front_end_droup_question_and_answer"}],"2023":[]}
+{
+  "2022": [
+    {
+      "year": "2022",
+      "month": "10",
+      "title": "VSCode 前端开发环境配置指北",
+      "date": "10/08/2022",
+      "link": "front_end_development_setting_guide"
+    },
+    {
+      "year": "2022",
+      "month": "10",
+      "title": "前端组 Q&A",
+      "date": "10/09/2022",
+      "link": "front_end_droup_question_and_answer"
+    }
+  ],
+  "2023": []
+}

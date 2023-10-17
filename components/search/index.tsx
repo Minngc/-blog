@@ -118,7 +118,7 @@ const Item = (props: {
           console.log(link === current, link);
           return (
             <div
-              className={classNames({
+              className={classNames(styles.item,{
                 [styles.selected]: current === link,
               })}
               key={`items_${link}_${index}`}

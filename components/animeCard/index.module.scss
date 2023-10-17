@@ -1,24 +1,24 @@
 .animeCard {
   display: flex;
+  gap: 10px;
   justify-content: flex-start;
   width: 100%;
-  gap: 10px;
   .animeMessage {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 2px;
+    justify-content: center;
     .animeTitle {
-      font-size: 16px;
       font-weight: bold;
+      font-size: 16px;
     }
     .animeType {
-      font-size: 14px;
       color: var(--color-font__anime__describ);
+      font-size: 14px;
     }
     .animeState {
-      font-size: 14px;
       color: var(--color-font__anime__describ);
+      font-size: 14px;
     }
   }
 }

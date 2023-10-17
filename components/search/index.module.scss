@@ -1,12 +1,22 @@
 .container {
+  position: relative;
+  z-index: 11;
+
   display: flex;
   flex-direction: row;
+  gap: 10px;
   align-items: center;
   justify-content: center;
 
   width: 100%;
   height: 60px;
+
   background: var(--color-background_avatar);
+  background-size: 500% 100%;
+
+  animation: shine 10s 0ms infinite alternate both;
+
+  user-select: none;
 
   @media screen and (max-width: 600px) {
     height: 40px;
@@ -18,24 +28,30 @@
     padding: 0 15px;
     border: none;
     border-radius: 15px;
+
     font-size: 18px;
+
     background: var(--color-input_default);
     @media screen and (max-width: 600px) {
       width: 180px;
       height: 24px;
       padding: 0 10px;
       border-radius: 12px;
+
       font-size: 15px;
     }
     &:focus-visible {
-      outline: none;
-      background: var(--color-input_default__focus);
       border: none;
+
+      background: var(--color-input_default__focus);
+      outline: none;
     }
   }
   .button {
     border: none;
+
     font-size: 18px;
+
     background-color: transparent;
     cursor: pointer;
     @media screen and (max-width: 600px) {
@@ -44,47 +60,55 @@
   }
   .expend {
     position: absolute;
-    font-size: 15px;
-    float: right;
     right: 20px;
+
+    float: right;
+
+    font-size: 15px;
   }
 }
 
 .filterPanel {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   padding: 10px 0 5px;
+
   box-shadow: 1px 2px 4px 0px var(--color-shadow_default);
+
+  user-select: none;
   @media screen and (min-width: 600px) {
     margin: 0 0 10px;
   }
   .filterLine {
     display: flex;
+    gap: 20px;
     justify-content: flex-start;
     width: 88%;
     max-width: 1100px;
-    gap: 20px;
     .filterTitle {
-      font-size: 18px;
-      width: fit-content;
-      font-weight: bold;
       flex: none;
+      width: fit-content;
+
+      font-weight: bold;
+      font-size: 18px;
       @media screen and (min-width: 600px) {
         font-size: 24px;
       }
     }
     .selectors {
-      align-items: center;
-      font-size: 16px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       gap: 10px;
+      align-items: center;
+
+      font-size: 16px;
       @media screen and (min-width: 600px) {
-        font-size: 18px;
         gap: 15px;
+
+        font-size: 18px;
       }
     }
     @media screen and (min-width: 600px) {
@@ -94,6 +118,18 @@
 
 /* TODO tag Selected
 */
+.item {
+  cursor: pointer;
+}
 .selected {
-  color: aquamarine;
+  color: var(--color-font_link__default__selected);
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }

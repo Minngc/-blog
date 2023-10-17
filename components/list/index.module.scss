@@ -3,9 +3,11 @@
 }
 
 .h3_ulist {
-  list-style-type: none;
   padding: 0 5px 0 1em;
+
   line-height: 20px;
+
+  list-style-type: none;
 }
 .h3_item {
   padding: 2px 2px;
@@ -14,12 +16,12 @@
 /* TODO article index
 */
 .anchor {
-  text-decoration: none;
   color: var(--color-font_link__default);
+  text-decoration: none;
   &:hover {
     color: var(--color-font_link__default__hover);
   }
   &.selected {
-    color: -webkit-link;
+    color: var(--color-font_link__default__selected);
   }
 }

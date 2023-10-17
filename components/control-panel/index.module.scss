@@ -1,9 +1,10 @@
 .controlPanel_container {
   position: fixed;
+  right: 15px;
+  bottom: 40px;
+
   display: flex;
   flex-direction: column-reverse;
-  bottom: 40px;
-  right: 15px;
   gap: 10px;
   @media screen and (max-width: 500px) {
     right: 8px;
@@ -11,10 +12,11 @@
   .controlPanel_settingPanelSwitch {
     width: 35px;
     height: 35px;
-    box-shadow: var(--shadow-box__default);
     border-radius: 0.3rem;
-    cursor: pointer;
+
     background-color: var(--color-background_global);
+    box-shadow: var(--shadow-box__default);
+    cursor: pointer;
     @media screen and (max-width: 500px) {
       width: 25px;
       height: 25px;
@@ -22,14 +24,17 @@
   }
   .controlPanel_themeControlButton {
     position: relative;
+
     width: 35px;
     height: 35px;
-    box-shadow: var(--shadow-box__default);
-    background-color: var(--color-background_global);
     border-radius: 0.3rem;
-    cursor: pointer;
+
+    background-color: var(--color-background_global);
+    box-shadow: var(--shadow-box__default);
     transform: translateX(0);
-    transition: transform 0.3s, background-color 1s;
+    cursor: pointer;
+
+    transition: transform 0.3s, background-color 0.5s;
     &.settingPanel_hidden {
       transform: translateX(60px);
     }
@@ -41,83 +46,106 @@
     .themeControlButton_circle {
       width: 100%;
       height: 100%;
-      clip-path: circle(28.6% at 50% 50%);
+
       background-color: var(--color-background_reverse);
       cursor: pointer;
+
+      clip-path: circle(28.6% at 50% 50%);
     }
     .themeControlButton_ellipse {
       position: absolute;
       top: 0;
       left: 0;
+
       width: 100%;
       height: 100%;
-      clip-path: ellipse(23% 25% at 25% 50%);
+
       background-color: var(--color-background_global);
       cursor: pointer;
+
+      clip-path: ellipse(23% 25% at 25% 50%);
     }
   }
   .controlPanel_toTop {
     width: 35px;
     height: 35px;
-    box-shadow: var(--shadow-box__default);
     border-radius: 0.3rem;
-    opacity: 1;
+
     background-color: var(--color-background_global);
+    box-shadow: var(--shadow-box__default);
     visibility: visible;
-    transition: opacity 0.2s, visibility 0s 0s, background-color 1s;
     cursor: pointer;
+    opacity: 1;
+
+    transition: opacity 0.2s, visibility 0s 0s, background-color 1s;
     @media screen and (max-width: 500px) {
       width: 25px;
       height: 25px;
     }
     &.toTop_hidden {
-      opacity: 0;
       visibility: hidden;
+      opacity: 0;
+
       transition: opacity 0.2s, visibility 0s 0.2s, background-color 1s;
     }
     .toTop_triangle {
       width: 100%;
       height: 100%;
+
       clip-path: polygon(50% 20%, 23.5% 65%, 76.5% 65%);
       .toTop_triangleRound {
         width: 100%;
         height: 100%;
-        clip-path: circle(28.6% at 50% 50%);
+
         background-color: var(--color-background_reverse);
+
+        clip-path: circle(28.6% at 50% 50%);
       }
     }
   }
 }
 .controlPanel_gear {
+  position: relative;
+
   width: 100%;
   height: 100%;
-  position: relative;
-  animation: infinity-rotate 2.5s 0s infinite linear both;
-  clip-path: circle(28% at 50% 50%);
+
   background-color: var(--color-background_global);
+
+  animation: infinity-rotate 2.5s 0s infinite linear both;
+
+  clip-path: circle(28% at 50% 50%);
   .controlPanel_gearPanel {
     width: 100%;
     height: 100%;
-    clip-path: circle(22.6% at 50% 50%);
+
     background-color: var(--color-background_reverse);
+
+    clip-path: circle(22.6% at 50% 50%);
   }
   .controlPanel_gearShaft {
     position: absolute;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    clip-path: circle(10% at 50% 50%);
+
     background-color: var(--color-background_global);
+
+    clip-path: circle(10% at 50% 50%);
   }
   .controlPanel_gearDent {
     position: absolute;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    clip-path: inset(21.4% 42% round 5%);
+
     background-color: var(--color-background_reverse);
+
+    clip-path: inset(21.4% 42% round 5%);
     @for $i from 2 through 5 {
       &.controlPanel_gearDent:nth-child(#{$i}) {
         transform: rotate(($i - 1) * 45 + deg);

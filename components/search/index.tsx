@@ -3,6 +3,28 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+function repalce(
+  currentPrama: string,
+  key: string,
+  lastvalue: string | null,
+  nextvalue: string | null
+) {
+  if (lastvalue === nextvalue) {
+    return currentPrama;
+  }
+  if (lastvalue === null) {
+    if (currentPrama === "") {
+      return currentPrama.concat(`${key}=${nextvalue}`);
+    }
+    return currentPrama.concat(`&${key}=${nextvalue}`);
+  }
+
+  return currentPrama.replace(
+    `${key}=${lastvalue}`,
+    nextvalue === null ? "" : `${key}=${nextvalue}`
+  );
+}
+
 const Search = (props: {
   filterData: {
     years: { title: string; link: string }[];
@@ -25,6 +47,8 @@ const Search = (props: {
   if (state.searchTitle) urlArray.push("title=" + state.searchTitle);
   if (state.searchYear) urlArray.push("year=" + state.searchYear);
   if (state.searchClass) urlArray.push("class=" + state.searchClass);
+  const searchPramas = urlArray.join("&");
+
   return (
     <>
       <div className={classNames(styles.container)}>
@@ -35,14 +59,13 @@ const Search = (props: {
             setState((pre) => {
               const a = { ...pre };
               a.searchTitle = e.target.value;
-              console.log(a);
               return a;
             });
           }}
         />
         <button
           onClick={() => {
-            router.replace(`./post?${urlArray.join("&")}`);
+            router.replace(`./post?${searchPramas}`);
           }}
           className={classNames(styles.button)}
         >
@@ -54,6 +77,9 @@ const Search = (props: {
           }}
           className={classNames(styles.expend)}
         >
+          {
+            // TODO 替换为图标
+          }
           展开
         </div>
       </div>
@@ -62,12 +88,13 @@ const Search = (props: {
           <div className={classNames(styles.filterLine)}>
             <div className={classNames(styles.filterTitle)}>年份</div>
             <Item
+              listKey="year"
+              searchParams={searchPramas}
               current={state.searchYear}
               items={years}
               onClick={(value: string | null) => {
                 setState((pre) => {
                   const a = { ...pre };
-                  console.log(a);
                   a.searchYear = value;
                   return a;
                 });
@@ -77,6 +104,8 @@ const Search = (props: {
           <div className={classNames(styles.filterLine)}>
             <div className={classNames(styles.filterTitle)}>分类</div>
             <Item
+              listKey="class"
+              searchParams={searchPramas}
               current={state.searchClass}
               items={classes}
               onClick={(value: string | null) => {
@@ -95,34 +124,41 @@ const Search = (props: {
 };
 
 const Item = (props: {
+  listKey: string;
+  searchParams: string;
   current: string | null;
   items: { title: string; link: string }[];
   onClick: (value: string | null) => void;
 }) => {
-  const { current, items, onClick } = props;
-  console.log(items);
+  const router = useRouter();
+  const { listKey, searchParams, current, items, onClick } = props;
   return (
     <>
       <div className={classNames(styles.selectors)}>
         <div
-          className={classNames({
+          className={classNames(styles.item, {
             [styles.selected]: current === null,
           })}
           onClick={() => {
+            router.replace(
+              `/post?${repalce(searchParams, listKey, current, null)}`
+            );
             props.onClick(null);
           }}
         >
           全部
         </div>
         {items.map(({ title, link }, index) => {
-          console.log(link === current, link);
           return (
             <div
-              className={classNames(styles.item,{
+              className={classNames(styles.item, {
                 [styles.selected]: current === link,
               })}
               key={`items_${link}_${index}`}
               onClick={() => {
+                router.replace(
+                  `/post?${repalce(searchParams, listKey, current, link)}`
+                );
                 onClick(link);
               }}
             >

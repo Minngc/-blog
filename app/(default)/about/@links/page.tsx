@@ -1,5 +1,4 @@
 import styles from "./page.module.scss";
-
 import LinksCard from "@/components/linksCard";
 import linkList from "@/external/config/friends-link/links.json";
 

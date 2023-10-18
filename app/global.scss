@@ -1,8 +1,8 @@
-@use "./ghcolors.scss";
-@use "./one-dark.scss";
-@use "./dark-mode.scss";
-@use "./default-mode.scss";
-@use "./artcile-element.scss";
+@use "/styles/ghcolors.scss";
+@use "/styles/one-dark.scss";
+@use "/styles/dark-mode.scss";
+@use "/styles/default-mode.scss";
+@use "/styles/artcile-element.scss";
 
 html {
   scroll-padding-top: 80px;

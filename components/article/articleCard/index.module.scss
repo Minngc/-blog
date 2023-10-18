@@ -1,0 +1,189 @@
+.container {
+  width: calc(100% - 40px);
+  max-width: 770px;
+  min-height: 114px;
+  padding: 12px 15px 3px;
+
+  box-shadow: 2px 3px 3px 2px var(--color-shadow_default);
+
+  @media screen and (max-width: 700px) {
+    min-height: 103px;
+  }
+  @media screen and (max-width: 500px) {
+    min-height: 91px;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+    @media screen and (max-width: 700px) {
+      margin: 0 0 6px 0;
+    }
+    @media screen and (max-width: 500px) {
+      margin: 0 0 4px 0;
+    }
+
+    .articleTitle {
+      overflow: hidden;
+
+      font-weight: bold;
+      font-size: 1.45rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      @media screen and (max-width: 700px) {
+        font-size: 1.3rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 1.15rem;
+      }
+    }
+    .date {
+      color: var(--color-font_default__date);
+      font-size: 0.875rem;
+      @media screen and (max-width: 700px) {
+        font-size: 0.8125rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0 0 20px 0;
+    @media screen and (max-width: 700px) {
+      margin: 0;
+    }
+    .author {
+      color: var(--color-font_default__date);
+      font-size: 0.75rem;
+    }
+    .description {
+      display: -webkit-box;
+      padding: 5px 15px;
+      overflow: hidden;
+
+      font-size: 1rem;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      @media screen and (max-width: 500px) {
+        font-size: 0.875rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 0.75rem;
+      }
+      .defaultDescription {
+        color: #a7a6a6;
+        font-style: italic;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    @media screen and (max-width: 700px) {
+      font-size: 0.875rem;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 0.75rem;
+    }
+    .tagList {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+    .link a {
+      color: var(--color-font_link__default);
+      font-size: 0.875rem;
+      text-decoration: none;
+      &:hover {
+        color: var(--color-font_link__default__hover);
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 0.875rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+.container_withImage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  .articleContainer {
+    min-height: 185px;
+    @media screen and (max-width: 800px) {
+      min-height: 114px;
+    }
+    @media screen and (max-width: 700px) {
+      min-height: 103px;
+    }
+    @media screen and (max-width: 500px) {
+      min-height: 91px;
+    }
+    @media screen and (min-width: 800px) {
+      width: calc(
+        100% - 30px - min(calc(200px + 0.15 * (100vw - 800px)), 300px) - 50px
+      );
+    }
+    .description {
+      display: -webkit-box;
+      padding: 5px 15px;
+      overflow: hidden;
+
+      font-size: 16px;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      @media screen and (min-width: 800px) {
+        height: 66px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 0.875rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  .image {
+    position: relative;
+
+    display: flex;
+    width: min(calc(200px + 0.15 * (100vw - 800px)), 300px);
+    max-width: 300px;
+    height: 200px;
+    object-fit: contain;
+    overflow: hidden;
+
+    box-shadow: 0px 5px 3px 0px var(--color-shadow_default);
+
+    transition: width 0.2s 0.05s;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media screen and (max-width: 800px) {
+      width: 0px;
+      height: 0px;
+    }
+  }
+}

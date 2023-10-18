@@ -1,51 +1,26 @@
 import styles from "./page.module.scss";
-import { SideBarTag } from "@/components/tag";
+import { SideBarTag } from "@/components/sideBar/sidebarTag";
 import { AnimeCard } from "@/components/animeCard";
-import { LogCard } from "@/components/logCard";
-import { SideBarCard } from "@/components/sideBar";
+import { LogCard } from "@/components/logcard";
+import { SideBarCard } from "@/components/sideBar/sidebar";
 import tagList from "@/external/config/tagList.json";
-
-const notice =
-  "博客建设工作仍在进行中，已经发布一些测试博文，之后会发布更多博文。";
-
-const anime = [
-  {
-    title: "异世界XX冒险录",
-    state: "月曜日",
-    type: ["轻改", "异世界", "后宫"],
-  },
-  {
-    title: "异世界XX冒险录",
-    state: "月曜日",
-    type: ["轻改", "异世界", "后宫"],
-  },
-  {
-    title: "异世界XX冒险录",
-    state: "月曜日",
-    type: ["轻改", "异世界", "后宫"],
-  },
-];
-
-const log = [
-  {
-    date: "08/01/2023",
-    logMsg: "抽象 SideBar 内容为组件",
-  },
-  {
-    date: "07/29/2023",
-    logMsg: "制作了新的 SideBar",
-  },
-];
+import log from "@/external/config/pages-config/log.json";
+import notice from "@/external/config/pages-config/notice.json";
+const anime: {
+  title: string;
+  type: [string, string, string];
+  state: string;
+}[] = [];
 
 const HomeSidebar = () => {
   return (
     <>
       <SideBarCard
         title="公告"
-        sideNode={<div className={styles.noticeDate}>07/29/2023</div>}
+        sideNode={<div className={styles.noticeDate}>{notice.date}</div>}
         className={{ cardContainer: styles.noticeContainer }}
       >
-        {notice}
+        {notice.message}
       </SideBarCard>
 
       <SideBarCard title="标签">

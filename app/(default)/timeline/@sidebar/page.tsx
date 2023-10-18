@@ -1,5 +1,5 @@
-import { SideBarCard } from "@/components/sideBar";
-import { SideBarTag } from "@/components/tag";
+import { SideBarCard } from "@/components/sideBar/sidebar";
+import { SideBarTag } from "@/components/sideBar/sidebarTag";
 
 import tagList from "@/external/config/tagList.json"
 const TimeLineSideBar = () => {

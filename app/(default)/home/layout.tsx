@@ -1,7 +1,6 @@
 "use client";
 
 import { AvatarWithBackground } from "@/components/avatar";
-import { Line } from "@/components/line";
 import { ReactNode, useCallback, useState } from "react";
 import styles from "./page.module.scss";
 import classNames from "classnames";

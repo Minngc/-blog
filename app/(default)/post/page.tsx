@@ -1,15 +1,17 @@
 "use client";
 
 import { Search } from "@/components/search";
-import { ArticleCardWithImage } from "@/components/articleCard";
+import { ArticleCardWithImage } from "@/components/article/articleCard";
 import styles from "./page.module.scss";
 import classNames from "classnames";
 import articles from "@/external/config/articles.json";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import tagList from "@/external//config/tagList.json";
+import { searchParamsFilterFunc } from "@/lib/func";
 
 const Post = () => {
-  const searchParams = useSearchParams() ?? new ReadonlyURLSearchParams(new URLSearchParams);
+  const searchParams =
+    useSearchParams() ?? new ReadonlyURLSearchParams(new URLSearchParams());
 
   const searchClass = searchParams.get("class");
   const searchTag = searchParams.get("tag");
@@ -18,28 +20,7 @@ const Post = () => {
   const searchTitle = searchParams.get("title");
 
   const searchData = { searchClass, searchYear, searchTitle, pub, searchTag };
-  function filterFunc(searchData: {
-    searchClass: null | string;
-    searchTag: null | string;
-    pub: null | string;
-    searchYear: null | string;
-    searchTitle: null | string;
-  }) {
-    const reg =
-      searchData.searchTitle !== null
-        ? new RegExp(searchData.searchTitle.split("").join(".*"), "g")
-        : /.*/g;
-    return articles.filter(({ year, data: { title, tag } }) => {
-      return (
-        (!searchData.searchClass || searchData.searchClass === tag[0]) &&
-        (!searchData.searchTag || searchData.searchTag === tag[1]) &&
-        (!searchData.pub || searchData.pub === tag[2]) &&
-        (!searchData.searchYear || searchData.searchYear === year) &&
-        (!searchData.searchTitle || reg.test(title))
-      );
-    });
-  }
-  const filterArticles = filterFunc(searchData);
+  const filterArticles = searchParamsFilterFunc(articles, searchData);
   const filterData = { years: tagList.years, classes: tagList.classes };
   return (
     <>

@@ -14,7 +14,6 @@ async function getMd(path: string) {
       return res.json();
     }
   );
-  // console.log("getmd", data);
   return data;
 }
 
@@ -24,7 +23,6 @@ const ArticleLayout = async (props: {
   params: { slug: ArticlePath };
 }) => {
   const { children, params, index } = props;
-  console.log(params.slug[2]);
   const data = await getMd(params.slug[2]);
   const fallback = {
     [params.slug[2]]: data,
@@ -97,7 +95,6 @@ const ArticleLayout = async (props: {
         <div className={classNames(styles.article)}>
           {description && (
             <div className={"article-ele-blockquote"}>
-              {/* <div className={classNames(styles.descLine)} /> */}
               <p className="article-ele-p">{description}</p>
             </div>
           )}

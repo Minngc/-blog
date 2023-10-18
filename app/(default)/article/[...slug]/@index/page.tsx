@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import styles from "./page.module.scss";
-import { IndexList } from "@/components/list";
+import { IndexList } from "@/components/article/articleIndexList";
 
 interface IndexWithChildren {
   type: "haslist";

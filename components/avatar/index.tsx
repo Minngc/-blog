@@ -7,13 +7,11 @@ interface Props {
   size: 50 | 70 | 140 | 210;
   height: number;
   offset: number;
-  unable?: boolean;
   className?: string;
-  onPanelClick?: () => void;
 }
 
 const AvatarWithBackground = (props: Props) => {
-  const { size, height, offset, unable, onPanelClick = () => void 0 } = props;
+  const { size, height, offset} = props;
   return (
     <div
       style={{ height: `${offset + size}px`, "--offset": offset + "px" }}
@@ -25,13 +23,6 @@ const AvatarWithBackground = (props: Props) => {
       >
         <Avatar className={classNames(styles.avatar)} size={size} />
       </div>
-      {!unable && (
-        <div
-          onClick={onPanelClick}
-          style={{ height: `${offset - height + size}px` }}
-          className={styles.activePanel}
-        ></div>
-      )}
     </div>
   );
 };

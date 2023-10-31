@@ -1,18 +1,18 @@
 import article from "@/external/config/articles.json";
 import { ArticleRemote } from "@/components/article/articleRemote";
-
 type ArticlePath = [year: string, month: string, title: string];
+import { generateArticleData } from "@/lib/func/dataGenerate";
 
 const Article = async (props: { params: { slug: ArticlePath } }) => {
-  const { params } = props;
-  const data = await fetch(
-    `http://localhost:3000/api/article/${params.slug[2]}`
-  ).then((res) => res.json());
+  const {
+    params: { slug },
+  } = props;
+
+  const { content } = await generateArticleData(slug[2]);
+
   return (
     <>
-      <ArticleRemote
-        content={data.content}
-      />
+      <ArticleRemote content={content} />
     </>
   );
 };

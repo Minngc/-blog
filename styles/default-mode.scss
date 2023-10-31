@@ -1,4 +1,23 @@
 html:root {
+  --color-background-regular: rgba(255, 255, 255);
+  --color-background-fronter: rgba(255, 255, 255);
+  --color-background-hover: rgba(18, 18, 18, 0.15);
+  --shadow-regular: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+  --shadow-lighten: 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --color-background-avatar: linear-gradient(
+    95deg,
+    rgba(165, 222, 228),
+    rgba(186, 204, 217)
+  );
+  --color-special-havien: rgba(165, 222, 228);
+  --color-special-lighten: rgba(186, 204, 217);
+  --color-regular: rgba(0, 0, 0);
+  --color-lighten: rgba(0, 0, 0, 0.6);
+  --color-lightest: rgba(0, 0, 0, 0.2);
+  --color-input-hover: rgba(255, 255, 255);
+
+  /*
+  */
   --color-background_global: rgba(253, 253, 253);
   --color-background_reverse: rgba(2, 2, 2);
   --color-background_blockquote: rgba(240, 240, 240);
@@ -50,6 +69,11 @@ html:root {
 
   --color-splite-line: rgba(210, 210, 210, 0.5);
 
+  --radius-cardRadius: 10px;
+
+  --shadow-boxshadow__defaultCardShadow: 0px 1px 3px 2px
+      rgba(100, 100, 100, 0.15),
+    0px 1px 2px 1px rgba(100, 100, 100, 0.3);
   --shadow-box__default: 1px 1px 2px 0px rgba(0, 0, 0, 0.08),
     -0.5px -0.5px 2px 0px rgba(0, 0, 0, 0.08);
   --shadow-box__article: 2px 2px 2px rgba(0, 0, 0, 0.1),

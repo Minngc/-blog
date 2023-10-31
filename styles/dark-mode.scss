@@ -1,4 +1,21 @@
 html[data-theme="dark"]:root {
+  --color-background-regular: rgba(12, 12, 12, 0.95);
+  --color-background-fronter: rgba(43, 43, 43, 0.3);
+  --color-background-avatar: linear-gradient(
+    95deg,
+    rgba(0, 92, 175, 0.3),
+    rgba(17, 50, 133, 0.3)
+  );
+  --shadow-regular: none;
+  --shadow-lighten: none;
+  --color-special-havien: rgba(0, 92, 175, 0.5);
+  --color-special-lighten: rgba(17, 50, 133, 0.5);
+  --color-regular: rgba(255, 255, 255, 0.87);
+  --color-lighten: rgba(255, 255, 255, 0.6);
+  --color-lightest: rgba(255, 255, 255, 0.3);
+  --color-input-hover: rgba(255, 255, 255, 0.87);
+  /*
+  */
   --color-background_global: rgb(33, 37, 43);
   --color-background_reverse: rgba(253, 253, 253);
   --color-background_blockquote: rgb(50, 50, 50);

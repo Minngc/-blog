@@ -10,7 +10,7 @@ const Links = () => {
         <div className={styles.friendLink_linkList}>
 
         {linkList.map((link) => {
-          return <LinksCard key={`${link.name}_${link.link}`} {...link} />;
+          return <LinksCard {...link} key={`${link.name}_${link.link}`} />;
         })}
       </div>
         </div>

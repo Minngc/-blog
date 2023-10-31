@@ -13,9 +13,9 @@ body {
   margin: 0px;
   padding: 0px;
 
-  color: var(--color-font_default);
+  color: var(--color-regular);
 
-  background-color: var(--color-background_global);
+  background-color: var(--color-background-regular);
 }
 
 ::-webkit-scrollbar {
@@ -23,4 +23,8 @@ body {
   height: 8px;
 
   background-color: transparent;
+}
+
+svg path{
+  fill: var(--color-regular);
 }

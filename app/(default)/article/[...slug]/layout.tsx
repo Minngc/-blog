@@ -4,31 +4,24 @@ import styles from "./page.module.scss";
 import Image from "next/image";
 import bg from "@public/bg.jpg";
 import bgDark from "@public/bg-dark.jpg";
-import { SWRProvider } from "@/components/swrconfig";
+import { generateArticleData } from "@/lib/func/dataGenerate";
 
 type ArticlePath = [year: string, month: string, title: string];
-
-async function getMd(path: string) {
-  const data = await fetch(`http://localhost:3000/api/article/${path}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
-  return data;
-}
 
 const ArticleLayout = async (props: {
   children: ReactNode;
   index: ReactNode;
   params: { slug: ArticlePath };
 }) => {
-  const { children, params, index } = props;
-  const data = await getMd(params.slug[2]);
-  const fallback = {
-    [params.slug[2]]: data,
-  };
-  const { title, author, date, description, link, tag, cover } =
-    data.frontMatter;
+  const {
+    children,
+    params: { slug },
+    index,
+  } = props;
+
+  const {
+    frontmatter: { title, author, date, description },
+  } = await generateArticleData(slug[2]);
   return (
     <>
       <div className={classNames(styles.header)}>
@@ -98,11 +91,9 @@ const ArticleLayout = async (props: {
               <p className="article-ele-p">{description}</p>
             </div>
           )}
-          <SWRProvider fallback={fallback}>{children}</SWRProvider>
+          {children}
         </div>
-        <div className={classNames(styles.index)}>
-          <SWRProvider fallback={fallback}>{index}</SWRProvider>
-        </div>
+        <div className={classNames(styles.index)}>{index}</div>
       </div>
     </>
   );

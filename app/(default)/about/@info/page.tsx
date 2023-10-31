@@ -1,12 +1,14 @@
-import { InfoLlist } from "@/components/aboutPage";
+import { InfoItem } from "@/components/aboutPage";
+import { generateAboutInfo } from "@/lib/func/dataGenerate";
 
 const Info = async () => {
-  const data = await fetch(`http://localhost:3000/api/about`).then((res) => {
-    return res.json();
-  });
+  const data = await generateAboutInfo();
+
   return (
     <>
-      <InfoLlist data={data} />
+      {data.map((value) => {
+        return <InfoItem {...value} key={value.key} />;
+      })}
     </>
   );
 };

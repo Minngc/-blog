@@ -1,9 +1,10 @@
 .container {
-  width: calc(100% - min(max(30px, (100% - 360px) * 1.2), 90px));
+  width: calc(100% - min(max(40px, (100% - 360px) * 1.2), 90px));
   max-width: 460px;
   padding: 10px 15px 15px;
 
-  box-shadow: 2px 3px 3px 2px var(--color-shadow_default);
+  border-radius: var(--radius-cardRadius);
+  box-shadow: var(--shadow-boxshadow__defaultCardShadow);
   .header {
     display: flex;
     flex-direction: row;

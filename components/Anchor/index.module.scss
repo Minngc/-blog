@@ -1,6 +1,8 @@
 .tag {
-  color: var(--color-font_link__tag);
-  font-size: 14px;
-  line-height: 1.25rem;
+  color: var(--color-regular);
+  font-size: 16px;
   text-decoration: none;
+  &:hover {
+    color: var(--color-special-havien);
+  }
 }

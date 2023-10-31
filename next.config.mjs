@@ -15,9 +15,11 @@ const withMdx = nextMdx({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  output: "export",
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

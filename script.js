@@ -56,7 +56,7 @@ function genarateArticle() {
     ] = `./external/post/${year}/${month}/${fileName}`;
     fs.writeFileSync(
       "./external/config/articleNames.json",
-      JSON.stringify(articleNames, null, 2),
+      JSON.stringify(articleNames, null, 2) + "\n",
       {
         flag: "w",
       }
@@ -93,7 +93,7 @@ function genarateArticle() {
     });
     fs.writeFileSync(
       "./external/config/articles.json",
-      JSON.stringify(list, null, 2),
+      JSON.stringify(list, null, 2) + "\n",
       {
         flag: "w",
       }
@@ -132,7 +132,7 @@ function genarateArticle() {
   const tags = { years, classes, tagsWidthClass };
   fs.writeFileSync(
     "./external/config/tagList.json",
-    JSON.stringify(tags, null, 2),
+    JSON.stringify(tags, null, 2) + "\n",
     {
       flag: "w",
     }
@@ -146,7 +146,7 @@ function genarateArticle() {
   });
   fs.writeFileSync(
     "./external/config/listOrderByYear.json",
-    JSON.stringify(listOrderByYear, null, 2),
+    JSON.stringify(listOrderByYear, null, 2) + "\n",
     {
       flag: "w",
     }

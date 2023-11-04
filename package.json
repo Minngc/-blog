@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node \"./script.js\" & next dev",
-    "build": "next build",
+    "build": "node \"./script.js\" & next build",
     "start": "next start",
     "lint": "next lint",
     "format": "stylelint \"*/**/*.scss\" --fix",

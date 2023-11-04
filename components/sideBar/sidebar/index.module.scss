@@ -1,35 +1,48 @@
 .container {
-  width: calc(100% - min(max(40px, (100% - 360px) * 1.2), 90px));
+  width: calc(100% - 30px);
   max-width: 460px;
   padding: 10px 15px 15px;
 
-  border-radius: var(--radius-cardRadius);
-  box-shadow: var(--shadow-boxshadow__defaultCardShadow);
+  border-radius: 10px;
+
+  background-color: var(--color-background-fronter);
+  box-shadow: var(--shadow-regular);
   .header {
+    position: relative;
+
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 3px;
     width: 100%;
+
+    &::after {
+      display: block;
+      width: 100%;
+      height: 1px;
+      border-radius: 1px;
+
+      background-color: var(--color-lightest);
+
+      content: "";
+    }
     .title {
       font-weight: bold;
       font-size: 1.25rem;
     }
-  }
-  .line {
-    display: block;
-    width: 100%;
-    height: 0.0625rem;
-    margin-top: 0.3rem;
+    .sideNode {
+      position: absolute;
+      top: 4px;
+      right: 5px;
 
-    background-color: Var(--color-border_title);
+      float: right;
+    }
   }
   .cardContainer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
-    padding: 0.375rem 0.6rem 0;
+    padding: 0.375rem 0.625rem 0;
 
     font-size: 1rem;
   }

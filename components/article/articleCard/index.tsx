@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Tag } from "../../anchor";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-
+import { datetrans } from "@/lib/func";
 const TagIcon = () => {
   return (
     <>
@@ -62,11 +62,17 @@ const ArticleCard = (
     month,
     data: { link, tag, author, date, title, description },
   } = props;
+  const realDate = datetrans(date);
   return (
     <div className={classNames(styles.container, className)}>
       <div className={classNames(styles.header)}>
-        <div className={classNames(styles.articleTitle)}>{title}</div>
-        <div className={classNames(styles.date)}>{date}</div>
+        <Link
+          href={`/article/${year}/${month}/${link}`}
+          className={classNames(styles.articleTitle)}
+        >
+          {title}
+        </Link>
+        <div className={classNames(styles.date)}>{realDate}</div>
       </div>
 
       <div className={classNames(styles.mainContent)}>

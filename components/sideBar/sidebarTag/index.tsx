@@ -22,7 +22,7 @@ const SideBarTag = (props: {
                 href={`./post?tag=${link}`}
                 key={`${link}_${title}`}
               >
-                #{title}
+                {title}
               </Link>
             );
           })}

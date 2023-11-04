@@ -42,7 +42,7 @@
     width: 100%;
 
     background: var(--color-background-avatar);
-    background-size: 500%, 100%;
+    background-size: 1000%, 100%;
 
     transition: all 0.3s;
     animation: shine 10s 0ms infinite both;
@@ -52,34 +52,22 @@
 
     transform: translateY(var(--offset));
   }
-  .activePanel {
-    transition: all 0.3s;
-    @media screen and (max-width: 970px) {
-      width: 100%;
-
-      background: var(--color-background_default);
-      &:hover {
-        background: var(--color-background_avatar_switch__hover);
-        cursor: pointer;
-      }
-    }
-  }
 }
 
 @keyframes shine {
   0% {
-    background-position: 50% 0;
+    background-position: 70% 0;
   }
   25% {
-    background-position: 100% 0;
+    background-position: 90% 0;
   }
   50% {
-    background-position: 50% 0;
+    background-position: 70% 0;
   }
   75% {
-    background-position: 0% 0;
+    background-position: 90% 0;
   }
   100% {
-    background-position: 50% 0;
+    background-position: 70% 0;
   }
 }

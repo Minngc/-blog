@@ -14,7 +14,7 @@
     height: 35px;
     border-radius: 0.3rem;
 
-    background-color: var(--color-background-regular);
+    background-color: var(--color-background-fronter-control);
     box-shadow: var(--shadow-regular);
     cursor: pointer;
     @media screen and (max-width: 500px) {
@@ -29,7 +29,7 @@
     height: 35px;
     border-radius: 0.3rem;
 
-    background-color: var(--color-background-regular);
+    background-color: var(--color-background-fronter-control);
     box-shadow: var(--shadow-regular);
     transform: translateX(0);
     cursor: pointer;
@@ -60,7 +60,7 @@
       width: 100%;
       height: 100%;
 
-      background-color: var(--color-background-regular);
+      background-color: var(--color-background-fronter-control);
       cursor: pointer;
 
       clip-path: ellipse(23% 25% at 25% 50%);
@@ -71,7 +71,7 @@
     height: 35px;
     border-radius: 0.3rem;
 
-    background-color: var(--color-background-regular);
+    background-color: var(--color-background-fronter-control);
     box-shadow: var(--shadow-regular);
     visibility: visible;
     cursor: pointer;
@@ -110,7 +110,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: var(--color-background-regular);
+  background-color: var(--color-background-fronter-control);
 
   animation: infinity-rotate 2.5s 0s infinite linear both;
 
@@ -131,7 +131,7 @@
     width: 100%;
     height: 100%;
 
-    background-color: var(--color-background-regular);
+    background-color: var(--color-background-fronter-control);
 
     clip-path: circle(10% at 50% 50%);
   }

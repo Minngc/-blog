@@ -26,6 +26,10 @@ const H4 = (props: any) => {
   );
 };
 
+const Del = (props: any) => {
+  return <del className="article-ele-del">{props.children}</del>;
+};
+
 const Anchor = (props: any) => {
   if ((props.href as string).startsWith("#"))
     return (
@@ -91,6 +95,9 @@ const Code = (props: any) => {
   }
   return <code {...props} />;
 };
+const Hr = () => {
+  return <hr className="article-ele-hr" />;
+};
 
 // export
 export const articleReplaceComponents = {
@@ -110,4 +117,6 @@ export const articleReplaceComponents = {
   th: Th,
   td: Td,
   code: Code,
+  hr: Hr,
+  del: Del,
 };

@@ -18,9 +18,8 @@ const SideBarCard = (props: {
     <div className={classNames(styles.container)}>
       <div className={classNames(styles.header)}>
         <div className={styles.title}>{title}</div>
-        {sideNode}
+        <div className={styles.sideNode}>{sideNode}</div>
       </div>
-      <div className={styles.line} />
       <div
         className={classNames(styles.cardContainer, className.cardContainer)}
       >

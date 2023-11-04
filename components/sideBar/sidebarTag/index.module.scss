@@ -1,13 +1,12 @@
 .tag {
   width: 100%;
   .tagTitle {
-    line-height: 1.5rem;
     a {
-      color: var(--color-font_link__default);
+      color: var(--color-regular);
       font-size: 1rem;
       text-decoration: none;
       &:hover {
-        text-decoration: underline;
+        color: var(--color-special-havien);
       }
     }
   }
@@ -16,17 +15,17 @@
     flex-wrap: wrap;
     gap: 5px;
     align-items: center;
+    padding: 2px 8px;
 
     font-size: 0.9375rem;
     line-height: 1.25rem;
-    text-indent: 0.5rem;
     .tagItem {
       display: inline-block;
 
-      color: var(--color-font_link__tag);
+      color: var(--color-lighten);
       text-decoration: none;
       &:hover {
-        text-decoration: underline;
+        color: var(--color-special-havien);
       }
     }
   }

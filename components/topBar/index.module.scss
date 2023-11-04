@@ -2,15 +2,15 @@
   position: relative;
   z-index: -2;
 
-  height: 60px;
-  margin: 0 0 5px 0;
+  height: var(--topbar-height);
+  margin: 0 0 0px 0;
 
   background-color: var(--color-background-regular);
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 992px) {
     height: 55px;
     margin: 0;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     height: 48px;
     margin: 0;
   }
@@ -40,12 +40,12 @@ html[data-theme="dark"] .topBarContainer {
   transition: height 0.15s, gap 0.15s;
 
   user-select: none;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 992px) {
     gap: 20px;
     justify-content: flex-start;
     height: 55px;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     gap: 0px;
     justify-content: space-between;
     height: 48px;
@@ -54,14 +54,17 @@ html[data-theme="dark"] .topBarContainer {
   .topBarTitle {
     padding: 0 0 0 10px;
 
+    color: var(--color-regular);
+
     font-size: 48px;
-    font-family: var(--luxuriousScript);
+    font-family: var(--local-luxuriousScript);
+    text-decoration: none;
 
     transition: font-size 0.15s;
-    @media screen and (max-width: 770px) {
+    @media screen and (max-width: 992px) {
       font-size: 36px;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 576px) {
       font-size: 32px;
     }
   }
@@ -87,13 +90,13 @@ html[data-theme="dark"] .topBarContainer {
   transition: gap 0.15s, padding 0.15s;
 
   user-select: none;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 992px) {
     gap: 12px;
     padding: 0px;
 
     font-size: 20px;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     &.topMenu {
       display: none;
     }
@@ -109,32 +112,33 @@ html[data-theme="dark"] .topBarContainer {
   li {
     display: flex;
     a {
-      color: var(--color-font_default);
+      color: var(--color-regular);
       text-decoration: none;
 
       transition: color 0.15s;
       &:hover {
-        color: var(--color-font_link__hover);
+        color: var(--color-link-hover);
       }
     }
     span {
       display: inline-block;
-      width: 2px;
-      height: 22px;
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
 
-      background-color: var(--color-splite-line);
+      background-color: var(--color-background-fronter);
     }
   }
 }
 
 // styles about ex-menu
 .topBarMenu {
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: 576.1px) {
     &.exMenu {
       display: none;
     }
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -169,7 +173,28 @@ html[data-theme="dark"] .topBarContainer {
   Menu Icon
 */
 .menuHidden {
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: 576.1px) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576.1px) {
+  .name32 {
+    display: none;
+  }
+}
+@media screen and (min-width: 992.1px) {
+  .name36 {
+    display: none;
+  }
+}
+@media screen and (max-width: 576px) {
+  .name36 {
+    display: none;
+  }
+}
+@media screen and (max-width: 992px) {
+  .name48 {
     display: none;
   }
 }

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AvatarWithBackground = (props: Props) => {
-  const { size, height, offset} = props;
+  const { size, height, offset } = props;
   return (
     <div
       style={{ height: `${offset + size}px`, "--offset": offset + "px" }}

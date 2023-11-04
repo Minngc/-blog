@@ -9,11 +9,22 @@ html {
   scroll-behavior: smooth;
 }
 
+html:root {
+  --topbar-height: 65px;
+  @media screen and (max-width: 576px) {
+    --topbar-height: 48px;
+  }
+  @media screen and (max-width: 992px) {
+    --topbar-height: 55px;
+  }
+}
+
 body {
   margin: 0px;
   padding: 0px;
 
   color: var(--color-regular);
+  font-family: var(--local-lxgw);
 
   background-color: var(--color-background-regular);
 }
@@ -25,6 +36,6 @@ body {
   background-color: transparent;
 }
 
-svg path{
+svg path {
   fill: var(--color-regular);
 }

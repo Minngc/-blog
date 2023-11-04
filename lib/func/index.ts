@@ -22,3 +22,12 @@ export function searchParamsFilterFunc(
     );
   });
 }
+
+import dateReplace from "external/config/article-replace/date.json";
+export function datetrans(source: string, year: boolean = true) {
+  const date = source.split("/");
+  date[0] = (dateReplace as any)[date[0]];
+  return year
+    ? date[0] + " " + date[1] + ", " + date[2]
+    : date[0] + " " + date[1];
+}

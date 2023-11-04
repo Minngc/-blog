@@ -2,6 +2,7 @@ import classNames from "classnames";
 import styles from "./page.module.scss";
 import listOrderByYear from "@/external/config/listOrderByYear.json";
 import Link from "next/link";
+import { datetrans } from "@/lib/func";
 
 const Timeline = () => {
   const years = Object.keys(listOrderByYear).sort(
@@ -42,17 +43,14 @@ const TimeLineItem = (props: {
       <div className={styles.postList}>
         {list.map(({ year, month, title, link, date }) => {
           return (
-            <div key={`${year}_${month}_${link}`} className={styles.postItem}>
-              <span className={styles.postDate}>
-                {date.split("/").slice(0, 2).join("-")}
-              </span>
-              <Link
-                className={styles.postTitle}
-                href={`./article/${year}/${month}/${link}`}
-              >
-                {title}
-              </Link>
-            </div>
+            <Link
+              href={`./article/${year}/${month}/${link}`}
+              key={`${year}_${month}_${link}`}
+              className={styles.postItem}
+            >
+              <span className={styles.postDate}>{datetrans(date, false)}</span>
+              <span className={styles.postTitle}>{title}</span>
+            </Link>
           );
         })}
       </div>

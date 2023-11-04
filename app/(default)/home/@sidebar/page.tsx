@@ -6,6 +6,7 @@ import { SideBarCard } from "@/components/sideBar/sidebar";
 import tagList from "@/external/config/tagList.json";
 import log from "@/external/config/pages-config/log.json";
 import notice from "@/external/config/pages-config/notice.json";
+import { datetrans } from "@/lib/func";
 const anime: {
   title: string;
   type: [string, string, string];
@@ -17,7 +18,9 @@ const HomeSidebar = () => {
     <>
       <SideBarCard
         title="公告"
-        sideNode={<div className={styles.noticeDate}>{notice.date}</div>}
+        sideNode={
+          <div className={styles.noticeDate}>{datetrans(notice.date)}</div>
+        }
         className={{ cardContainer: styles.noticeContainer }}
       >
         {notice.message}
@@ -36,11 +39,15 @@ const HomeSidebar = () => {
         })}
       </SideBarCard>
 
-      <SideBarCard title="アニメ">
-        {anime.map((value) => {
-          return <AnimeCard key={`${value.title}_${value.state}`} {...value} />;
-        })}
-      </SideBarCard>
+      {anime.length > 0 && (
+        <SideBarCard title="アニメ">
+          {anime.map((value) => {
+            return (
+              <AnimeCard key={`${value.title}_${value.state}`} {...value} />
+            );
+          })}
+        </SideBarCard>
+      )}
 
       <SideBarCard title="日志">
         {log.map((value) => {

@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
   width: calc(100vw - max(0px, calc(0.05 * (100vw - 414px))) - 20px);
   max-width: 1000px;
   margin: auto;
-  align-items: center;
   padding: 10px 0 0;
   @media screen and (max-width: 600px) {
     gap: 5px;

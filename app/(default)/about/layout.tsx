@@ -12,8 +12,10 @@ const AboutLayout = async (props: {
   return (
     <>
       {children}
-      <div className={classNames(styles.info)}>{info}</div>
-      <div className={classNames(styles.links)}>{links}</div>
+      <div className={classNames(styles.info)}>
+        {info}
+        {links}
+      </div>
     </>
   );
 };

@@ -10,13 +10,7 @@ const HomeLayout = (props: { children: ReactNode; sidebar: ReactNode }) => {
       <AvatarWithBackground size={140} height={120} offset={50} />
       <div className={classNames(styles.homeContainer)}>
         <div className={styles.articleList}>{children}</div>
-        {/* <div
-            className={classNames(styles.sideBar, {
-              [styles.sideBarShow]: panelPosition === "right",
-            })}
-          >
-            {sidebar}
-          </div> */}
+        <div className={classNames(styles.sideBar)}>{sidebar}</div>
       </div>
     </>
   );

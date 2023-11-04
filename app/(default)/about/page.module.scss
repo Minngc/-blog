@@ -1,13 +1,9 @@
 .info {
   display: flex;
   flex-direction: column;
+  gap: 15px;
   align-items: center;
-  width: 100%;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  width: calc(100vw - max(0px, 0.05 * (100vw - 414px)) - 20px);
+  margin: auto;
+  padding: 15px 0;
 }

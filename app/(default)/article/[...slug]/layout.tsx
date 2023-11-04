@@ -5,6 +5,7 @@ import Image from "next/image";
 import bg from "@public/bg.jpg";
 import bgDark from "@public/bg-dark.jpg";
 import { generateArticleData } from "@/lib/func/dataGenerate";
+import { datetrans } from "@/lib/func";
 
 type ArticlePath = [year: string, month: string, title: string];
 
@@ -22,12 +23,13 @@ const ArticleLayout = async (props: {
   const {
     frontmatter: { title, author, date, description },
   } = await generateArticleData(slug[2]);
+  const realDate = datetrans(date)
   return (
     <>
       <div className={classNames(styles.header)}>
         <div className={classNames(styles.title)}>{title}</div>
         <div className={classNames(styles.author)}>{author}</div>
-        <div className={classNames(styles.date)}>{date}</div>
+        <div className={classNames(styles.date)}>{realDate}</div>
         <div className={classNames(styles.backImage)}>
           <div className={classNames(styles.imageContainer)}>
             <Image

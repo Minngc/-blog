@@ -1,7 +1,5 @@
 import fs from "node:fs";
 import matter from "gray-matter";
-// import article from "./config/articleNames.json"
-
 console.log("--- on running ---");
 
 function genarateArticle() {
@@ -76,7 +74,6 @@ function genarateArticle() {
       date: data.Date,
       link: data.Link,
     });
-
     list.push({
       year,
       month,

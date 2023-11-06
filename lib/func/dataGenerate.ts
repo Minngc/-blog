@@ -2,6 +2,7 @@ import articleNames from "@/external/config/articleNames.json";
 import { serializeWithPlugin } from "./serialize";
 import fs from "node:fs";
 import matter from "gray-matter";
+import basicInfo from "@/external/config/pages-config/basic.json";
 
 export async function generateArticleData(params: string) {
   const path = (articleNames as any)[params];
@@ -12,8 +13,8 @@ export async function generateArticleData(params: string) {
   const originMatter = matterContent.data;
 
   const frontmatter = {
-    author: originMatter.Author,
-    cover: originMatter.Cover,
+    author: originMatter.Author ?? basicInfo.author,
+    cover: originMatter.Cover ?? basicInfo.cover,
     date: originMatter.Date,
     description: originMatter.Description,
     link: originMatter.Link,

@@ -251,3 +251,19 @@ div.language-type {
 
   background-color: var(--color-border);
 }
+
+.article-ele-p:has(.article-ele-img) {
+  display: flex;
+  padding: 0 26px;
+  width: calc(100% - 52px);
+  justify-content: center;
+}
+
+.article-ele-img {
+  cursor: pointer;
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 900px;
+  object-fit: contain;
+}

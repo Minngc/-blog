@@ -1,3 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
+import imgPath from "@/external/config/article-replace/imgPath.json";
+
 const H1 = (props: any) => {
   return <></>;
 };
@@ -99,8 +103,25 @@ const Hr = () => {
   return <hr className="article-ele-hr" />;
 };
 
+const Img = (props: any) => {
+  return (
+    <Image
+      fill
+      loader={imageLoader}
+      className="article-ele-img"
+      alt={props.alt}
+      src={props.src}
+    />
+  );
+};
+
+const imageLoader = (props: { src: string }) => {
+  return props.src.replace(imgPath.base, imgPath.target);
+};
+
 // export
 export const articleReplaceComponents = {
+  h1: H1,
   h2: H2,
   a: Anchor,
   h3: H3,
@@ -119,4 +140,5 @@ export const articleReplaceComponents = {
   code: Code,
   hr: Hr,
   del: Del,
+  img: Img,
 };

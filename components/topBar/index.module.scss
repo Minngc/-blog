@@ -169,32 +169,15 @@ html[data-theme="dark"] .topBarContainer {
   }
 }
 
+li.spliteLine span{
+  background-color: var(--color-lightest);
+}
+
 /*
   Menu Icon
 */
 .menuHidden {
   @media screen and (min-width: 576.1px) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 576.1px) {
-  .name32 {
-    display: none;
-  }
-}
-@media screen and (min-width: 992.1px) {
-  .name36 {
-    display: none;
-  }
-}
-@media screen and (max-width: 576px) {
-  .name36 {
-    display: none;
-  }
-}
-@media screen and (max-width: 992px) {
-  .name48 {
     display: none;
   }
 }

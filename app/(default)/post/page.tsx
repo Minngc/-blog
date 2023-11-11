@@ -7,7 +7,7 @@ import classNames from "classnames";
 import articles from "@/external/config/articles.json";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import tagList from "@/external//config/tagList.json";
-import { searchParamsFilterFunc } from "@/lib/func";
+import { searchParamsFilterFunc } from "@/util/func";
 
 const Post = () => {
   const searchParams =

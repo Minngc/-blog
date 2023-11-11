@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import { datetrans } from "@/lib/func";
+import { datetrans } from "@/util/func";
 
 const LogCard = (props: { date: string; logMsg: string }) => {
   const { date, logMsg } = props;

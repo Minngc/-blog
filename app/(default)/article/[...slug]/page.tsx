@@ -1,7 +1,7 @@
 import article from "@/external/config/articles.json";
 import { ArticleRemote } from "@/components/article/articleRemote";
 type ArticlePath = [year: string, month: string, title: string];
-import { generateArticleData } from "@/lib/func/dataGenerate";
+import { generateArticleData } from "@/util/func/dataGenerate";
 
 const Article = async (props: { params: { slug: ArticlePath } }) => {
   const {

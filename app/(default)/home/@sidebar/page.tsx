@@ -6,7 +6,7 @@ import { SideBarCard } from "@/components/sideBar/sidebar";
 import tagList from "@/external/config/tagList.json";
 import log from "@/external/config/pages-config/log.json";
 import notice from "@/external/config/pages-config/notice.json";
-import { datetrans } from "@/lib/func";
+import { datetrans } from "@/util/func";
 const anime: {
   title: string;
   type: [string, string, string];

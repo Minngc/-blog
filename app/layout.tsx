@@ -1,7 +1,7 @@
 import "./global.scss";
 
 import { ReactNode } from "react";
-import { LXGW } from "@/public/fonts/local/LXGW";
+import { LXGW } from "@/asset/fonts/local/LXGW";
 import classNames from "classnames";
 
 export const metadata = {

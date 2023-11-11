@@ -2,7 +2,7 @@ import classNames from "classnames";
 import styles from "./page.module.scss";
 import listOrderByYear from "@/external/config/listOrderByYear.json";
 import Link from "next/link";
-import { datetrans } from "@/lib/func";
+import { datetrans } from "@/util/func";
 
 const Timeline = () => {
   const years = Object.keys(listOrderByYear).sort(

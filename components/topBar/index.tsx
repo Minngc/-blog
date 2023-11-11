@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 import { MenuIconToCloseIcon } from "../icons";
 import Link from "next/link";
-import { LocalLuxuriousScript } from "@/public/fonts/local/luxuriousScript";
+import { LocalLuxuriousScript } from "@/asset/fonts/local/luxuriousScript";
 
 const TopBar = (props: { menuList: { href: string; name: string }[] }) => {
   const { menuList } = props;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Tag } from "../../anchor";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import { datetrans } from "@/lib/func";
+import { datetrans } from "@/util/func";
 const TagIcon = () => {
   return (
     <>
@@ -37,8 +37,8 @@ const TagIcon = () => {
   );
 };
 interface ArticleMatterType {
-  author: string;
-  cover?: string;
+  author?: string;
+  cover?: string[];
   date: string;
   description: string;
   link: string;
@@ -60,9 +60,8 @@ const ArticleCard = (
     replace = false,
     year,
     month,
-    data: { link, tag, author, date, title, description },
+    data: { link, tag, date, title, description },
   } = props;
-  const realDate = datetrans(date);
   return (
     <div className={classNames(styles.container, className)}>
       <div className={classNames(styles.header)}>
@@ -72,7 +71,7 @@ const ArticleCard = (
         >
           {title}
         </Link>
-        <div className={classNames(styles.date)}>{realDate}</div>
+        <div className={classNames(styles.date)}>{date}</div>
       </div>
 
       <div className={classNames(styles.mainContent)}>

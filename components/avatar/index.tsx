@@ -1,5 +1,5 @@
 import Image from "next/image";
-import avatar from "@public/avatar.jpg";
+import avatar from "@/asset/img/avatar.jpg";
 import classNames from "classnames";
 import styles from "./index.module.scss";
 

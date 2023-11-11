@@ -1,5 +1,5 @@
 import { InfoItem } from "@/components/aboutPage";
-import { generateAboutInfo } from "@/lib/func/dataGenerate";
+import { generateAboutInfo } from "@/util/func/dataGenerate";
 
 const Info = async () => {
   const data = await generateAboutInfo();

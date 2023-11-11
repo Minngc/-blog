@@ -1,9 +1,17 @@
 {
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {}
+  },
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "allowImportingTsExtensions":true,
     "skipLibCheck": true,
     "strict": true,
+    "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,

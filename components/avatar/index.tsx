@@ -13,7 +13,7 @@ interface Props {
 const AvatarWithBackground = (props: Props) => {
   const { size, height, offset } = props;
   return (
-    <div
+    <header
       style={{ height: `${offset + size}px`, "--offset": offset + "px" }}
       className={classNames(styles.container)}
     >
@@ -23,11 +23,9 @@ const AvatarWithBackground = (props: Props) => {
       >
         <Avatar className={classNames(styles.avatar)} size={size} />
       </div>
-    </div>
+    </header>
   );
 };
-
-const ActiveAvatarWithBackground = () => {};
 
 const Avatar = (props: { className?: string; size: 50 | 70 | 140 | 210 }) => {
   const { size, className } = props;

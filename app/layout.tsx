@@ -1,7 +1,6 @@
 import "./global.scss";
 
 import { ReactNode } from "react";
-import { LXGW } from "@/asset/fonts/local/LXGW";
 import classNames from "classnames";
 
 export const metadata = {
@@ -13,7 +12,7 @@ const Layout = (props: { children: ReactNode }) => {
   const { children } = props;
   return (
     <html>
-      <body className={classNames(LXGW.variable)}>{children}</body>
+      <body >{children}</body>
     </html>
   );
 };

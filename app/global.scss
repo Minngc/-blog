@@ -3,6 +3,8 @@
 @use "/styles/dark-mode.scss";
 @use "/styles/default-mode.scss";
 @use "/styles/artcile-element.scss";
+@import "/fonts/LXGW/lxgw_regular.css";
+@import "/fonts/LXGW/lxgw_bold.css";
 
 html {
   scroll-padding-top: 80px;
@@ -24,8 +26,7 @@ body {
   padding: 0px;
 
   color: var(--color-regular);
-  font-family: var(--local-lxgw);
-
+  font-family: "LXGW WenKai";
   background-color: var(--color-background-regular);
 }
 

@@ -1,9 +1,6 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import styles from "./page.module.scss";
-import Image from "next/image";
-import bg from "@/asset/img/bg.jpg";
-import bgDark from "@/asset/img/bg-dark.jpg";
 import { generateArticleData } from "@/util/func/dataGenerate";
 import { ArticleHeader } from "@/components/article/articleHeader";
 

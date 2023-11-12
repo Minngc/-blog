@@ -142,7 +142,7 @@ Description: "" # 字符串，文章描述，可缺省
     "name": "友链名称",
     "link": "友链 URL",
     "photo": "友链头像 URL",
-    "description": "友链描述" // 可缺省
+    "description": "友链描述"
   }
 ]
 ```
@@ -160,9 +160,9 @@ Description: "" # 字符串，文章描述，可缺省
 ```json
 [
   {
-    "title": "标题", // 展示项标题
-    "key": "unique key", // 建议使用 ascii 字符
-    "filepath": "文章路径" // 文章路径，含有扩展名
+    "title": "标题",
+    "key": "unique key",
+    "filepath": "文章路径"
   }
 ]
 ```

@@ -30,8 +30,10 @@
 }
 .timeLine {
   display: flex;
+  flex-direction: column;
   gap: 15px;
   justify-content: center;
+  align-items: center;
   width: calc(100vw - max(0px, calc(0.05 * (100vw - 414px))) - 20px);
   margin: 1rem auto;
   padding: 0 10px;

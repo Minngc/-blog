@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import imgPath from "@/external/config/article-replace/imgPath.json";
 
@@ -115,9 +115,9 @@ const imageLoader = (src: string) => {
 const Img = (props: any) => {
   return (
     <Image
-      objectFit="contain"
       className="article-ele-img"
       alt={props.alt}
+      fill
       src={imageLoader(props.src)}
     />
   );

@@ -1,61 +1,19 @@
 [
   {
-    "year": "2022",
-    "month": "10",
-    "fileName": "VSCode 前端开发环境配置指北-2022.md",
-    "data": {
-      "author": "Ming",
-      "date": "Oct 26, 2022",
-      "title": "VSCode 前端开发环境配置指北",
-      "link": "front_end_development_setting_guide",
-      "tag": [
-        "博学之",
-        "前端",
-        "pub"
-      ],
-      "description": "VSCode 前端开发环境配置指北",
-      "cover": [
-        "",
-        ""
-      ]
-    }
-  },
-  {
-    "year": "2022",
-    "month": "10",
-    "fileName": "前端组Q&A.md",
-    "data": {
-      "author": "Ming",
-      "date": "Oct 09, 2022",
-      "title": "前端组 Q&A",
-      "link": "front_end_droup_question_and_answer",
-      "tag": [
-        "博学之",
-        "前端",
-        "pub"
-      ],
-      "description": "No Description.",
-      "cover": [
-        "",
-        ""
-      ]
-    }
-  },
-  {
     "year": "2023",
-    "month": "10",
-    "fileName": "to_JP.md",
+    "month": "11",
+    "fileName": "dev.md",
     "data": {
       "author": "Ming",
-      "date": "Oct 18, 2023",
-      "title": "To jp",
-      "link": "to_jp",
+      "date": "Nev 12, 2023",
+      "title": "开发文档",
+      "link": "devlog",
       "tag": [
-        "博学之",
-        "前端",
+        "guide",
+        "doc",
         "pub"
       ],
-      "description": "VSCode 前端开发环境配置指北",
+      "description": "记录本博客的开发文档，并作为文章展示测试样例。",
       "cover": [
         "",
         ""

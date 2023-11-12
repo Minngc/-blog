@@ -1,3 +1,12 @@
+---
+Date: 11/12/2023
+Title: 开发文档
+Author: "Ming"
+Link: devlog
+Tag: [guide, doc, pub]
+Description: 记录本博客的开发文档，并作为文章展示测试样例。
+---
+
 # -bold（名字还没想好）
 
 ## Issue

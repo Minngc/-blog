@@ -1,13 +1,10 @@
 .articleList {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.75rem;
   align-items: center;
   width: calc(100vw - max(0px, calc(0.05 * (100vw - 414px))) - 20px);
   max-width: 1000px;
   margin: auto;
   padding: 10px 0 0;
-  @media screen and (max-width: 600px) {
-    gap: 5px;
-  }
 }

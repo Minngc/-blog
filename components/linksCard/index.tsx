@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import defaultAvatar from "@/asset/img/avatar.jpg";
 import styles from "./index.module.scss";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const LinksCard = (props: {
   avatar?: string;
@@ -17,8 +17,12 @@ const LinksCard = (props: {
           src={avatar ?? defaultAvatar}
           width={70}
           height={70}
-          objectFit="cover"
           alt="avatar"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            objectFit: "cover",
+          }}
         />
         <div className={classNames(styles.middleContent)}>
           <span className={classNames(styles.nickName)}>{name}</span>

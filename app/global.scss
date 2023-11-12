@@ -3,8 +3,9 @@
 @use "/styles/dark-mode.scss";
 @use "/styles/default-mode.scss";
 @use "/styles/artcile-element.scss";
-@use "/styles/fonts/lxgw.scss";
-
+/*
+ @use "/styles/fonts/lxgw.scss";
+*/
 html {
   scroll-padding-top: 80px;
   scroll-behavior: smooth;

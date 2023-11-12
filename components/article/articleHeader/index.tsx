@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import bg from "@/asset/img/bg.jpg";
 import bgDark from "@/asset/img/bg-dark.jpg";
-import styles from "./index.module.scss"
+import styles from "./index.module.scss";
 
 export const ArticleHeader = (props: {
   title: string;
@@ -21,17 +21,15 @@ export const ArticleHeader = (props: {
           <div className={classNames(styles.imageContainer)}>
             <Image
               src={cover[0] === "" ? bg : cover[0]}
-              objectFit="cover"
-              sizes="100vw"
               className={classNames(styles.imgCover, styles.lightCover)}
               alt=""
+              sizes="100vw"
             />
             <Image
               src={cover[1] === "" ? bgDark : cover[1]}
-              objectFit="cover"
-              sizes="100vw"
               className={classNames(styles.imgCover, styles.darkCover)}
               alt=""
+              sizes="100vw"
             />
           </div>
         </div>

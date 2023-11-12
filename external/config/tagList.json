@@ -1,10 +1,6 @@
 {
   "years": [
     {
-      "link": "2022",
-      "title": "2022"
-    },
-    {
       "link": "2023",
       "title": "2023"
     }
@@ -35,12 +31,7 @@
     {
       "link": "study",
       "title": "博学之",
-      "list": [
-        {
-          "link": "front_end",
-          "title": "前端"
-        }
-      ]
+      "list": []
     },
     {
       "link": "record",
@@ -50,7 +41,12 @@
     {
       "link": "guide",
       "title": "笃行之",
-      "list": []
+      "list": [
+        {
+          "link": "doc",
+          "title": "开发文档"
+        }
+      ]
     },
     {
       "link": "day",

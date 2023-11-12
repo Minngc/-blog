@@ -103,7 +103,7 @@ function genarateArticle() {
         date: datetrans(data.Date),
         title: data.Title,
         link: data.Link,
-        tag: generateTag(data.Tag),
+        tag: data.Tag,
         description: generateDescription(data.Description),
         cover: generateCover(data.Cover),
       },

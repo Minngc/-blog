@@ -1,27 +1,11 @@
 {
-  "2022": [
-    {
-      "year": "2022",
-      "month": "10",
-      "title": "VSCode 前端开发环境配置指北",
-      "date": "Oct 26",
-      "link": "front_end_development_setting_guide"
-    },
-    {
-      "year": "2022",
-      "month": "10",
-      "title": "前端组 Q&A",
-      "date": "Oct 09",
-      "link": "front_end_droup_question_and_answer"
-    }
-  ],
   "2023": [
     {
       "year": "2023",
-      "month": "10",
-      "title": "To jp",
-      "date": "Oct 18",
-      "link": "to_jp"
+      "month": "11",
+      "title": "开发文档",
+      "date": "Nev 12",
+      "link": "devlog"
     }
   ]
 }

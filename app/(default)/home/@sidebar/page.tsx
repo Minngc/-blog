@@ -50,7 +50,7 @@ const HomeSidebar = () => {
       )}
 
       <SideBarCard title="日志">
-        {log.map((value) => {
+        {log.slice(0, 5).map((value) => {
           return <LogCard key={`logCard_${value.date}`} {...value} />;
         })}
       </SideBarCard>

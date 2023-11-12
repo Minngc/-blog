@@ -1,0 +1,14 @@
+{
+  "classes": {
+    "study": "博学之",
+    "issue": "审问之",
+    "day": "慎思之",
+    "record": "明辨之",
+    "guide": "笃行之",
+    "others": "其他"
+  },
+  "tags": {
+    "front_end": "前端"
+  },
+  "pub": { "pub": "公开向", "pri": "个人向" }
+}

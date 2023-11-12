@@ -31,5 +31,6 @@ yarn-error.log*
 
 # user
 *.old
-/config
+external/post/*
+public/fonts/*
 .vscode

@@ -103,20 +103,24 @@ const Hr = () => {
   return <hr className="article-ele-hr" />;
 };
 
+const imageLoader = (src: string) => {
+  for (let { base, target } of imgPath) {
+    if (src.startsWith(base)) {
+      return src.replace(base, target);
+    }
+  }
+  return src;
+};
+
 const Img = (props: any) => {
   return (
     <Image
       fill
-      loader={imageLoader}
       className="article-ele-img"
       alt={props.alt}
-      src={props.src}
+      src={imageLoader(props.src)}
     />
   );
-};
-
-const imageLoader = (props: { src: string }) => {
-  return props.src.replace(imgPath.base, imgPath.target);
 };
 
 // export

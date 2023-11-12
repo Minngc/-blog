@@ -48,7 +48,7 @@ const TimeLineItem = (props: {
               key={`${year}_${month}_${link}`}
               className={styles.postItem}
             >
-              <span className={styles.postDate}>{datetrans(date, false)}</span>
+              <span className={styles.postDate}>{date}</span>
               <span className={styles.postTitle}>{title}</span>
             </Link>
           );

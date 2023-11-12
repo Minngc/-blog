@@ -90,7 +90,7 @@ function genarateArticle() {
       year,
       month,
       title: data.Title,
-      date: datetrans(data.Date),
+      date: datetrans(data.Date, false),
       link: data.Link,
     });
     // 文章汇总

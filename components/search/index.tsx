@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import searchIcon from "public/svg/searchIcon.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const SearchIcon = () => {
   return (

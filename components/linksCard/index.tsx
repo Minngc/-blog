@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import defaultAvatar from "@/asset/img/avatar.jpg";
 import styles from "./index.module.scss";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const LinksCard = (props: {
   avatar?: string;

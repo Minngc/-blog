@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import avatar from "@/asset/img/avatar.jpg";
 import classNames from "classnames";
 import styles from "./index.module.scss";
